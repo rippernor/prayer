@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prayer & Info Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Verdana&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0a2233 0%, #1a2a38 100%);
+      color: #f3f7fa;
+      font-family: 'Inter', 'Verdana', sans-serif;
+      overflow-x: hidden !important;
+    }
+    body {
+      min-height: 100vh;
+      overflow-y: auto;
+      font-size: clamp(14px, 1.5vw, 16px);
+    }
+    .page {
+      display: none;
+      height: 100vh;
+      width: 100vw;
+      box-sizing: border-box;
+      padding: 0.5rem;
+      background: transparent;
+      color: #eaf6fb;
+    }
+    .page.active {
+      display: block;
+    }
+    /* Original prayer page styles */
+    #page1 header {
+      position: relative;
+      height: 4.5rem;
+      background: rgba(18,28,38,0.98);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.7);
+      user-select: none;
+      font-weight: 700;
+      color: #00b8d9;
+      display: flex;
+      align-items: center;
+      padding: 0 0.7rem;
+      box-sizing: border-box;
+    }
+    #page1 header .date-gregorian {
+      position: absolute;
+      left: 0.7rem;
+      white-space: nowrap;
+      color: #7fd7ff;
+      text-shadow: 0 0 12px rgba(128,200,255,0.7);
+      font-size: 2rem;
+      font-weight: 600;
+      user-select: none;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    #page1 header .time {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #ffb300;
+      font-variant-numeric: tabular-nums;
+      text-shadow: 0 0 24px #ffb300cc;
+      user-select: none;
+      font-weight: 700;
+      font-size: 5rem;
+      white-space: nowrap;
+      top: 50%;
+      cursor: default;
+      line-height: 1;
+    }
+    #page1 header .date-hijri {
+      position: absolute;
+      right: 0.7rem;
+      white-space: nowrap;
+      color: #7fd7ff;
+      text-shadow: 0 0 12px rgba(128,200,255,0.7);
+      font-size: 2rem;
+      font-weight: 600;
+      user-select: none;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    #page1 main {
+      flex: 1;
+      display: flex;
+      padding: 0.5rem 0;
+      justify-content: center;
+      align-items: center;
+      background: transparent;
+      overflow: hidden;
+      width: 100vw;
+      box-sizing: border-box;
+      flex-direction: column;
+    }
+    #page1 .glass-panel {
+      background: rgba(18, 28, 38, 0.93);
+      border-radius: 14px;
+      backdrop-filter: blur(4px);
+      display: flex;
+      flex-direction: column;
+      overflow: visible;
+      padding: 0.5rem 1rem;
+      border: 1px solid rgba(26,255,90,0.18);
+      box-shadow:
+        0 0 0 2px rgba(26,255,90,0.18),
+        0 0 16px 2px rgba(26,255,90,0.22),
+        0 0 32px 4px rgba(26,255,90,0.13);
+      font-size: 1.05rem;
+      box-sizing: border-box;
+      max-width: 98vw;
+      width: 100%;
+      max-height: 90vh;
+      align-items: center;
+      justify-content: flex-start;
+      margin: 0 auto;
+    }
+    #page1 .content-box {
+      background: rgba(24,32,44,0.97);
+      margin: 0 !important;
+      border-radius: 10px;
+      flex-grow: 1;
+      padding: 0 !important;
+      overflow-x: hidden !important;
+      overflow-y: hidden;
+      color: #eaf6fb;
+      font-size: clamp(3rem, 4vw, 5rem) !important;
+      user-select: text;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      position: relative;
+      width: 100% !important;
+      max-width: none !important;
+      box-shadow: 0 0 4px 0 rgba(0, 184, 217, 0.04);
+      transition: background 0.3s;
+      height: auto;
+      box-sizing: border-box;
+    }
+    #page1 .prayer-table {
+      width: 100% !important;
+      overflow-x: hidden !important;
+      overflow-y: visible;
+      display: block;
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    #page1 .prayer-table table {
+      border-collapse: separate;
+      border-spacing: 0;
+      max-width: none !important;
+      width: 100% !important;
+      table-layout: fixed !important;
+      font-weight: 900;
+      font-size: clamp(3rem, 4vw, 5rem) !important;
+      color: #eaf6fb;
+      word-break: break-word;
+      white-space: nowrap;
+      margin: 0 auto;
+      border: 2px solid #1aff1a;
+      border-radius: 10px;
+    }
+    #page1 .prayer-table thead tr {
+      background-color: rgba(18,28,38,0.85);
+    }
+    #page1 .prayer-table th, #page1 .prayer-table td {
+      padding: 0.4rem 0.6rem !important;
+      border-bottom: 1.5px solid rgba(26,255,90,0.35);
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      user-select: none;
+      font-size: inherit;
+      font-weight: 900;
+      border-left: 1.5px solid rgba(26,255,90,0.35);
+      font-family: 'Inter', 'Verdana', sans-serif;
+    }
+    #page1 .prayer-table th:first-child, #page1 .prayer-table td:first-child {
+      text-align: left;
+      padding-left: 1.2rem !important;
+      border-left: none;
+    }
+    #page1 .prayer-table th:last-child, #page1 .prayer-table td:last-child {
+      border-right: none;
+    }
+    #page1 .prayer-table tbody tr:not(:last-child) td {
+      border-bottom: 1.5px solid rgba(26,255,90,0.35);
+    }
+    #page1 .prayer-table tbody tr:last-child td {
+      border-bottom: 2px solid #1aff1a;
+    }
+    #page1 .prayer-table tbody tr:last-child td:first-child {
+      border-bottom-left-radius: 10px;
+    }
+    #page1 .prayer-table tbody tr:last-child td:last-child {
+      border-bottom-right-radius: 10px;
+    }
+    #page1 .time-mono {
+      font-family: 'Inter', 'Verdana', monospace;
+      text-align: center;
+      display: inline-block;
+      width: 6ch;
+      font-weight: 900;
+      font-size: inherit;
+      color: inherit;
+    }
+
+    /* New page styles for countdown page */
+    #page2 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(18, 28, 38, 0.93);
+      border-radius: 14px;
+      border: 2px solid #1aff1a;
+      max-width: 98vw;
+      width: 100%;
+      max-height: 90vh;
+      margin: 0 auto;
+      box-shadow:
+        0 0 20px 5px #1aff1a88,
+        0 0 40px 10px #1aff1a55,
+        0 0 80px 20px #1aff1a33;
+      font-weight: 900;
+      font-size: 8rem;
+      color: #1aff1a;
+      user-select: none;
+      text-align: center;
+      box-sizing: border-box;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1rem;
+    }
+    #page2 .countdown-label {
+      font-size: clamp(3rem, 5vw, 4rem);
+      font-weight: 700;
+      text-shadow:
+        0 0 8px #1aff1a,
+        0 0 20px #1aff1a;
+    }
+    #page2 .countdown-number {
+      font-family: 'Inter', Verdana, monospace;
+      font-weight: 900;
+      font-size: clamp(8rem, 12vw, 14rem);
+      line-height: 1;
+      text-shadow:
+        0 0 10px #1aff1a,
+        0 0 20px #1aff1a,
+        0 0 30px #1aff1a;
+    }
+    #page2 .current-prayer-info {
+      font-size: clamp(1.2rem, 2vw, 2rem);
+      font-weight: 600;
+      text-shadow:
+        0 0 6px #1aff1a;
+      user-select: none;
+      color: #b9fff0;
+      max-width: 80vw;
+      line-height: 1.2;
+    }
+    #page2 .current-prayer-info b {
+      color: #00ff66;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Original page content -->
+  <div id="page1" class="page active" role="main" aria-label="Prayer Times Dashboard">
+    <header>
+      <div class="date-gregorian" id="date-gregorian-line" title="Current Gregorian date"></div>
+      <div class="time" id="time-line" title="Current time with seconds"></div>
+      <div class="date-hijri" id="date-hijri-line" title="Current Hijri date"></div>
+    </header>
+    <main>
+      <section class="glass-panel">
+        <div class="content-box prayer-table-container">
+          <div class="prayer-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Salat</th>
+                  <th>Azan</th>
+                  <th>Jamat</th>
+                </tr>
+              </thead>
+              <tbody id="prayer-row"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Glowing countdown page -->
+  <div id="page2" class="page" role="region" aria-label="Glowing countdown page" tabindex="0">
+    <div class="countdown-label" aria-live="assertive" aria-atomic="true"></div>
+    <div class="countdown-number" aria-live="assertive" aria-atomic="true"></div>
+    <div class="current-prayer-info" aria-live="polite" aria-atomic="true"></div>
+  </div>
+
+<script>
+  // Variables to hold prayer times and countdown state
+  let hijriDate = "";
+  let prayers = []; // array of objects: {name, azanTime: Date, jamatTime: Date}
+  let countdownInterval = null;
+
+  // Utility: parse "HH:MM" time string to Date object for today
+  function parseTimeToDate(timeStr) {
+    if (!timeStr || timeStr === "--:--") return null;
+    const [hh, mm] = timeStr.split(":").map(Number);
+    if (isNaN(hh) || isNaN(mm)) return null;
+    const now = new Date();
+    const dt = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hh, mm, 0, 0);
+    return dt;
+  }
+
+  // Update Gregorian date, time, and display Hijri date when available
+  function updateDateTime() {
+    const now = new Date();
+    const gregorianDate = now.toLocaleDateString("en-GB", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }).replace(/,/g, '');
+    const time = now.toLocaleTimeString("en-GB", {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false,
+    });
+    document.getElementById("date-gregorian-line").textContent = gregorianDate;
+    document.getElementById("time-line").textContent = time;
+    document.getElementById("date-hijri-line").textContent = hijriDate;
+  }
+
+  async function fetchHijriDate() {
+    try {
+      const today = new Date();
+      const day = String(today.getDate()).padStart(2,'0');
+      const month = String(today.getMonth()+1).padStart(2,'0');
+      const year = today.getFullYear();
+      const res = await fetch(`https://api.aladhan.com/v1/gToH?date=${day}-${month}-${year}`);
+      const data = await res.json();
+      if(data && data.data && data.data.hijri) {
+        const h = data.data.hijri;
+        hijriDate = `${h.day} ${h.month.en} ${h.year}`;
+      } else {
+        hijriDate = '';
+      }
+    } catch {
+      hijriDate = '';
+    }
+    document.getElementById("date-hijri-line").textContent = hijriDate;
+  }
+
+  // Convert minutes to "HH:MM" time string with zero padding
+  function minutesToTime(m) {
+    if(typeof m !== "number" || isNaN(m) || m < 0 || m >= 1440) return "--:--";
+    const hh = Math.floor(m / 60);
+    const mm = m % 60;
+    return `${String(hh).padStart(2,'0')}:${String(mm).padStart(2,'0')}`;
+  }
+  // Convert "HH:MM" to total minutes
+  function timeToMinutes(t) {
+    if (!t || t === "--:--") return null;
+    const [hh, mm] = t.split(":").map(Number);
+    if(isNaN(hh) || isNaN(mm)) return null;
+    return hh * 60 + mm;
+  }
+
+  // Fetch and prepare prayer times array for countdown use
+  async function fetchPrayerTimes() {
+    try {
+      const today = new Date();
+      const year = today.getFullYear();
+      const month = String(today.getMonth() + 1).padStart(2, "0");
+      const day = String(today.getDate()).padStart(2, "0");
+      const url = `https://api.bonnetid.no/prayertimes/122/${year}/${month}/${day}/?asr=2`;
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:140.0) Gecko/20100101 Firefox/140.0",
+          Accept: "application/json, text/plain, */*",
+          Origin: "https://bonnetid.no",
+          Referer: "https://bonnetid.no/",
+          "Api-Token": "92affaa6-0e9b-4402-8d8a-0fcd8d9e91ec",
+        },
+      });
+      if (!response.ok) throw new Error(`HTTP error! ${response.status}`);
+      const data = await response.json();
+
+      const dhuhrTime = data.dhuhr || data.duhr || data.dhohr || data.zuhr || "--:--";
+      const asrTime = data.asr_2x_shadow || data.asr || "--:--";
+
+      const rawPrayers = [
+        { name: "Fajr", azan: data.fajr || "--:--" },
+        { name: "Zohr", azan: dhuhrTime },
+        { name: "Asr", azan: asrTime },
+        { name: "Maghrib", azan: data.maghrib || "--:--" },
+        { name: "Isha", azan: data.isha || "--:--" },
+        { name: "Jumuah", azan: data.jumuah || "15:00" }
+      ];
+
+      prayers = rawPrayers.map((p, i) => {
+        const azanDate = parseTimeToDate(p.azan);
+        let jamatDate = null;
+        if (p.name === "Fajr") {
+          jamatDate = azanDate ? new Date(azanDate.getTime() + 5*60000) : null;
+        } else if (p.name === "Zohr") {
+          const jumuahAzan = parseTimeToDate(rawPrayers[5].azan);
+          jamatDate = jumuahAzan;
+        } else if (p.name === "Jumuah") {
+          jamatDate = null;
+        } else {
+          jamatDate = azanDate ? new Date(azanDate.getTime() + 5*60000) : null;
+        }
+        return {
+          name: p.name,
+          azanTime: azanDate,
+          jamatTime: jamatDate,
+          azanStr: p.azan,
+          jamatStr: jamatDate ? minutesToTime((azanDate.getHours()*60+azanDate.getMinutes()) + 5) : "" // will update on table separately
+        };
+      });
+
+      updatePrayerTable(rawPrayers);
+
+    } catch(e) {
+      console.error("Failed to fetch prayer times:", e);
+    }
+  }
+
+  // Update the prayer times table body (#prayer-row)
+  function updatePrayerTable(rawPrayers) {
+    const rowContainer = document.getElementById("prayer-row");
+    rowContainer.innerHTML = "";
+
+    rawPrayers.forEach(prayer => {
+      const tr = document.createElement("tr");
+
+      const tdName = document.createElement("td");
+      tdName.textContent = prayer.name;
+      tdName.style.fontWeight = "900";
+
+      const tdAzan = document.createElement("td");
+      const azanSpan = document.createElement("span");
+      azanSpan.classList.add("time-mono");
+      azanSpan.textContent = prayer.azan;
+      tdAzan.appendChild(azanSpan);
+
+      const tdJamat = document.createElement("td");
+      const jamatSpan = document.createElement("span");
+      jamatSpan.classList.add("time-mono");
+
+      let jamatStr = "";
+      if (prayer.name === "Fajr") {
+        jamatStr = addMinutesToTimeStr(prayer.azan, 5);
+      } else if (prayer.name === "Zohr") {
+        const jumuahPrayer = rawPrayers.find(p => p.name === "Jumuah");
+        jamatStr = jumuahPrayer ? jumuahPrayer.azan : "";
+      } else if (prayer.name === "Maghrib" || prayer.name === "Asr" || prayer.name === "Isha") {
+        jamatStr = addMinutesToTimeStr(prayer.azan, 5);
+      } else if (prayer.name === "Jumuah") {
+        jamatStr = "";
+      }
+      jamatSpan.textContent = jamatStr;
+      tdJamat.appendChild(jamatSpan);
+
+      tr.appendChild(tdName);
+      tr.appendChild(tdAzan);
+      tr.appendChild(tdJamat);
+      rowContainer.appendChild(tr);
+    });
+  }
+
+  // Utility: add minutes to "HH:MM" string (returns string)
+  function addMinutesToTimeStr(timeStr, minToAdd) {
+    const [h, m] = timeStr.split(":").map(Number);
+    if (isNaN(h) || isNaN(m)) return "";
+    let total = h*60 + m + minToAdd;
+    if (total >= 1440) total -= 1440;
+    const hh = String(Math.floor(total/60)).padStart(2,"0");
+    const mm = String(total % 60).padStart(2,"0");
+    return `${hh}:${mm}`;
+  }
+
+  // Returns next event to countdown for:
+  // { type:"Azan"|"Jamat", name: prayer name, time: Date }
+  // Or null if no event in countdown window
+  function getNextCountdownEvent(now) {
+    const events = [];
+    prayers.forEach(p => {
+      if(p.azanTime) events.push({type:"Azan", name:p.name, time:p.azanTime});
+      if(p.jamatTime) events.push({type:"Jamat", name:p.name, time:p.jamatTime});
+    });
+    events.sort((a,b) => a.time - b.time);
+
+    for(const ev of events) {
+      const countdownStart = new Date(ev.time.getTime() - 10*1000);
+      if (now >= countdownStart && now < ev.time) return ev;
+    }
+    return null;
+  }
+
+  // Show countdown page content
+  function showCountdown(event, secondsLeft) {
+    const page1 = document.getElementById('page1');
+    const page2 = document.getElementById('page2');
+    page1.classList.remove('active');
+    page2.classList.add('active');
+
+    const label = page2.querySelector(".countdown-label");
+    const number = page2.querySelector(".countdown-number");
+    const info = page2.querySelector(".current-prayer-info");
+
+    label.textContent = `${event.name} ${event.type} Countdown`;
+    number.textContent = secondsLeft;
+
+    // Show current prayer info for all except Jumuah
+    if(event.name.toLowerCase() !== "jumuah") {
+      const p = prayers.find(pr => pr.name === event.name);
+      if(p) {
+        // Format azan and jamat times nicely, fallback to empty string if null
+        const azanStr = p.azanTime ? formatTimeDate(p.azanTime) : "";
+        const jamatStr = p.jamatTime ? formatTimeDate(p.jamatTime) : "";
+        // Display info lines
+        info.innerHTML = `
+          <div><b>Current Prayer:</b> ${p.name}</div>
+          <div><b>Azan Time:</b> ${azanStr}</div>
+          <div><b>Jamat Time:</b> ${jamatStr}</div>
+        `;
+      } else {
+        info.textContent = "";
+      }
+    } else {
+      info.textContent = "";
+    }
+  }
+
+  // Format Date to "HH:MM" 24h string for display
+  function formatTimeDate(dateObj) {
+    const hh = String(dateObj.getHours()).padStart(2,'0');
+    const mm = String(dateObj.getMinutes()).padStart(2,'0');
+    return `${hh}:${mm}`;
+  }
+
+  // Show prayer dashboard page
+  function showPrayerDashboard() {
+    const page1 = document.getElementById('page1');
+    const page2 = document.getElementById('page2');
+    page2.classList.remove('active');
+    page1.classList.add('active');
+  }
+
+  // Loop to check countdown display every second
+  function countdownLoop() {
+    const now = new Date();
+    const event = getNextCountdownEvent(now);
+    if(event) {
+      const secondsLeft = Math.ceil((event.time.getTime() - now.getTime())/1000);
+      if(secondsLeft >= 0 && secondsLeft <= 10) {
+        showCountdown(event, secondsLeft);
+        return;
+      }
+    }
+    showPrayerDashboard();
+  }
+
+  // Initial function calls and intervals
+  updateDateTime();
+  fetchHijriDate();
+  fetchPrayerTimes();
+
+  setInterval(updateDateTime, 1000);
+  setInterval(fetchHijriDate, 60000);
+  setInterval(fetchPrayerTimes, 60000);
+
+  // Countdown loop every second replaces old page toggle
+  setInterval(countdownLoop, 1000);
+</script>
+
+</body>
+</html>

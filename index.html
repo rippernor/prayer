@@ -5,175 +5,200 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Prayer & Info Dashboard</title>
-  <link href="https://fonts.googleapis.com/css2?family=Verdana&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      min-height: 100vh;
+      margin: 0; padding: 0;
+      height: 100%; min-height: 100vh;
       background: linear-gradient(135deg, #0a2233 0%, #1a2a38 100%);
       color: #f3f7fa;
-      font-family: 'Inter', 'Verdana', sans-serif;
+      font-family: 'Inter', Verdana, sans-serif;
       overflow-x: hidden !important;
     }
     body {
       min-height: 100vh;
       overflow-y: auto;
-      font-size: clamp(14px, 1.5vw, 16px);
+      font-size: clamp(16px, 2vw, 24px);
     }
     .page {
-      display: none;
       height: 100vh;
-      width: 100vw;
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: auto;
+      padding: 0 1rem;
       box-sizing: border-box;
-      padding: 0.5rem;
       background: transparent;
       color: #eaf6fb;
+      display: none;
+      flex-direction: column;
+      position: relative;
     }
     .page.active {
-      display: block;
+      display: flex;
     }
-    /* Original prayer page styles */
+    #page1 main, #page1 .glass-panel, #page1 .prayer-table, #page2 .glass-panel {
+      padding-left: 0;
+      padding-right: 0;
+      margin-left: 0;
+      margin-right: 0;
+      width: 100%;
+      box-sizing: border-box;
+    }
     #page1 header {
-      position: relative;
-      height: 4.5rem;
+      height: 7.5rem;
       background: rgba(18,28,38,0.98);
       box-shadow: 0 2px 12px rgba(0,0,0,0.7);
       user-select: none;
       font-weight: 700;
-      color: #00b8d9;
+      color: #ffffff;
       display: flex;
       align-items: center;
-      padding: 0 0.7rem;
+      justify-content: center;
+      padding: 0 0.5rem;
       box-sizing: border-box;
-    }
-    #page1 header .date-gregorian {
-      position: absolute;
-      left: 0.7rem;
-      white-space: nowrap;
-      color: #7fd7ff;
-      text-shadow: 0 0 12px rgba(128,200,255,0.7);
-      font-size: 2rem;
-      font-weight: 600;
-      user-select: none;
-      top: 50%;
-      transform: translateY(-50%);
+      z-index: 10;
+      position: relative;
     }
     #page1 header .time {
-      position: absolute;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #ffb300;
+      color: #ffffff;
       font-variant-numeric: tabular-nums;
-      text-shadow: 0 0 24px #ffb300cc;
       user-select: none;
       font-weight: 700;
-      font-size: 5rem;
+      font-size: clamp(6rem, 9vw, 10rem);
       white-space: nowrap;
-      top: 50%;
       cursor: default;
+      margin: 1.5rem 0 0 0;
+      text-align: center;
       line-height: 1;
-    }
-    #page1 header .date-hijri {
-      position: absolute;
-      right: 0.7rem;
-      white-space: nowrap;
-      color: #7fd7ff;
-      text-shadow: 0 0 12px rgba(128,200,255,0.7);
-      font-size: 2rem;
-      font-weight: 600;
-      user-select: none;
-      top: 50%;
-      transform: translateY(-50%);
+      max-width: none;
+      background: transparent;
+      border-radius: 0;
+      padding: 0;
+      box-shadow: none;
+      position: static;
+      z-index: auto;
+      flex-grow: 0;
     }
     #page1 main {
       flex: 1;
       display: flex;
-      padding: 0.5rem 0;
       justify-content: center;
-      align-items: center;
+      align-items: stretch;
       background: transparent;
       overflow: hidden;
-      width: 100vw;
       box-sizing: border-box;
-      flex-direction: column;
+      margin-top: 1rem;
+      height: calc(100vh - 9.5rem);
     }
     #page1 .glass-panel {
       background: rgba(18, 28, 38, 0.93);
       border-radius: 14px;
       backdrop-filter: blur(4px);
+      border: 2px solid #7fff00;
+      box-shadow:
+        0 0 0 1px #7fff0099,
+        0 0 15px 2px #7fff0077,
+        0 0 30px 5px #7fff0044;
+      box-sizing: border-box;
+      color: #ffffff;
       display: flex;
       flex-direction: column;
-      overflow: visible;
-      padding: 0.5rem 1rem;
-      border: 1px solid rgba(26,255,90,0.18);
-      box-shadow:
-        0 0 0 2px rgba(26,255,90,0.18),
-        0 0 16px 2px rgba(26,255,90,0.22),
-        0 0 32px 4px rgba(26,255,90,0.13);
-      font-size: 1.05rem;
-      box-sizing: border-box;
-      max-width: 98vw;
-      width: 100%;
-      max-height: 90vh;
+      justify-content: center;
       align-items: center;
-      justify-content: flex-start;
-      margin: 0 auto;
+      overflow: hidden;
+      width: 98vw;
+      max-width: 98vw;
+      max-height: calc(100vh - 9.5rem);
+      padding: 12px 24px;
+      margin-top: 8px;
+      animation: glow-shift 4s ease-in-out infinite;
     }
-    #page1 .content-box {
-      background: rgba(24,32,44,0.97);
-      margin: 0 !important;
-      border-radius: 10px;
-      flex-grow: 1;
-      padding: 0 !important;
-      overflow-x: hidden !important;
-      overflow-y: hidden;
-      color: #eaf6fb;
-      font-size: clamp(3rem, 4vw, 5rem) !important;
+    #page2 .glass-panel {
+      background: rgba(18, 28, 38, 0.93);
+      border-radius: 14px;
+      backdrop-filter: blur(4px);
+      border: 2px solid #7fff00;
+      box-shadow:
+        0 0 0 1px #7fff0099,
+        0 0 15px 2px #7fff0077,
+        0 0 30px 5px #7fff0044;
+      width: 98vw;
+      max-width: 98vw;
+      max-height: 90vh;
+      padding: 3rem 24px;
+      box-sizing: border-box;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-weight: 900;
+      font-size: clamp(8rem, 12vw, 14rem);
+      user-select: none;
+      color: #7fff00;
+      margin: 0;
+      animation: glow-shift 4s ease-in-out infinite;
+    }
+    #page1 .prayer-table {
+      width: 100%;
+      height: 100%;
+      max-width: none !important;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      overflow-y: hidden !important;
+      font-size: clamp(3.5rem, 4vw, 6.5rem) !important;
+      font-weight: 900;
       user-select: text;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      position: relative;
-      width: 100% !important;
-      max-width: none !important;
-      box-shadow: 0 0 4px 0 rgba(0, 184, 217, 0.04);
-      transition: background 0.3s;
-      height: auto;
+      justify-content: center;
       box-sizing: border-box;
     }
-    #page1 .prayer-table {
-      width: 100% !important;
-      overflow-x: hidden !important;
-      overflow-y: visible;
-      display: block;
-      text-align: center;
-      margin-top: 0;
-      margin-bottom: 0;
-    }
     #page1 .prayer-table table {
-      border-collapse: separate;
+      border-collapse: collapse;
       border-spacing: 0;
-      max-width: none !important;
       width: 100% !important;
-      table-layout: fixed !important;
+      height: 100% !important;
       font-weight: 900;
-      font-size: clamp(3rem, 4vw, 5rem) !important;
-      color: #eaf6fb;
+      font-size: inherit !important;
+      color: #ffffff;
       word-break: break-word;
       white-space: nowrap;
-      margin: 0 auto;
-      border: 2px solid #1aff1a;
-      border-radius: 10px;
+      margin: 0;
+      border-radius: 0 0 14px 14px;
+      border: none;
+      box-sizing: border-box;
+      padding-bottom: 0.5rem;
+      display: table;
+      table-layout: fixed;
+    }
+    #page1 .prayer-table tbody tr {
+      height: calc(100% / 7);
     }
     #page1 .prayer-table thead tr {
-      background-color: rgba(18,28,38,0.85);
+      background-color: rgba(18, 28, 38, 0.9);
+      font-size: clamp(4rem, 5vw, 6.5rem) !important;
+      color: #7fff00 !important;
+      text-shadow: none;
+      height: auto;
     }
-    #page1 .prayer-table th, #page1 .prayer-table td {
-      padding: 0.4rem 0.6rem !important;
-      border-bottom: 1.5px solid rgba(26,255,90,0.35);
+    #page1 .prayer-table thead th {
+      color: #7fff00 !important;
+      border-left: 2px solid rgba(127, 255, 0, 0.6);
+      border-bottom: 2px solid rgba(127, 255, 0, 0.6);
+      border-right: 2px solid rgba(127, 255, 0, 0.6);
+      padding: 0.6rem 1.5rem !important;
+      font-weight: 900;
+      user-select: none;
+      width: 50%;
+    }
+    #page1 .prayer-table th,
+    #page1 .prayer-table td {
+      width: 50%;
+      padding: 0.6rem 1.5rem !important;
+      border-bottom: 2px solid rgba(127, 255, 0, 0.6);
+      color: #ffffff;
       text-align: center;
       white-space: nowrap;
       overflow: hidden;
@@ -181,414 +206,550 @@
       user-select: none;
       font-size: inherit;
       font-weight: 900;
-      border-left: 1.5px solid rgba(26,255,90,0.35);
-      font-family: 'Inter', 'Verdana', sans-serif;
+      font-family: 'Inter', Verdana, monospace;
+      line-height: 1.1;
+      transition: color 0.3s ease;
+      vertical-align: middle;
+      box-sizing: border-box;
     }
-    #page1 .prayer-table th:first-child, #page1 .prayer-table td:first-child {
-      text-align: left;
-      padding-left: 1.2rem !important;
+    #page1 .prayer-table th:first-child,
+    #page1 .prayer-table td:first-child {
       border-left: none;
-    }
-    #page1 .prayer-table th:last-child, #page1 .prayer-table td:last-child {
       border-right: none;
+      text-align: left;
+      padding-left: 3.5rem !important;
     }
-    #page1 .prayer-table tbody tr:not(:last-child) td {
-      border-bottom: 1.5px solid rgba(26,255,90,0.35);
+    #page1 .prayer-table th:last-child,
+    #page1 .prayer-table td:last-child {
+      border-left: 2px solid rgba(127, 255, 0, 0.6);
+      border-right: none;
+      text-align: center;
     }
     #page1 .prayer-table tbody tr:last-child td {
-      border-bottom: 2px solid #1aff1a;
+      border-bottom: none !important;
+      border-bottom-left-radius: 14px;
+      border-bottom-right-radius: 14px;
     }
-    #page1 .prayer-table tbody tr:last-child td:first-child {
-      border-bottom-left-radius: 10px;
-    }
-    #page1 .prayer-table tbody tr:last-child td:last-child {
-      border-bottom-right-radius: 10px;
-    }
-    #page1 .time-mono {
-      font-family: 'Inter', 'Verdana', monospace;
-      text-align: center;
-      display: inline-block;
-      width: 6ch;
+    #page1 .prayer-table tbody tr.current-prayer {
+      background-color: rgba(127, 255, 0, 0.25);
+      color: #7fff00;
       font-weight: 900;
-      font-size: inherit;
-      color: inherit;
+      text-shadow: none;
     }
-
-    /* New page styles for countdown page */
+    #page1 .prayer-table tbody tr .jamat-time.blinking {
+      color: #7fff00 !important;
+      animation: blink 1s step-start 0s infinite;
+      font-weight: 900;
+    }
+    #page1 .prayer-table tbody tr .blinking {
+      animation: blink 1s step-start 0s infinite;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    @keyframes glow-shift {
+      0%, 100% {
+        border-color: #7fff00;
+        box-shadow:
+          0 0 0 1px #7fff0099,
+          0 0 15px 2px #7fff0077,
+          0 0 30px 5px #7fff0044;
+      }
+      50% {
+        border-color: #ffff33;
+        box-shadow:
+          0 0 0 1px #ffff3399,
+          0 0 15px 2px #ffff3377,
+          0 0 30px 5px #ffff3344;
+      }
+    }
     #page2 {
-      display: flex;
+      display: none;
+      position: relative;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: rgba(18, 28, 38, 0.93);
-      border-radius: 14px;
-      border: 2px solid #1aff1a;
-      max-width: 98vw;
-      width: 100%;
-      max-height: 90vh;
-      margin: 0 auto;
-      box-shadow:
-        0 0 20px 5px #1aff1a88,
-        0 0 40px 10px #1aff1a55,
-        0 0 80px 20px #1aff1a33;
-      font-weight: 900;
-      font-size: 8rem;
-      color: #1aff1a;
-      user-select: none;
-      text-align: center;
+      width: 100vw;
+      height: 100vh;
+      background: transparent;
       box-sizing: border-box;
-      flex-direction: column;
-      gap: 1rem;
-      padding: 1rem;
+      padding: 2rem 1rem 1rem 1rem;
+      color: #7fff00;
+    }
+    #page2.active {
+      display: flex;
     }
     #page2 .countdown-label {
-      font-size: clamp(3rem, 5vw, 4rem);
+      font-size: clamp(4rem, 6vw, 7rem);
       font-weight: 700;
-      text-shadow:
-        0 0 8px #1aff1a,
-        0 0 20px #1aff1a;
+      margin-bottom: 0.5em;
     }
     #page2 .countdown-number {
       font-family: 'Inter', Verdana, monospace;
       font-weight: 900;
-      font-size: clamp(8rem, 12vw, 14rem);
+      font-size: clamp(12rem, 18vw, 22rem);
       line-height: 1;
-      text-shadow:
-        0 0 10px #1aff1a,
-        0 0 20px #1aff1a,
-        0 0 30px #1aff1a;
+      margin-bottom: 0.3em;
+    }
+    #page2 .countdown-number.blinking {
+      animation: blink 1s step-start 0s infinite;
     }
     #page2 .current-prayer-info {
-      font-size: clamp(1.2rem, 2vw, 2rem);
-      font-weight: 600;
-      text-shadow:
-        0 0 6px #1aff1a;
-      user-select: none;
-      color: #b9fff0;
+      font-size: clamp(3rem, 4vw, 5rem);
+      font-weight: 700;
       max-width: 80vw;
-      line-height: 1.2;
+      line-height: 1.1;
+      user-select: none;
     }
-    #page2 .current-prayer-info b {
-      color: #00ff66;
+    .date-panel {
+      position: absolute;
+      top: 1rem;
+      z-index: 15;
+      color: #7fff00;
+      font-weight: 600;
+      user-select: none;
+      white-space: nowrap;
+      padding: 0 0.5rem;
+      box-sizing: border-box;
+      font-size: clamp(3rem, 5vw, 6rem);
+      max-width: 45vw;
+      text-shadow: none;
+      line-height: 1.1;
+    }
+    #page2 .date-gregorian {
+      left: 1rem;
+      text-align: left;
+    }
+    #page2 .date-hijri {
+      right: 1rem;
+      text-align: right;
+    }
+    @media screen and (max-width: 600px) {
+      #page1 .prayer-table {
+        font-size: clamp(2rem, 4vw, 5rem) !important;
+      }
+      #page1 .prayer-table thead th {
+        font-size: clamp(2.5rem, 5vw, 4rem) !important;
+      }
+      #page2 .glass-panel {
+        font-size: clamp(4rem, 10vw, 8rem);
+        padding: 2rem 1rem;
+        width: 100vw;
+        max-width: 100vw;
+      }
+      #page2 .countdown-number {
+        font-size: clamp(8rem, 14vw, 16rem);
+      }
+      #page2 .countdown-label {
+        font-size: clamp(2rem, 5vw, 3rem);
+      }
+      #page2 .current-prayer-info {
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        max-width: 90vw;
+      }
+      #page1 header {
+        height: 5rem;
+      }
+      #page1 header .time {
+        font-size: clamp(3rem, 7vw, 6rem);
+        margin: 0.75rem 0 0 0;
+      }
+    }
+    @media screen and (max-height: 500px) and (orientation: landscape) {
+      .page {
+        height: 100%;
+        max-height: 100%;
+      }
+      #page1 main {
+        height: auto;
+        max-height: 60vh;
+        margin-top: 0.5rem;
+      }
+    }
+    body {
+      overflow-x: hidden;
     }
   </style>
 </head>
 <body>
 
-  <!-- Original page content -->
   <div id="page1" class="page active" role="main" aria-label="Prayer Times Dashboard">
     <header>
-      <div class="date-gregorian" id="date-gregorian-line" title="Current Gregorian date"></div>
-      <div class="time" id="time-line" title="Current time with seconds"></div>
-      <div class="date-hijri" id="date-hijri-line" title="Current Hijri date"></div>
+      <div class="time" id="time-line" title="Current time with seconds" aria-live="polite" aria-atomic="true"></div>
     </header>
     <main>
-      <section class="glass-panel">
-        <div class="content-box prayer-table-container">
-          <div class="prayer-table">
-            <table>
-              <thead>
-                <tr>
-                  <th>Salat</th>
-                  <th>Azan</th>
-                  <th>Jamat</th>
-                </tr>
-              </thead>
-              <tbody id="prayer-row"></tbody>
-            </table>
+      <section class="glass-panel" aria-label="Jamat Times Prayer Table">
+        <div class="prayer-table" aria-describedby="prayer-description">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Salat</th>
+                <th scope="col">Jamat</th>
+              </tr>
+            </thead>
+            <tbody id="prayer-row"></tbody>
+          </table>
+          <div id="prayer-description" hidden>
+            This table displays prayer names with their corresponding Jamat times. Azan times are hidden.
           </div>
         </div>
       </section>
     </main>
   </div>
 
-  <!-- Glowing countdown page -->
-  <div id="page2" class="page" role="region" aria-label="Glowing countdown page" tabindex="0">
-    <div class="countdown-label" aria-live="assertive" aria-atomic="true"></div>
-    <div class="countdown-number" aria-live="assertive" aria-atomic="true"></div>
-    <div class="current-prayer-info" aria-live="polite" aria-atomic="true"></div>
+  <div id="page2" class="page" aria-label="Glowing Countdown and Dates" role="region" tabindex="0" aria-live="polite" aria-atomic="true">
+    <div class="date-panel date-gregorian" id="date-gregorian-line-2" title="Current Gregorian date"></div>
+    <div class="glass-panel">
+      <div class="countdown-label" aria-live="assertive" aria-atomic="true"></div>
+      <div class="countdown-number" aria-live="assertive" aria-atomic="true"></div>
+      <div class="current-prayer-info" aria-live="polite" aria-atomic="true"></div>
+    </div>
+    <div class="date-panel date-hijri" id="date-hijri-line-2" title="Current Hijri date"></div>
   </div>
 
-<script>
-  // Variables to hold prayer times and countdown state
-  let hijriDate = "";
-  let prayers = []; // array of objects: {name, azanTime: Date, jamatTime: Date}
-  let countdownInterval = null;
+  <script>
+    let hijriDate = "";
+    let prayers = [];
 
-  // Utility: parse "HH:MM" time string to Date object for today
-  function parseTimeToDate(timeStr) {
-    if (!timeStr || timeStr === "--:--") return null;
-    const [hh, mm] = timeStr.split(":").map(Number);
-    if (isNaN(hh) || isNaN(mm)) return null;
-    const now = new Date();
-    const dt = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hh, mm, 0, 0);
-    return dt;
-  }
+    const BLINK_WINDOW_MS = 30000; // Blink time window ±30 sec
+    const GREEN_HOLD_MS = 120000;  // After blink hold green text 2 minutes
 
-  // Update Gregorian date, time, and display Hijri date when available
-  function updateDateTime() {
-    const now = new Date();
-    const gregorianDate = now.toLocaleDateString("en-GB", {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    }).replace(/,/g, '');
-    const time = now.toLocaleTimeString("en-GB", {
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-      hour12: false,
-    });
-    document.getElementById("date-gregorian-line").textContent = gregorianDate;
-    document.getElementById("time-line").textContent = time;
-    document.getElementById("date-hijri-line").textContent = hijriDate;
-  }
+    function parseTimeToDate(timeStr) {
+      if (!timeStr || timeStr === "--:--") return null;
+      const [hh, mm] = timeStr.split(":").map(Number);
+      if (isNaN(hh) || isNaN(mm)) return null;
+      const now = new Date();
+      return new Date(now.getFullYear(), now.getMonth(), now.getDate(), hh, mm, 0, 0);
+    }
 
-  async function fetchHijriDate() {
-    try {
-      const today = new Date();
-      const day = String(today.getDate()).padStart(2,'0');
-      const month = String(today.getMonth()+1).padStart(2,'0');
-      const year = today.getFullYear();
-      const res = await fetch(`https://api.aladhan.com/v1/gToH?date=${day}-${month}-${year}`);
-      const data = await res.json();
-      if(data && data.data && data.data.hijri) {
-        const h = data.data.hijri;
-        hijriDate = `${h.day} ${h.month.en} ${h.year}`;
-      } else {
+    function updateDateTime() {
+      const now = new Date();
+      const gregorianDate = now.toLocaleDateString("en-GB", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      }).replace(/,/g, '');
+      const timeStr = now.toLocaleTimeString("en-GB", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false,
+      });
+      document.getElementById("time-line").textContent = timeStr;
+      document.getElementById("date-gregorian-line-2").textContent = gregorianDate;
+      document.getElementById("date-hijri-line-2").textContent = hijriDate;
+    }
+
+    async function fetchHijriDate() {
+      try {
+        const today = new Date();
+        const day = String(today.getDate()).padStart(2,'0');
+        const month = String(today.getMonth()+1).padStart(2,'0');
+        const year = today.getFullYear();
+        const res = await fetch(`https://api.aladhan.com/v1/gToH?date=${day}-${month}-${year}`);
+        const data = await res.json();
+        if(data && data.data && data.data.hijri) {
+          const h = data.data.hijri;
+          hijriDate = `${h.day} ${h.month.en} ${h.year}`;
+        } else {
+          hijriDate = '';
+        }
+      } catch {
         hijriDate = '';
       }
-    } catch {
-      hijriDate = '';
+      document.getElementById("date-hijri-line-2").textContent = hijriDate;
     }
-    document.getElementById("date-hijri-line").textContent = hijriDate;
-  }
 
-  // Convert minutes to "HH:MM" time string with zero padding
-  function minutesToTime(m) {
-    if(typeof m !== "number" || isNaN(m) || m < 0 || m >= 1440) return "--:--";
-    const hh = Math.floor(m / 60);
-    const mm = m % 60;
-    return `${String(hh).padStart(2,'0')}:${String(mm).padStart(2,'0')}`;
-  }
-  // Convert "HH:MM" to total minutes
-  function timeToMinutes(t) {
-    if (!t || t === "--:--") return null;
-    const [hh, mm] = t.split(":").map(Number);
-    if(isNaN(hh) || isNaN(mm)) return null;
-    return hh * 60 + mm;
-  }
+    async function fetchPrayerTimes() {
+      try {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, "0");
+        const day = String(today.getDate()).padStart(2, "0");
+        const url = `https://api.bonnetid.no/prayertimes/122/${year}/${month}/${day}/?asr=2`;
+        const response = await fetch(url, {
+          method: "GET",
+          headers: {
+            "User-Agent": "Mozilla/5.0",
+            Accept: "application/json, text/plain, */*",
+            Origin: "https://bonnetid.no",
+            Referer: "https://bonnetid.no/",
+            "Api-Token": "92affaa6-0e9b-4402-8d8a-0fcd8d9e91ec",
+          },
+        });
+        if (!response.ok) throw new Error(`HTTP error! ${response.status}`);
+        const data = await response.json();
 
-  // Fetch and prepare prayer times array for countdown use
-  async function fetchPrayerTimes() {
-    try {
-      const today = new Date();
-      const year = today.getFullYear();
-      const month = String(today.getMonth() + 1).padStart(2, "0");
-      const day = String(today.getDate()).padStart(2, "0");
-      const url = `https://api.bonnetid.no/prayertimes/122/${year}/${month}/${day}/?asr=2`;
-      const response = await fetch(url, {
-        method: "GET",
-        headers: {
-          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:140.0) Gecko/20100101 Firefox/140.0",
-          Accept: "application/json, text/plain, */*",
-          Origin: "https://bonnetid.no",
-          Referer: "https://bonnetid.no/",
-          "Api-Token": "92affaa6-0e9b-4402-8d8a-0fcd8d9e91ec",
-        },
-      });
-      if (!response.ok) throw new Error(`HTTP error! ${response.status}`);
-      const data = await response.json();
+        const fajrAzan = data.fajr || "04:40";
+        const zuhrAzan = data.zuhr || "15:00";
+        const asrAzan = data.asr || "20:00";
+        const maghribAzan = data.maghrib || "--:--";
+        const ishaAzan = data.isha || "--:--";
+        const jumuahAzan = data.jumuah || zuhrAzan;
 
-      const dhuhrTime = data.dhuhr || data.duhr || data.dhohr || data.zuhr || "--:--";
-      const asrTime = data.asr_2x_shadow || data.asr || "--:--";
+        prayers = [
+          { name: "Fajr", azanTime: parseTimeToDate(fajrAzan), jamatTime: parseTimeToDate("04:40") },
+          { name: "Zuhr", azanTime: parseTimeToDate(zuhrAzan), jamatTime: parseTimeToDate("15:00") },
+          { name: "Asr", azanTime: parseTimeToDate(asrAzan), jamatTime: parseTimeToDate("20:00") },
+          { name: "Maghrib", azanTime: parseTimeToDate(maghribAzan), jamatTime: null },
+          { name: "Isha", azanTime: parseTimeToDate(ishaAzan), jamatTime: null },
+          { name: "Jumuah", azanTime: parseTimeToDate(jumuahAzan), jamatTime: parseTimeToDate("15:00") }
+        ];
 
-      const rawPrayers = [
-        { name: "Fajr", azan: data.fajr || "--:--" },
-        { name: "Zohr", azan: dhuhrTime },
-        { name: "Asr", azan: asrTime },
-        { name: "Maghrib", azan: data.maghrib || "--:--" },
-        { name: "Isha", azan: data.isha || "--:--" },
-        { name: "Jumuah", azan: data.jumuah || "15:00" }
-      ];
+        const maghribDate = parseTimeToDate(maghribAzan);
 
-      prayers = rawPrayers.map((p, i) => {
-        const azanDate = parseTimeToDate(p.azan);
-        let jamatDate = null;
-        if (p.name === "Fajr") {
-          jamatDate = azanDate ? new Date(azanDate.getTime() + 5*60000) : null;
-        } else if (p.name === "Zohr") {
-          const jumuahAzan = parseTimeToDate(rawPrayers[5].azan);
-          jamatDate = jumuahAzan;
-        } else if (p.name === "Jumuah") {
-          jamatDate = null;
+        if(maghribDate) {
+          prayers[3].jamatTime = new Date(maghribDate.getTime() + 5 * 60000);
+          prayers[4].jamatTime = new Date(prayers[3].jamatTime.getTime() + 20 * 60000);
         } else {
-          jamatDate = azanDate ? new Date(azanDate.getTime() + 5*60000) : null;
+          prayers[3].jamatTime = null;
+          prayers[4].jamatTime = null;
         }
-        return {
-          name: p.name,
-          azanTime: azanDate,
-          jamatTime: jamatDate,
-          azanStr: p.azan,
-          jamatStr: jamatDate ? minutesToTime((azanDate.getHours()*60+azanDate.getMinutes()) + 5) : "" // will update on table separately
-        };
-      });
-
-      updatePrayerTable(rawPrayers);
-
-    } catch(e) {
-      console.error("Failed to fetch prayer times:", e);
-    }
-  }
-
-  // Update the prayer times table body (#prayer-row)
-  function updatePrayerTable(rawPrayers) {
-    const rowContainer = document.getElementById("prayer-row");
-    rowContainer.innerHTML = "";
-
-    rawPrayers.forEach(prayer => {
-      const tr = document.createElement("tr");
-
-      const tdName = document.createElement("td");
-      tdName.textContent = prayer.name;
-      tdName.style.fontWeight = "900";
-
-      const tdAzan = document.createElement("td");
-      const azanSpan = document.createElement("span");
-      azanSpan.classList.add("time-mono");
-      azanSpan.textContent = prayer.azan;
-      tdAzan.appendChild(azanSpan);
-
-      const tdJamat = document.createElement("td");
-      const jamatSpan = document.createElement("span");
-      jamatSpan.classList.add("time-mono");
-
-      let jamatStr = "";
-      if (prayer.name === "Fajr") {
-        jamatStr = addMinutesToTimeStr(prayer.azan, 5);
-      } else if (prayer.name === "Zohr") {
-        const jumuahPrayer = rawPrayers.find(p => p.name === "Jumuah");
-        jamatStr = jumuahPrayer ? jumuahPrayer.azan : "";
-      } else if (prayer.name === "Maghrib" || prayer.name === "Asr" || prayer.name === "Isha") {
-        jamatStr = addMinutesToTimeStr(prayer.azan, 5);
-      } else if (prayer.name === "Jumuah") {
-        jamatStr = "";
+      } catch (error) {
+        prayers = [];
+        console.error("Failed to fetch prayer times:", error);
       }
-      jamatSpan.textContent = jamatStr;
-      tdJamat.appendChild(jamatSpan);
-
-      tr.appendChild(tdName);
-      tr.appendChild(tdAzan);
-      tr.appendChild(tdJamat);
-      rowContainer.appendChild(tr);
-    });
-  }
-
-  // Utility: add minutes to "HH:MM" string (returns string)
-  function addMinutesToTimeStr(timeStr, minToAdd) {
-    const [h, m] = timeStr.split(":").map(Number);
-    if (isNaN(h) || isNaN(m)) return "";
-    let total = h*60 + m + minToAdd;
-    if (total >= 1440) total -= 1440;
-    const hh = String(Math.floor(total/60)).padStart(2,"0");
-    const mm = String(total % 60).padStart(2,"0");
-    return `${hh}:${mm}`;
-  }
-
-  // Returns next event to countdown for:
-  // { type:"Azan"|"Jamat", name: prayer name, time: Date }
-  // Or null if no event in countdown window
-  function getNextCountdownEvent(now) {
-    const events = [];
-    prayers.forEach(p => {
-      if(p.azanTime) events.push({type:"Azan", name:p.name, time:p.azanTime});
-      if(p.jamatTime) events.push({type:"Jamat", name:p.name, time:p.jamatTime});
-    });
-    events.sort((a,b) => a.time - b.time);
-
-    for(const ev of events) {
-      const countdownStart = new Date(ev.time.getTime() - 10*1000);
-      if (now >= countdownStart && now < ev.time) return ev;
     }
-    return null;
-  }
 
-  // Show countdown page content
-  function showCountdown(event, secondsLeft) {
-    const page1 = document.getElementById('page1');
-    const page2 = document.getElementById('page2');
-    page1.classList.remove('active');
-    page2.classList.add('active');
-
-    const label = page2.querySelector(".countdown-label");
-    const number = page2.querySelector(".countdown-number");
-    const info = page2.querySelector(".current-prayer-info");
-
-    label.textContent = `${event.name} ${event.type} Countdown`;
-    number.textContent = secondsLeft;
-
-    // Show current prayer info for all except Jumuah
-    if(event.name.toLowerCase() !== "jumuah") {
-      const p = prayers.find(pr => pr.name === event.name);
-      if(p) {
-        // Format azan and jamat times nicely, fallback to empty string if null
-        const azanStr = p.azanTime ? formatTimeDate(p.azanTime) : "";
-        const jamatStr = p.jamatTime ? formatTimeDate(p.jamatTime) : "";
-        // Display info lines
-        info.innerHTML = `
-          <div><b>Current Prayer:</b> ${p.name}</div>
-          <div><b>Azan Time:</b> ${azanStr}</div>
-          <div><b>Jamat Time:</b> ${jamatStr}</div>
-        `;
-      } else {
-        info.textContent = "";
-      }
-    } else {
-      info.textContent = "";
-    }
-  }
-
-  // Format Date to "HH:MM" 24h string for display
-  function formatTimeDate(dateObj) {
-    const hh = String(dateObj.getHours()).padStart(2,'0');
-    const mm = String(dateObj.getMinutes()).padStart(2,'0');
-    return `${hh}:${mm}`;
-  }
-
-  // Show prayer dashboard page
-  function showPrayerDashboard() {
-    const page1 = document.getElementById('page1');
-    const page2 = document.getElementById('page2');
-    page2.classList.remove('active');
-    page1.classList.add('active');
-  }
-
-  // Loop to check countdown display every second
-  function countdownLoop() {
-    const now = new Date();
-    const event = getNextCountdownEvent(now);
-    if(event) {
-      const secondsLeft = Math.ceil((event.time.getTime() - now.getTime())/1000);
-      if(secondsLeft >= 0 && secondsLeft <= 10) {
-        showCountdown(event, secondsLeft);
+    function updatePrayerTable() {
+      const tbody = document.getElementById("prayer-row");
+      tbody.innerHTML = "";
+      if (!prayers.length) {
+        tbody.innerHTML = "<tr><td colspan='2'>Prayer times unavailable</td></tr>";
         return;
       }
+      const now = new Date();
+
+      let currentIndex = -1;
+
+      for (let i = 0; i < prayers.length; i++) {
+        const p = prayers[i];
+        if (!p.azanTime) continue;
+        const azanTime = p.azanTime.getTime();
+        const jamatTime = p.jamatTime ? p.jamatTime.getTime() : Infinity;
+
+        if (p.name === "Isha") {
+          const fiveMinBeforeIsha = azanTime - 5 * 60000;
+          if (now >= fiveMinBeforeIsha && now < jamatTime) {
+            currentIndex = i;
+            break;
+          }
+        } else {
+          if (now >= azanTime && now < jamatTime) {
+            currentIndex = i;
+            break;
+          }
+        }
+      }
+
+      prayers.forEach((p, idx) => {
+        const tr = document.createElement("tr");
+        if (idx === currentIndex) tr.classList.add("current-prayer");
+
+        const tdName = document.createElement("td");
+        tdName.textContent = p.name;
+
+        const tdJamat = document.createElement("td");
+        tdJamat.textContent = p.jamatTime
+          ? p.jamatTime.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", hour12: false })
+          : "--:--";
+        tdJamat.style.textAlign = "center";
+        tdJamat.style.fontFamily = "'Inter', 'Verdana', monospace";
+        tdJamat.classList.add("jamat-time");
+
+        const nowTime = now.getTime();
+
+        if (idx === currentIndex) {
+          tdName.style.color = "#7fff00";
+          tdName.style.fontWeight = "900";
+
+          if (p.name === "Isha") {
+            const ishaAzan = p.azanTime.getTime();
+            if (nowTime >= ishaAzan && nowTime < (p.jamatTime ? p.jamatTime.getTime() : Infinity)) {
+              tdName.classList.add("blinking");
+            } else {
+              tdName.classList.remove("blinking");
+            }
+          } else if (p.name === "Jumuah") {
+            tdName.classList.add("blinking");
+          } else {
+            tdName.classList.remove("blinking");
+          }
+
+          if (p.jamatTime) {
+            const diffJamat = p.jamatTime.getTime() - nowTime;
+            if (diffJamat <= BLINK_WINDOW_MS && diffJamat >= -BLINK_WINDOW_MS) {
+              tdJamat.style.color = "#7fff00";
+              tdJamat.classList.add("blinking");
+            } else if (diffJamat < -BLINK_WINDOW_MS && diffJamat >= -BLINK_WINDOW_MS - GREEN_HOLD_MS) {
+              tdJamat.style.color = "#7fff00";
+              tdJamat.classList.remove("blinking");
+            } else {
+              tdJamat.style.color = "#ffffff";
+              tdJamat.classList.remove("blinking");
+            }
+          } else {
+            tdJamat.style.color = "#ffffff";
+            tdJamat.classList.remove("blinking");
+          }
+        } else {
+          tdName.classList.remove("blinking");
+          tdName.style.color = "#ffffff";
+          tdName.style.fontWeight = "900";
+          tdJamat.classList.remove("blinking");
+          tdJamat.style.color = "#ffffff";
+        }
+
+        tr.appendChild(tdName);
+        tr.appendChild(tdJamat);
+
+        tbody.appendChild(tr);
+      });
     }
-    showPrayerDashboard();
-  }
 
-  // Initial function calls and intervals
-  updateDateTime();
-  fetchHijriDate();
-  fetchPrayerTimes();
+    function startCountdown() {
+      const countdownLabel = document.querySelector("#page2 .countdown-label");
+      const countdownNumber = document.querySelector("#page2 .countdown-number");
+      const prayerInfo = document.querySelector("#page2 .current-prayer-info");
 
-  setInterval(updateDateTime, 1000);
-  setInterval(fetchHijriDate, 60000);
-  setInterval(fetchPrayerTimes, 60000);
+      if (countdownInterval) clearInterval(countdownInterval);
 
-  // Countdown loop every second replaces old page toggle
-  setInterval(countdownLoop, 1000);
-</script>
+      countdownInterval = setInterval(() => {
+        const now = new Date();
+
+        let nextPrayer = null;
+        for (let p of prayers) {
+          if(p.jamatTime && p.jamatTime > now) {
+            nextPrayer = p;
+            break;
+          }
+        }
+
+        if(!nextPrayer) {
+          const firstPrayer = prayers[0];
+          if(firstPrayer && firstPrayer.jamatTime) {
+            const tomorrowJamat = new Date(firstPrayer.jamatTime.getTime() + 24 * 60 * 60 * 1000);
+            const diff = tomorrowJamat.getTime() - now.getTime();
+
+            countdownLabel.textContent = `${firstPrayer.name} Jamat in:`;
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            countdownNumber.textContent = `${String(hours).padStart(2,"0")}:${String(minutes).padStart(2,"0")}:${String(seconds).padStart(2,"0")}`;
+            countdownNumber.classList.remove("blinking");
+            prayerInfo.textContent = "";
+          } else {
+            countdownLabel.textContent = "";
+            countdownNumber.textContent = "--:--:--";
+            countdownNumber.classList.remove("blinking");
+            prayerInfo.textContent = "";
+          }
+          return;
+        }
+
+        const diff = nextPrayer.jamatTime.getTime() - now.getTime();
+
+        if(diff <= 0) {
+          countdownLabel.textContent = "Starting prayer...";
+          countdownNumber.textContent = "00:00:00";
+          countdownNumber.classList.remove("blinking");
+          prayerInfo.textContent = "";
+          return;
+        }
+
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        countdownLabel.textContent = `${nextPrayer.name} Jamat in:`;
+        countdownNumber.textContent = `${String(hours).padStart(2,"0")}:${String(minutes).padStart(2,"0")}:${String(seconds).padStart(2,"0")}`;
+        prayerInfo.textContent = "";
+
+        if(diff <= BLINK_WINDOW_MS) {
+          countdownNumber.classList.add("blinking");
+        } else {
+          countdownNumber.classList.remove("blinking");
+        }
+      }, 500);
+    }
+
+    const page1 = document.getElementById('page1');
+    const page2 = document.getElementById('page2');
+
+    function showPage2Temporarily() {
+      const now = new Date();
+      const day = now.getDay();
+
+      const jumuahPrayer = prayers.find(p => p.name === "Jumuah");
+      if (day === 5 && jumuahPrayer && jumuahPrayer.jamatTime) {
+        const jamatTime = jumuahPrayer.jamatTime.getTime();
+        const windowStart = jamatTime - 15 * 60 * 1000;
+        const windowEnd = jamatTime + 30 * 60 * 1000;
+        const nowTime = now.getTime();
+
+        if (nowTime >= windowStart && nowTime <= windowEnd) {
+          return;
+        }
+      }
+
+      page1.classList.remove('active');
+      page2.classList.add('active');
+      setTimeout(() => {
+        page2.classList.remove('active');
+        page1.classList.add('active');
+      }, 15000);
+    }
+
+    setInterval(showPage2Temporarily, 5 * 60 * 1000);
+
+    function handleJamatBlinking() {
+      const now = new Date();
+      const rows = document.querySelectorAll("#prayer-row tr");
+
+      prayers.forEach((p,i) => {
+        if(!p.jamatTime) return;
+        const diff = p.jamatTime.getTime() - now.getTime();
+        const tdJamat = rows[i] ? rows[i].querySelector('.jamat-time') : null;
+        if(!tdJamat) return;
+
+        if(diff <= BLINK_WINDOW_MS && diff >= -BLINK_WINDOW_MS) {
+          tdJamat.classList.add("blinking");
+          tdJamat.style.color = "#7fff00";
+        } else if(diff < -BLINK_WINDOW_MS && diff >= -BLINK_WINDOW_MS - GREEN_HOLD_MS) {
+          tdJamat.classList.remove("blinking");
+          tdJamat.style.color = "#7fff00";
+        } else {
+          tdJamat.classList.remove("blinking");
+          tdJamat.style.color = "#ffffff";
+        }
+      });
+    }
+
+    let countdownInterval = null;
+    async function initialize() {
+      await fetchHijriDate();
+      await fetchPrayerTimes();
+      updateDateTime();
+      updatePrayerTable();
+      startCountdown();
+
+      setInterval(async () => {
+        await fetchHijriDate();
+        await fetchPrayerTimes();
+        updatePrayerTable();
+        startCountdown();
+      }, 300000);
+
+      setInterval(() => {
+        updateDateTime();
+        handleJamatBlinking();
+      }, 1000);
+    }
+
+    window.onload = initialize;
+  </script>
 
 </body>
 </html>

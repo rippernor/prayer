@@ -1,1273 +1,734 @@
-[
-  {
-    "location": "Indre Østfold - Askim - Mysen - Skjønhaug - Spydeberg - Tomter",
-    "date": "01-08-2025",
-    "district_code": "NO3118",
-    "kommune": "Indre Østfold",
-    "hijri_date": "7-2-1447",
-    "istiwa_noon": "13:21",
-    "duhr": "13:31",
-    "asr": "17:42",
-    "shadow_1x": "17:42",
-    "shadow_2x": "18:52",
-    "wusta_noon_sunset": "17:32",
-    "asr_endtime": "21:27",
-    "ghrub_sunset": "21:43",
-    "maghrib": "21:48",
-    "isha": "22:41",
-    "shafaqal_ahmar_end_redlight": null,
-    "shafaqal_abyadh_end_whitelight": null,
-    "muntasafallayl_midnight": "01:21",
-    "fajr_sadiq": null,
-    "fajr": "03:17",
-    "fajr_endtime": "04:57",
-    "shuruq_sunrise": "04:59",
-    "laylat_falakia_one3rd": "00:08",
-    "laylat_falakia_two3rd": "02:34",
-    "laylatal_shariea_one3rd": "22:56",
-    "laylatal_shariea_two3rd": "00:08",
-    "prayer_after_sunrise": "05:16",
-    "altitude_noon": null,
-    "altitude_midnight": null,
-    "asr_1x_shadow": "17:42",
-    "asr_2x_shadow": "18:52",
-    "asr_wusta_noon_sunset": "17:32",
-    "sun_shadow_noon": "0.891876",
-    "sun_shadow_wusta": "1.804787",
-    "elevation_noon": "48.271000",
-    "elevation_asrwusta": "28.990051",
-    "elevation_shadow_1x": "27.812246",
-    "elevation_shadow_2x": "19.014060",
-    "elevation_midnight": "-12.382107"
-  },
-  {
-    "location": "Indre Østfold - Askim - Mysen - Skjønhaug - Spydeberg - Tomter",
-    "date": "02-08-2025",
-    "district_code": "NO3118",
-    "kommune": "Indre Østfold",
-    "hijri_date": "8-2-1447",
-    "istiwa_noon": "13:21",
-    "duhr": "13:31",
-    "asr": "17:41",
-    "shadow_1x": "17:41",
-    "shadow_2x": "18:50",
-    "wusta_noon_sunset": "17:31",
-    "asr_endtime": "21:24",
-    "ghrub_sunset": "21:41",
-    "maghrib": "21:46",
-    "isha": "22:40",
-    "shafaqal_ahmar_end_redlight": null,
-    "shafaqal_abyadh_end_whitelight": null,
-    "muntasafallayl_midnight": "01:21",
-    "fajr_sadiq": null,
-    "fajr": "03:17",
-    "fajr_endtime": "04:59",
-    "shuruq_sunrise": "05:01",
-    "laylat_falakia_one3rd": "00:08",
-    "laylat_falakia_two3rd": "02:34",
-    "laylatal_shariea_one3rd": "22:54",
-    "laylatal_shariea_two3rd": "00:08",
-    "prayer_after_sunrise": "05:18",
-    "altitude_noon": null,
-    "altitude_midnight": null,
-    "asr_1x_shadow": "17:41",
-    "asr_2x_shadow": "18:50",
-    "asr_wusta_noon_sunset": "17:31",
-    "sun_shadow_noon": "0.899949",
-    "sun_shadow_wusta": "1.810357",
-    "elevation_noon": "48.014400",
-    "elevation_asrwusta": "28.915258",
-    "elevation_shadow_1x": "27.710748",
-    "elevation_shadow_2x": "18.963381",
-    "elevation_midnight": "-12.636287"
-  },
-  {
-    "location": "Indre Østfold - Askim - Mysen - Skjønhaug - Spydeberg - Tomter",
-    "date": "03-08-2025",
-    "district_code": "NO3118",
-    "kommune": "Indre Østfold",
-    "hijri_date": "9-2-1447",
-    "istiwa_noon": "13:21",
-    "duhr": "13:31",
-    "asr": "17:40",
-    "shadow_1x": "17:40",
-    "shadow_2x": "18:49",
-    "wusta_noon_sunset": "17:30",
-    "asr_endtime": "21:22",
-    "ghrub_sunset": "21:38",
-    "maghrib": "21:43",
-    "isha": "22:39",
-    "shafaqal_ahmar_end_redlight": null,
-    "shafaqal_abyadh_end_whitelight": null,
-    "muntasafallayl_midnight": "01:21",
-    "fajr_sadiq": null,
-    "fajr": "03:17",
-    "fajr_endtime": "05:02",
-    "shuruq_sunrise": "05:04",
-    "laylat_falakia_one3rd": "00:07",
-    "laylat_falakia_two3rd": "02:35",
-    "laylatal_shariea_one3rd": "22:52",
-    "laylatal_shariea_two3rd": "00:07",
-    "prayer_after_sunrise": "05:20",
-    "altitude_noon": null,
-    "altitude_midnight": null,
-    "asr_1x_shadow": "17:40",
-    "asr_2x_shadow": "18:49",
-    "asr_wusta_noon_sunset": "17:30",
-    "sun_shadow_noon": "0.908239",
-    "sun_shadow_wusta": "1.816395",
-    "elevation_noon": "47.753032",
-    "elevation_asrwusta": "28.834588",
-    "elevation_shadow_1x": "27.605585",
-    "elevation_shadow_2x": "18.911585",
-    "elevation_midnight": "-12.895279"
-  },
-  {
-    "location": "Indre Østfold - Askim - Mysen - Skjønhaug - Spydeberg - Tomter",
-    "date": "04-08-2025",
-    "district_code": "NO3118",
-    "kommune": "Indre Østfold",
-    "hijri_date": "10-2-1447",
-    "istiwa_noon": "13:21",
-    "duhr": "13:31",
-    "asr": "17:39",
-    "shadow_1x": "17:39",
-    "shadow_2x": "18:47",
-    "wusta_noon_sunset": "17:28",
-    "asr_endtime": "21:20",
-    "ghrub_sunset": "21:36",
-    "maghrib": "21:41",
-    "isha": "22:38",
-    "shafaqal_ahmar_end_redlight": null,
-    "shafaqal_abyadh_end_whitelight": null,
-    "muntasafallayl_midnight": "01:21",
-    "fajr_sadiq": null,
-    "fajr": "03:17",
-    "fajr_endtime": "05:04",
-    "shuruq_sunrise": "05:06",
-    "laylat_falakia_one3rd": "00:06",
-    "laylat_falakia_two3rd": "02:36",
-    "laylatal_shariea_one3rd": "22:51",
-    "laylatal_shariea_two3rd": "00:06",
-    "prayer_after_sunrise": "05:22",
-    "altitude_noon": null,
-    "altitude_midnight": null,
-    "asr_1x_shadow": "17:39",
-    "asr_2x_shadow": "18:47",
-    "asr_wusta_noon_sunset": "17:28",
-    "sun_shadow_noon": "0.916750",
-    "sun_shadow_wusta": "1.822596",
-    "elevation_noon": "47.486973",
-    "elevation_asrwusta": "28.752159",
-    "elevation_shadow_1x": "27.500916",
-    "elevation_shadow_2x": "18.858732",
-    "elevation_midnight": "-13.159003"
-  },
-  {
-    "location": "Indre Østfold - Askim - Mysen - Skjønhaug - Spydeberg - Tomter",
-    "date": "05-08-2025",
-    "district_code": "NO3118",
-    "kommune": "Indre Østfold",
-    "hijri_date": "11-2-1447",
-    "istiwa_noon": "13:21",
-    "duhr": "13:31",
-    "asr": "17:37",
-    "shadow_1x": "17:37",
-    "shadow_2x": "18:46",
-    "wusta_noon_sunset": "17:27",
-    "asr_endtime": "21:17",
-    "ghrub_sunset": "21:33",
-    "maghrib": "21:38",
-    "isha": "22:37",
-    "shafaqal_ahmar_end_redlight": null,
-    "shafaqal_abyadh_end_whitelight": null,
-    "muntasafallayl_midnight": "01:21",
-    "fajr_sadiq": null,
-    "fajr": "03:17",
-    "fajr_endtime": "05:06",
-    "shuruq_sunrise": "05:08",
-    "laylat_falakia_one3rd": "00:05",
-    "laylat_falakia_two3rd": "02:37",
-    "laylatal_shariea_one3rd": "22:49",
-    "laylatal_shariea_two3rd": "00:05",
-    "prayer_after_sunrise": "05:24",
-    "altitude_noon": null,
-    "altitude_midnight": null,
-    "asr_1x_shadow": "17:37",
-    "asr_2x_shadow": "18:46",
-    "asr_wusta_noon_sunset": "17:27",
-    "sun_shadow_noon": "0.925481",
-    "sun_shadow_wusta": "1.829115",
-    "elevation_noon": "47.216313",
-    "elevation_asrwusta": "28.665979",
-    "elevation_shadow_1x": "27.392678",
-    "elevation_shadow_2x": "18.804881",
-    "elevation_midnight": "-13.427372"
-  },
-  {
-    "location": "Indre Østfold - Askim - Mysen - Skjønhaug - Spydeberg - Tomter",
-    "date": "06-08-2025",
-    "district_code": "NO3118",
-    "kommune": "Indre Østfold",
-    "hijri_date": "12-2-1447",
-    "istiwa_noon": "13:21",
-    "duhr": "13:31",
-    "asr": "17:36",
-    "shadow_1x": "17:36",
-    "shadow_2x": "18:44",
-    "wusta_noon_sunset": "17:26",
-    "asr_endtime": "21:15",
-    "ghrub_sunset": "21:31",
-    "maghrib": "21:36",
-    "isha": "22:36",
-    "shafaqal_ahmar_end_redlight": null,
-    "shafaqal_abyadh_end_whitelight": null,
-    "muntasafallayl_midnight": "01:21",
-    "fajr_sadiq": null,
-    "fajr": "03:17",
-    "fajr_endtime": "05:09",
-    "shuruq_sunrise": "05:11",
-    "laylat_falakia_one3rd": "00:04",
-    "laylat_falakia_two3rd": "02:37",
-    "laylatal_shariea_one3rd": "22:47",
-    "laylatal_shariea_two3rd": "00:04",
-    "prayer_after_sunrise": "05:27",
-    "altitude_noon": null,
-    "altitude_midnight": null,
-    "asr_1x_shadow": "17:36",
-    "asr_2x_shadow": "18:44",
-    "asr_wusta_noon_sunset": "17:26",
-    "sun_shadow_noon": "0.934438",
-    "sun_shadow_wusta": "1.835952",
-    "elevation_noon": "46.941125",
-    "elevation_asrwusta": "28.576099",
-    "elevation_shadow_1x": "27.282972",
-    "elevation_shadow_2x": "18.750095",
-    "elevation_midnight": "-13.700305"
-  },
-  {
-    "location": "Indre Østfold - Askim - Mysen - Skjønhaug - Spydeberg - Tomter",
-    "date": "07-08-2025",
-    "district_code": "NO3118",
-    "kommune": "Indre Østfold",
-    "hijri_date": "13-2-1447",
-    "istiwa_noon": "13:21",
-    "duhr": "13:31",
-    "asr": "17:35",
-    "shadow_1x": "17:35",
-    "shadow_2x": "18:43",
-    "wusta_noon_sunset": "17:24",
-    "asr_endtime": "21:12",
-    "ghrub_sunset": "21:28",
-    "maghrib": "21:33",
-    "isha": "22:35",
-    "shafaqal_ahmar_end_redlight": null,
-    "shafaqal_abyadh_end_whitelight": null,
-    "muntasafallayl_midnight": "01:21",
-    "fajr_sadiq": null,
-    "fajr": "03:17",
-    "fajr_endtime": "05:11",
-    "shuruq_sunrise": "05:13",
-    "laylat_falakia_one3rd": "00:03",
-    "laylat_falakia_two3rd": "02:38",
-    "laylatal_shariea_one3rd": "22:46",
-    "laylatal_shariea_two3rd": "00:03",
-    "prayer_after_sunrise": "05:29",
-    "altitude_noon": null,
-    "altitude_midnight": null,
-    "asr_1x_shadow": "17:35",
-    "asr_2x_shadow": "18:43",
-    "asr_wusta_noon_sunset": "17:24",
-    "sun_shadow_noon": "0.943622",
-    "sun_shadow_wusta": "1.843108",
-    "elevation_noon": "46.661499",
-    "elevation_asrwusta": "28.482571",
-    "elevation_shadow_1x": "27.171845",
-    "elevation_shadow_2x": "18.694433",
-    "elevation_midnight": "-13.977720"
-  },
-  {
-    "location": "Indre Østfold - Askim - Mysen - Skjønhaug - Spydeberg - Tomter",
-    "date": "08-08-2025",
-    "district_code": "NO3118",
-    "kommune": "Indre Østfold",
-    "hijri_date": "14-2-1447",
-    "istiwa_noon": "13:20",
-    "duhr": "13:30",
-    "asr": "17:34",
-    "shadow_1x": "17:34",
-    "shadow_2x": "18:41",
-    "wusta_noon_sunset": "17:23",
-    "asr_endtime": "21:10",
-    "ghrub_sunset": "21:25",
-    "maghrib": "21:30",
-    "isha": "22:34",
-    "shafaqal_ahmar_end_redlight": null,
-    "shafaqal_abyadh_end_whitelight": null,
-    "muntasafallayl_midnight": "01:20",
-    "fajr_sadiq": null,
-    "fajr": "03:17",
-    "fajr_endtime": "05:13",
-    "shuruq_sunrise": "05:15",
-    "laylat_falakia_one3rd": "00:02",
-    "laylat_falakia_two3rd": "02:39",
-    "laylatal_shariea_one3rd": "22:44",
-    "laylatal_shariea_two3rd": "00:02",
-    "prayer_after_sunrise": "05:31",
-    "altitude_noon": null,
-    "altitude_midnight": null,
-    "asr_1x_shadow": "17:34",
-    "asr_2x_shadow": "18:41",
-    "asr_wusta_noon_sunset": "17:23",
-    "sun_shadow_noon": "0.953036",
-    "sun_shadow_wusta": "1.850585",
-    "elevation_noon": "46.377520",
-    "elevation_asrwusta": "28.385446",
-    "elevation_shadow_1x": "27.059346",
-    "elevation_shadow_2x": "18.637960",
-    "elevation_midnight": "-14.259531"
-  },
-  {
-    "location": "Indre Østfold - Askim - Mysen - Skjønhaug - Spydeberg - Tomter",
-    "date": "09-08-2025",
-    "district_code": "NO3118",
-    "kommune": "Indre Østfold",
-    "hijri_date": "15-2-1447",
-    "istiwa_noon": "13:20",
-    "duhr": "13:30",
-    "asr": "17:33",
-    "shadow_1x": "17:33",
-    "shadow_2x": "18:39",
-    "wusta_noon_sunset": "17:22",
-    "asr_endtime": "21:07",
-    "ghrub_sunset": "21:23",
-    "maghrib": "21:28",
-    "isha": "22:33",
-    "shafaqal_ahmar_end_redlight": null,
-    "shafaqal_abyadh_end_whitelight": null,
-    "muntasafallayl_midnight": "01:20",
-    "fajr_sadiq": null,
-    "fajr": "03:17",
-    "fajr_endtime": "05:16",
-    "shuruq_sunrise": "05:18",
-    "laylat_falakia_one3rd": "00:01",
-    "laylat_falakia_two3rd": "02:39",
-    "laylatal_shariea_one3rd": "22:42",
-    "laylatal_shariea_two3rd": "00:01",
-    "prayer_after_sunrise": "05:33",
-    "altitude_noon": null,
-    "altitude_midnight": null,
-    "asr_1x_shadow": "17:33",
-    "asr_2x_shadow": "18:39",
-    "asr_wusta_noon_sunset": "17:22",
-    "sun_shadow_noon": "0.962682",
-    "sun_shadow_wusta": "1.858384",
-    "elevation_noon": "46.089271",
-    "elevation_asrwusta": "28.284779",
-    "elevation_shadow_1x": "26.943488",
-    "elevation_shadow_2x": "18.580736",
-    "elevation_midnight": "-14.545657"
-  },
-  {
-    "location": "Indre Østfold - Askim - Mysen - Skjønhaug - Spydeberg - Tomter",
-    "date": "10-08-2025",
-    "district_code": "NO3118",
-    "kommune": "Indre Østfold",
-    "hijri_date": "16-2-1447",
-    "istiwa_noon": "13:20",
-    "duhr": "13:30",
-    "asr": "17:31",
-    "shadow_1x": "17:31",
-    "shadow_2x": "18:38",
-    "wusta_noon_sunset": "17:20",
-    "asr_endtime": "21:05",
-    "ghrub_sunset": "21:20",
-    "maghrib": "21:25",
-    "isha": "22:32",
-    "shafaqal_ahmar_end_redlight": null,
-    "shafaqal_abyadh_end_whitelight": null,
-    "muntasafallayl_midnight": "01:20",
-    "fajr_sadiq": null,
-    "fajr": "03:17",
-    "fajr_endtime": "05:18",
-    "shuruq_sunrise": "05:20",
-    "laylat_falakia_one3rd": "00:00",
-    "laylat_falakia_two3rd": "02:40",
-    "laylatal_shariea_one3rd": "22:40",
-    "laylatal_shariea_two3rd": "00:00",
-    "prayer_after_sunrise": "05:36",
-    "altitude_noon": null,
-    "altitude_midnight": null,
-    "asr_1x_shadow": "17:31",
-    "asr_2x_shadow": "18:38",
-    "asr_wusta_noon_sunset": "17:20",
-    "sun_shadow_noon": "0.972565",
-    "sun_shadow_wusta": "1.866507",
-    "elevation_noon": "45.796835",
-    "elevation_asrwusta": "28.180625",
-    "elevation_shadow_1x": "26.826363",
-    "elevation_shadow_2x": "18.522826",
-    "elevation_midnight": "-14.836010"
-  },
-  {
-    "location": "Indre Østfold - Askim - Mysen - Skjønhaug - Spydeberg - Tomter",
-    "date": "11-08-2025",
-    "district_code": "NO3118",
-    "kommune": "Indre Østfold",
-    "hijri_date": "17-2-1447",
-    "istiwa_noon": "13:20",
-    "duhr": "13:30",
-    "asr": "17:30",
-    "shadow_1x": "17:30",
-    "shadow_2x": "18:36",
-    "wusta_noon_sunset": "17:19",
-    "asr_endtime": "21:02",
-    "ghrub_sunset": "21:18",
-    "maghrib": "21:23",
-    "isha": "22:31",
-    "shafaqal_ahmar_end_redlight": null,
-    "shafaqal_abyadh_end_whitelight": null,
-    "muntasafallayl_midnight": "01:20",
-    "fajr_sadiq": null,
-    "fajr": "03:17",
-    "fajr_endtime": "05:20",
-    "shuruq_sunrise": "05:22",
-    "laylat_falakia_one3rd": "23:59",
-    "laylat_falakia_two3rd": "02:41",
-    "laylatal_shariea_one3rd": "22:38",
-    "laylatal_shariea_two3rd": "23:59",
-    "prayer_after_sunrise": "05:38",
-    "altitude_noon": null,
-    "altitude_midnight": null,
-    "asr_1x_shadow": "17:30",
-    "asr_2x_shadow": "18:36",
-    "asr_wusta_noon_sunset": "17:19",
-    "sun_shadow_noon": "0.982687",
-    "sun_shadow_wusta": "1.874956",
-    "elevation_noon": "45.500297",
-    "elevation_asrwusta": "28.073044",
-    "elevation_shadow_1x": "26.708020",
-    "elevation_shadow_2x": "18.462181",
-    "elevation_midnight": "-15.130503"
-  },
-  {
-    "location": "Indre Østfold - Askim - Mysen - Skjønhaug - Spydeberg - Tomter",
-    "date": "12-08-2025",
-    "district_code": "NO3118",
-    "kommune": "Indre Østfold",
-    "hijri_date": "18-2-1447",
-    "istiwa_noon": "13:20",
-    "duhr": "13:30",
-    "asr": "17:29",
-    "shadow_1x": "17:29",
-    "shadow_2x": "18:34",
-    "wusta_noon_sunset": "17:17",
-    "asr_endtime": "21:00",
-    "ghrub_sunset": "21:15",
-    "maghrib": "21:20",
-    "isha": "22:30",
-    "shafaqal_ahmar_end_redlight": null,
-    "shafaqal_abyadh_end_whitelight": null,
-    "muntasafallayl_midnight": "01:20",
-    "fajr_sadiq": null,
-    "fajr": "03:17",
-    "fajr_endtime": "05:23",
-    "shuruq_sunrise": "05:25",
-    "laylat_falakia_one3rd": "23:58",
-    "laylat_falakia_two3rd": "02:41",
-    "laylatal_shariea_one3rd": "22:36",
-    "laylatal_shariea_two3rd": "23:58",
-    "prayer_after_sunrise": "05:40",
-    "altitude_noon": null,
-    "altitude_midnight": null,
-    "asr_1x_shadow": "17:29",
-    "asr_2x_shadow": "18:34",
-    "asr_wusta_noon_sunset": "17:17",
-    "sun_shadow_noon": "0.993052",
-    "sun_shadow_wusta": "1.883890",
-    "elevation_noon": "45.199746",
-    "elevation_asrwusta": "27.960102",
-    "elevation_shadow_1x": "26.586490",
-    "elevation_shadow_2x": "18.400976",
-    "elevation_midnight": "-15.429056"
-  },
-  {
-    "location": "Indre Østfold - Askim - Mysen - Skjønhaug - Spydeberg - Tomter",
-    "date": "13-08-2025",
-    "district_code": "NO3118",
-    "kommune": "Indre Østfold",
-    "hijri_date": "19-2-1447",
-    "istiwa_noon": "13:20",
-    "duhr": "13:30",
-    "asr": "17:27",
-    "shadow_1x": "17:27",
-    "shadow_2x": "18:33",
-    "wusta_noon_sunset": "17:16",
-    "asr_endtime": "20:57",
-    "ghrub_sunset": "21:12",
-    "maghrib": "21:17",
-    "isha": "22:29",
-    "shafaqal_ahmar_end_redlight": null,
-    "shafaqal_abyadh_end_whitelight": null,
-    "muntasafallayl_midnight": "01:20",
-    "fajr_sadiq": null,
-    "fajr": "03:17",
-    "fajr_endtime": "05:25",
-    "shuruq_sunrise": "05:27",
-    "laylat_falakia_one3rd": "23:57",
-    "laylat_falakia_two3rd": "02:42",
-    "laylatal_shariea_one3rd": "22:35",
-    "laylatal_shariea_two3rd": "23:57",
-    "prayer_after_sunrise": "05:42",
-    "altitude_noon": null,
-    "altitude_midnight": null,
-    "asr_1x_shadow": "17:27",
-    "asr_2x_shadow": "18:33",
-    "asr_wusta_noon_sunset": "17:16",
-    "sun_shadow_noon": "1.003663",
-    "sun_shadow_wusta": "1.892996",
-    "elevation_noon": "44.895269",
-    "elevation_asrwusta": "27.845845",
-    "elevation_shadow_1x": "26.463853",
-    "elevation_shadow_2x": "18.339274",
-    "elevation_midnight": "-15.731583"
-  },
-  {
-    "location": "Indre Østfold - Askim - Mysen - Skjønhaug - Spydeberg - Tomter",
-    "date": "14-08-2025",
-    "district_code": "NO3118",
-    "kommune": "Indre Østfold",
-    "hijri_date": "20-2-1447",
-    "istiwa_noon": "13:19",
-    "duhr": "13:29",
-    "asr": "17:26",
-    "shadow_1x": "17:26",
-    "shadow_2x": "18:31",
-    "wusta_noon_sunset": "17:14",
-    "asr_endtime": "20:54",
-    "ghrub_sunset": "21:09",
-    "maghrib": "21:14",
-    "isha": "22:28",
-    "shafaqal_ahmar_end_redlight": null,
-    "shafaqal_abyadh_end_whitelight": null,
-    "muntasafallayl_midnight": "01:19",
-    "fajr_sadiq": null,
-    "fajr": "03:17",
-    "fajr_endtime": "05:27",
-    "shuruq_sunrise": "05:29",
-    "laylat_falakia_one3rd": "23:56",
-    "laylat_falakia_two3rd": "02:43",
-    "laylatal_shariea_one3rd": "22:37",
-    "laylatal_shariea_two3rd": "00:04",
-    "prayer_after_sunrise": "05:45",
-    "altitude_noon": null,
-    "altitude_midnight": null,
-    "asr_1x_shadow": "17:26",
-    "asr_2x_shadow": "18:31",
-    "asr_wusta_noon_sunset": "17:14",
-    "sun_shadow_noon": "1.014523",
-    "sun_shadow_wusta": "1.902432",
-    "elevation_noon": "44.586947",
-    "elevation_asrwusta": "27.728339",
-    "elevation_shadow_1x": "26.340160",
-    "elevation_shadow_2x": "18.277137",
-    "elevation_midnight": "-16.037989"
-  },
-  {
-    "location": "Indre Østfold - Askim - Mysen - Skjønhaug - Spydeberg - Tomter",
-    "date": "15-08-2025",
-    "district_code": "NO3118",
-    "kommune": "Indre Østfold",
-    "hijri_date": "21-2-1447",
-    "istiwa_noon": "13:19",
-    "duhr": "13:29",
-    "asr": "17:25",
-    "shadow_1x": "17:25",
-    "shadow_2x": "18:29",
-    "wusta_noon_sunset": "17:13",
-    "asr_endtime": "20:52",
-    "ghrub_sunset": "21:07",
-    "maghrib": "21:12",
-    "isha": "22:27",
-    "shafaqal_ahmar_end_redlight": null,
-    "shafaqal_abyadh_end_whitelight": null,
-    "muntasafallayl_midnight": "01:19",
-    "fajr_sadiq": null,
-    "fajr": "03:17",
-    "fajr_endtime": "05:30",
-    "shuruq_sunrise": "05:32",
-    "laylat_falakia_one3rd": "23:55",
-    "laylat_falakia_two3rd": "02:43",
-    "laylatal_shariea_one3rd": "22:43",
-    "laylatal_shariea_two3rd": "00:19",
-    "prayer_after_sunrise": "05:47",
-    "altitude_noon": null,
-    "altitude_midnight": null,
-    "asr_1x_shadow": "17:25",
-    "asr_2x_shadow": "18:29",
-    "asr_wusta_noon_sunset": "17:13",
-    "sun_shadow_noon": "1.025638",
-    "sun_shadow_wusta": "1.912362",
-    "elevation_noon": "44.274873",
-    "elevation_asrwusta": "27.605674",
-    "elevation_shadow_1x": "26.213457",
-    "elevation_shadow_2x": "18.212522",
-    "elevation_midnight": "-16.348200"
-  },
-  {
-    "location": "Indre Østfold - Askim - Mysen - Skjønhaug - Spydeberg - Tomter",
-    "date": "16-08-2025",
-    "district_code": "NO3118",
-    "kommune": "Indre Østfold",
-    "hijri_date": "22-2-1447",
-    "istiwa_noon": "13:19",
-    "duhr": "13:29",
-    "asr": "17:23",
-    "shadow_1x": "17:23",
-    "shadow_2x": "18:27",
-    "wusta_noon_sunset": "17:11",
-    "asr_endtime": "20:49",
-    "ghrub_sunset": "21:04",
-    "maghrib": "21:09",
-    "isha": "22:26",
-    "shafaqal_ahmar_end_redlight": null,
-    "shafaqal_abyadh_end_whitelight": null,
-    "muntasafallayl_midnight": "01:19",
-    "fajr_sadiq": null,
-    "fajr": "03:17",
-    "fajr_endtime": "05:32",
-    "shuruq_sunrise": "05:34",
-    "laylat_falakia_one3rd": "23:54",
-    "laylat_falakia_two3rd": "02:44",
-    "laylatal_shariea_one3rd": "22:45",
-    "laylatal_shariea_two3rd": "00:27",
-    "prayer_after_sunrise": "05:49",
-    "altitude_noon": null,
-    "altitude_midnight": null,
-    "asr_1x_shadow": "17:23",
-    "asr_2x_shadow": "18:27",
-    "asr_wusta_noon_sunset": "17:11",
-    "sun_shadow_noon": "1.037010",
-    "sun_shadow_wusta": "1.922629",
-    "elevation_noon": "43.959128",
-    "elevation_asrwusta": "27.479898",
-    "elevation_shadow_1x": "26.085811",
-    "elevation_shadow_2x": "18.147601",
-    "elevation_midnight": "-16.662116"
-  },
-  {
-    "location": "Indre Østfold - Askim - Mysen - Skjønhaug - Spydeberg - Tomter",
-    "date": "17-08-2025",
-    "district_code": "NO3118",
-    "kommune": "Indre Østfold",
-    "hijri_date": "23-2-1447",
-    "istiwa_noon": "13:19",
-    "duhr": "13:29",
-    "asr": "17:22",
-    "shadow_1x": "17:22",
-    "shadow_2x": "18:25",
-    "wusta_noon_sunset": "17:10",
-    "asr_endtime": "20:46",
-    "ghrub_sunset": "21:01",
-    "maghrib": "21:06",
-    "isha": "22:25",
-    "shafaqal_ahmar_end_redlight": null,
-    "shafaqal_abyadh_end_whitelight": null,
-    "muntasafallayl_midnight": "01:19",
-    "fajr_sadiq": null,
-    "fajr": "03:17",
-    "fajr_endtime": "05:35",
-    "shuruq_sunrise": "05:37",
-    "laylat_falakia_one3rd": "23:53",
-    "laylat_falakia_two3rd": "02:45",
-    "laylatal_shariea_one3rd": "22:47",
-    "laylatal_shariea_two3rd": "00:33",
-    "prayer_after_sunrise": "05:51",
-    "altitude_noon": null,
-    "altitude_midnight": null,
-    "asr_1x_shadow": "17:22",
-    "asr_2x_shadow": "18:25",
-    "asr_wusta_noon_sunset": "17:10",
-    "sun_shadow_noon": "1.048644",
-    "sun_shadow_wusta": "1.933234",
-    "elevation_noon": "43.639804",
-    "elevation_asrwusta": "27.351075",
-    "elevation_shadow_1x": "25.957274",
-    "elevation_shadow_2x": "18.082436",
-    "elevation_midnight": "-16.979663"
-  },
-  {
-    "location": "Indre Østfold - Askim - Mysen - Skjønhaug - Spydeberg - Tomter",
-    "date": "18-08-2025",
-    "district_code": "NO3118",
-    "kommune": "Indre Østfold",
-    "hijri_date": "24-2-1447",
-    "istiwa_noon": "13:19",
-    "duhr": "13:29",
-    "asr": "17:20",
-    "shadow_1x": "17:20",
-    "shadow_2x": "18:23",
-    "wusta_noon_sunset": "17:08",
-    "asr_endtime": "20:44",
-    "ghrub_sunset": "20:58",
-    "maghrib": "21:03",
-    "isha": "22:23",
-    "shafaqal_ahmar_end_redlight": null,
-    "shafaqal_abyadh_end_whitelight": null,
-    "muntasafallayl_midnight": "01:19",
-    "fajr_sadiq": null,
-    "fajr": "03:17",
-    "fajr_endtime": "05:37",
-    "shuruq_sunrise": "05:39",
-    "laylat_falakia_one3rd": "23:52",
-    "laylat_falakia_two3rd": "02:45",
-    "laylatal_shariea_one3rd": "22:48",
-    "laylatal_shariea_two3rd": "00:38",
-    "prayer_after_sunrise": "05:54",
-    "altitude_noon": null,
-    "altitude_midnight": null,
-    "asr_1x_shadow": "17:20",
-    "asr_2x_shadow": "18:23",
-    "asr_wusta_noon_sunset": "17:08",
-    "sun_shadow_noon": "1.060544",
-    "sun_shadow_wusta": "1.944344",
-    "elevation_noon": "43.316985",
-    "elevation_asrwusta": "27.217319",
-    "elevation_shadow_1x": "25.825909",
-    "elevation_shadow_2x": "18.017088",
-    "elevation_midnight": "-17.300740"
-  },
-  {
-    "location": "Indre Østfold - Askim - Mysen - Skjønhaug - Spydeberg - Tomter",
-    "date": "19-08-2025",
-    "district_code": "NO3118",
-    "kommune": "Indre Østfold",
-    "hijri_date": "25-2-1447",
-    "istiwa_noon": "13:18",
-    "duhr": "13:28",
-    "asr": "17:19",
-    "shadow_1x": "17:19",
-    "shadow_2x": "18:22",
-    "wusta_noon_sunset": "17:07",
-    "asr_endtime": "20:41",
-    "ghrub_sunset": "20:55",
-    "maghrib": "21:00",
-    "isha": "22:22",
-    "shafaqal_ahmar_end_redlight": null,
-    "shafaqal_abyadh_end_whitelight": null,
-    "muntasafallayl_midnight": "01:18",
-    "fajr_sadiq": null,
-    "fajr": "03:17",
-    "fajr_endtime": "05:39",
-    "shuruq_sunrise": "05:41",
-    "laylat_falakia_one3rd": "23:51",
-    "laylat_falakia_two3rd": "02:46",
-    "laylatal_shariea_one3rd": "22:49",
-    "laylatal_shariea_two3rd": "00:42",
-    "prayer_after_sunrise": "05:56",
-    "altitude_noon": null,
-    "altitude_midnight": null,
-    "asr_1x_shadow": "17:19",
-    "asr_2x_shadow": "18:22",
-    "asr_wusta_noon_sunset": "17:07",
-    "sun_shadow_noon": "1.072715",
-    "sun_shadow_wusta": "1.955799",
-    "elevation_noon": "42.990762",
-    "elevation_asrwusta": "27.080662",
-    "elevation_shadow_1x": "25.693767",
-    "elevation_shadow_2x": "17.949517",
-    "elevation_midnight": "-17.625270"
-  },
-  {
-    "location": "Indre Østfold - Askim - Mysen - Skjønhaug - Spydeberg - Tomter",
-    "date": "20-08-2025",
-    "district_code": "NO3118",
-    "kommune": "Indre Østfold",
-    "hijri_date": "26-2-1447",
-    "istiwa_noon": "13:18",
-    "duhr": "13:28",
-    "asr": "17:17",
-    "shadow_1x": "17:17",
-    "shadow_2x": "18:20",
-    "wusta_noon_sunset": "17:05",
-    "asr_endtime": "20:38",
-    "ghrub_sunset": "20:53",
-    "maghrib": "20:58",
-    "isha": "22:21",
-    "shafaqal_ahmar_end_redlight": null,
-    "shafaqal_abyadh_end_whitelight": null,
-    "muntasafallayl_midnight": "01:18",
-    "fajr_sadiq": null,
-    "fajr": "03:17",
-    "fajr_endtime": "05:42",
-    "shuruq_sunrise": "05:44",
-    "laylat_falakia_one3rd": "23:50",
-    "laylat_falakia_two3rd": "02:47",
-    "laylatal_shariea_one3rd": "22:49",
-    "laylatal_shariea_two3rd": "00:46",
-    "prayer_after_sunrise": "05:58",
-    "altitude_noon": null,
-    "altitude_midnight": null,
-    "asr_1x_shadow": "17:17",
-    "asr_2x_shadow": "18:20",
-    "asr_wusta_noon_sunset": "17:05",
-    "sun_shadow_noon": "1.085162",
-    "sun_shadow_wusta": "1.967602",
-    "elevation_noon": "42.661219",
-    "elevation_asrwusta": "26.941171",
-    "elevation_shadow_1x": "25.558923",
-    "elevation_shadow_2x": "17.879790",
-    "elevation_midnight": "-17.953163"
-  },
-  {
-    "location": "Indre Østfold - Askim - Mysen - Skjønhaug - Spydeberg - Tomter",
-    "date": "21-08-2025",
-    "district_code": "NO3118",
-    "kommune": "Indre Østfold",
-    "hijri_date": "27-2-1447",
-    "istiwa_noon": "13:18",
-    "duhr": "13:28",
-    "asr": "17:16",
-    "shadow_1x": "17:16",
-    "shadow_2x": "18:18",
-    "wusta_noon_sunset": "17:04",
-    "asr_endtime": "20:35",
-    "ghrub_sunset": "20:50",
-    "maghrib": "20:55",
-    "isha": "22:20",
-    "shafaqal_ahmar_end_redlight": null,
-    "shafaqal_abyadh_end_whitelight": "00:47",
-    "muntasafallayl_midnight": "01:18",
-    "fajr_sadiq": null,
-    "fajr": "03:17",
-    "fajr_endtime": "05:44",
-    "shuruq_sunrise": "05:46",
-    "laylat_falakia_one3rd": "23:49",
-    "laylat_falakia_two3rd": "02:47",
-    "laylatal_shariea_one3rd": "22:49",
-    "laylatal_shariea_two3rd": "00:49",
-    "prayer_after_sunrise": "06:00",
-    "altitude_noon": null,
-    "altitude_midnight": null,
-    "asr_1x_shadow": "17:16",
-    "asr_2x_shadow": "18:18",
-    "asr_wusta_noon_sunset": "17:04",
-    "sun_shadow_noon": "1.097890",
-    "sun_shadow_wusta": "1.979757",
-    "elevation_noon": "42.328448",
-    "elevation_asrwusta": "26.798916",
-    "elevation_shadow_1x": "25.421447",
-    "elevation_shadow_2x": "17.810070",
-    "elevation_midnight": "-18.284334"
-  },
-  {
-    "location": "Indre Østfold - Askim - Mysen - Skjønhaug - Spydeberg - Tomter",
-    "date": "22-08-2025",
-    "district_code": "NO3118",
-    "kommune": "Indre Østfold",
-    "hijri_date": "28-2-1447",
-    "istiwa_noon": "13:18",
-    "duhr": "13:28",
-    "asr": "17:14",
-    "shadow_1x": "17:14",
-    "shadow_2x": "18:16",
-    "wusta_noon_sunset": "17:02",
-    "asr_endtime": "20:33",
-    "ghrub_sunset": "20:47",
-    "maghrib": "20:52",
-    "isha": "22:19",
-    "shafaqal_ahmar_end_redlight": null,
-    "shafaqal_abyadh_end_whitelight": "00:31",
-    "muntasafallayl_midnight": "01:18",
-    "fajr_sadiq": null,
-    "fajr": "03:17",
-    "fajr_endtime": "05:46",
-    "shuruq_sunrise": "05:48",
-    "laylat_falakia_one3rd": "23:47",
-    "laylat_falakia_two3rd": "02:48",
-    "laylatal_shariea_one3rd": "22:50",
-    "laylatal_shariea_two3rd": "00:52",
-    "prayer_after_sunrise": "06:03",
-    "altitude_noon": null,
-    "altitude_midnight": null,
-    "asr_1x_shadow": "17:14",
-    "asr_2x_shadow": "18:16",
-    "asr_wusta_noon_sunset": "17:02",
-    "sun_shadow_noon": "1.110904",
-    "sun_shadow_wusta": "1.992432",
-    "elevation_noon": "41.992533",
-    "elevation_asrwusta": "26.652042",
-    "elevation_shadow_1x": "25.285336",
-    "elevation_shadow_2x": "17.740416",
-    "elevation_midnight": "-18.618682"
-  },
-  {
-    "location": "Indre Østfold - Askim - Mysen - Skjønhaug - Spydeberg - Tomter",
-    "date": "23-08-2025",
-    "district_code": "NO3118",
-    "kommune": "Indre Østfold",
-    "hijri_date": "29-2-1447",
-    "istiwa_noon": "13:17",
-    "duhr": "13:27",
-    "asr": "17:12",
-    "shadow_1x": "17:12",
-    "shadow_2x": "18:14",
-    "wusta_noon_sunset": "17:01",
-    "asr_endtime": "20:30",
-    "ghrub_sunset": "20:44",
-    "maghrib": "20:49",
-    "isha": "22:18",
-    "shafaqal_ahmar_end_redlight": null,
-    "shafaqal_abyadh_end_whitelight": "00:20",
-    "muntasafallayl_midnight": "01:17",
-    "fajr_sadiq": null,
-    "fajr": "03:17",
-    "fajr_endtime": "05:49",
-    "shuruq_sunrise": "05:51",
-    "laylat_falakia_one3rd": "23:46",
-    "laylat_falakia_two3rd": "02:48",
-    "laylatal_shariea_one3rd": "22:50",
-    "laylatal_shariea_two3rd": "00:55",
-    "prayer_after_sunrise": "06:05",
-    "altitude_noon": null,
-    "altitude_midnight": null,
-    "asr_1x_shadow": "17:12",
-    "asr_2x_shadow": "18:14",
-    "asr_wusta_noon_sunset": "17:01",
-    "sun_shadow_noon": "1.124208",
-    "sun_shadow_wusta": "2.005466",
-    "elevation_noon": "41.653568",
-    "elevation_asrwusta": "26.502556",
-    "elevation_shadow_1x": "25.144750",
-    "elevation_shadow_2x": "17.668795",
-    "elevation_midnight": "-18.956136"
-  },
-  {
-    "location": "Indre Østfold - Askim - Mysen - Skjønhaug - Spydeberg - Tomter",
-    "date": "24-08-2025",
-    "district_code": "NO3118",
-    "kommune": "Indre Østfold",
-    "hijri_date": "1-3-1447",
-    "istiwa_noon": "13:17",
-    "duhr": "13:27",
-    "asr": "17:11",
-    "shadow_1x": "17:11",
-    "shadow_2x": "18:12",
-    "wusta_noon_sunset": "16:59",
-    "asr_endtime": "20:27",
-    "ghrub_sunset": "20:41",
-    "maghrib": "20:46",
-    "isha": "22:17",
-    "shafaqal_ahmar_end_redlight": null,
-    "shafaqal_abyadh_end_whitelight": "00:10",
-    "muntasafallayl_midnight": "01:17",
-    "fajr_sadiq": null,
-    "fajr": "03:17",
-    "fajr_endtime": "05:51",
-    "shuruq_sunrise": "05:53",
-    "laylat_falakia_one3rd": "23:45",
-    "laylat_falakia_two3rd": "02:49",
-    "laylatal_shariea_one3rd": "22:50",
-    "laylatal_shariea_two3rd": "00:58",
-    "prayer_after_sunrise": "06:07",
-    "altitude_noon": null,
-    "altitude_midnight": null,
-    "asr_1x_shadow": "17:11",
-    "asr_2x_shadow": "18:12",
-    "asr_wusta_noon_sunset": "16:59",
-    "sun_shadow_noon": "1.137810",
-    "sun_shadow_wusta": "2.019031",
-    "elevation_noon": "41.311635",
-    "elevation_asrwusta": "26.348621",
-    "elevation_shadow_1x": "25.003681",
-    "elevation_shadow_2x": "17.595272",
-    "elevation_midnight": "-19.296596"
-  },
-  {
-    "location": "Indre Østfold - Askim - Mysen - Skjønhaug - Spydeberg - Tomter",
-    "date": "25-08-2025",
-    "district_code": "NO3118",
-    "kommune": "Indre Østfold",
-    "hijri_date": "2-3-1447",
-    "istiwa_noon": "13:17",
-    "duhr": "13:27",
-    "asr": "17:09",
-    "shadow_1x": "17:09",
-    "shadow_2x": "18:10",
-    "wusta_noon_sunset": "16:58",
-    "asr_endtime": "20:24",
-    "ghrub_sunset": "20:38",
-    "maghrib": "20:43",
-    "isha": "22:16",
-    "shafaqal_ahmar_end_redlight": null,
-    "shafaqal_abyadh_end_whitelight": "23:54",
-    "muntasafallayl_midnight": "01:17",
-    "fajr_sadiq": null,
-    "fajr": "03:17",
-    "fajr_endtime": "05:53",
-    "shuruq_sunrise": "05:55",
-    "laylat_falakia_one3rd": "23:44",
-    "laylat_falakia_two3rd": "02:50",
-    "laylatal_shariea_one3rd": "22:49",
-    "laylatal_shariea_two3rd": "01:00",
-    "prayer_after_sunrise": "06:09",
-    "altitude_noon": null,
-    "altitude_midnight": null,
-    "asr_1x_shadow": "17:09",
-    "asr_2x_shadow": "18:10",
-    "asr_wusta_noon_sunset": "16:58",
-    "sun_shadow_noon": "1.151715",
-    "sun_shadow_wusta": "2.032964",
-    "elevation_noon": "40.966823",
-    "elevation_asrwusta": "26.192233",
-    "elevation_shadow_1x": "24.862177",
-    "elevation_shadow_2x": "17.521998",
-    "elevation_midnight": "-19.639974"
-  },
-  {
-    "location": "Indre Østfold - Askim - Mysen - Skjønhaug - Spydeberg - Tomter",
-    "date": "26-08-2025",
-    "district_code": "NO3118",
-    "kommune": "Indre Østfold",
-    "hijri_date": "3-3-1447",
-    "istiwa_noon": "13:17",
-    "duhr": "13:27",
-    "asr": "17:07",
-    "shadow_1x": "17:07",
-    "shadow_2x": "18:07",
-    "wusta_noon_sunset": "16:56",
-    "asr_endtime": "20:21",
-    "ghrub_sunset": "20:35",
-    "maghrib": "20:40",
-    "isha": "22:15",
-    "shafaqal_ahmar_end_redlight": null,
-    "shafaqal_abyadh_end_whitelight": "23:46",
-    "muntasafallayl_midnight": "01:17",
-    "fajr_sadiq": "03:17",
-    "fajr": "03:17",
-    "fajr_endtime": "05:56",
-    "shuruq_sunrise": "05:58",
-    "laylat_falakia_one3rd": "23:43",
-    "laylat_falakia_two3rd": "02:50",
-    "laylatal_shariea_one3rd": "22:49",
-    "laylatal_shariea_two3rd": "01:03",
-    "prayer_after_sunrise": "06:12",
-    "altitude_noon": null,
-    "altitude_midnight": null,
-    "asr_1x_shadow": "17:07",
-    "asr_2x_shadow": "18:07",
-    "asr_wusta_noon_sunset": "16:56",
-    "sun_shadow_noon": "1.165928",
-    "sun_shadow_wusta": "2.047440",
-    "elevation_noon": "40.619227",
-    "elevation_asrwusta": "26.031571",
-    "elevation_shadow_1x": "24.716417",
-    "elevation_shadow_2x": "17.446948",
-    "elevation_midnight": "-19.986186"
-  },
-  {
-    "location": "Indre Østfold - Askim - Mysen - Skjønhaug - Spydeberg - Tomter",
-    "date": "27-08-2025",
-    "district_code": "NO3118",
-    "kommune": "Indre Østfold",
-    "hijri_date": "4-3-1447",
-    "istiwa_noon": "13:16",
-    "duhr": "13:26",
-    "asr": "17:06",
-    "shadow_1x": "17:06",
-    "shadow_2x": "18:05",
-    "wusta_noon_sunset": "16:54",
-    "asr_endtime": "20:19",
-    "ghrub_sunset": "20:33",
-    "maghrib": "20:38",
-    "isha": "22:14",
-    "shafaqal_ahmar_end_redlight": null,
-    "shafaqal_abyadh_end_whitelight": "23:39",
-    "muntasafallayl_midnight": "01:16",
-    "fajr_sadiq": "03:21",
-    "fajr": "03:21",
-    "fajr_endtime": "05:58",
-    "shuruq_sunrise": "06:00",
-    "laylat_falakia_one3rd": "23:42",
-    "laylat_falakia_two3rd": "02:51",
-    "laylatal_shariea_one3rd": "22:49",
-    "laylatal_shariea_two3rd": "01:05",
-    "prayer_after_sunrise": "06:14",
-    "altitude_noon": null,
-    "altitude_midnight": null,
-    "asr_1x_shadow": "17:06",
-    "asr_2x_shadow": "18:05",
-    "asr_wusta_noon_sunset": "16:54",
-    "sun_shadow_noon": "1.180457",
-    "sun_shadow_wusta": "2.062293",
-    "elevation_noon": "40.268929",
-    "elevation_asrwusta": "25.868616",
-    "elevation_shadow_1x": "24.572278",
-    "elevation_shadow_2x": "17.372263",
-    "elevation_midnight": "-20.335144"
-  },
-  {
-    "location": "Indre Østfold - Askim - Mysen - Skjønhaug - Spydeberg - Tomter",
-    "date": "28-08-2025",
-    "district_code": "NO3118",
-    "kommune": "Indre Østfold",
-    "hijri_date": "5-3-1447",
-    "istiwa_noon": "13:16",
-    "duhr": "13:26",
-    "asr": "17:04",
-    "shadow_1x": "17:04",
-    "shadow_2x": "18:03",
-    "wusta_noon_sunset": "16:53",
-    "asr_endtime": "20:16",
-    "ghrub_sunset": "20:30",
-    "maghrib": "20:35",
-    "isha": "22:13",
-    "shafaqal_ahmar_end_redlight": null,
-    "shafaqal_abyadh_end_whitelight": "23:33",
-    "muntasafallayl_midnight": "01:16",
-    "fajr_sadiq": "03:26",
-    "fajr": "03:26",
-    "fajr_endtime": "06:00",
-    "shuruq_sunrise": "06:02",
-    "laylat_falakia_one3rd": "23:41",
-    "laylat_falakia_two3rd": "02:51",
-    "laylatal_shariea_one3rd": "22:48",
-    "laylatal_shariea_two3rd": "01:07",
-    "prayer_after_sunrise": "06:16",
-    "altitude_noon": null,
-    "altitude_midnight": null,
-    "asr_1x_shadow": "17:04",
-    "asr_2x_shadow": "18:03",
-    "asr_wusta_noon_sunset": "16:53",
-    "sun_shadow_noon": "1.195307",
-    "sun_shadow_wusta": "2.077701",
-    "elevation_noon": "39.916023",
-    "elevation_asrwusta": "25.701566",
-    "elevation_shadow_1x": "24.424024",
-    "elevation_shadow_2x": "17.295924",
-    "elevation_midnight": "-20.686754"
-  },
-  {
-    "location": "Indre Østfold - Askim - Mysen - Skjønhaug - Spydeberg - Tomter",
-    "date": "29-08-2025",
-    "district_code": "NO3118",
-    "kommune": "Indre Østfold",
-    "hijri_date": "6-3-1447",
-    "istiwa_noon": "13:16",
-    "duhr": "13:26",
-    "asr": "17:02",
-    "shadow_1x": "17:02",
-    "shadow_2x": "18:01",
-    "wusta_noon_sunset": "16:51",
-    "asr_endtime": "20:13",
-    "ghrub_sunset": "20:27",
-    "maghrib": "20:32",
-    "isha": "22:12",
-    "shafaqal_ahmar_end_redlight": null,
-    "shafaqal_abyadh_end_whitelight": "23:27",
-    "muntasafallayl_midnight": "01:16",
-    "fajr_sadiq": "03:31",
-    "fajr": "03:31",
-    "fajr_endtime": "06:03",
-    "shuruq_sunrise": "06:05",
-    "laylat_falakia_one3rd": "23:39",
-    "laylat_falakia_two3rd": "02:52",
-    "laylatal_shariea_one3rd": "22:48",
-    "laylatal_shariea_two3rd": "01:09",
-    "prayer_after_sunrise": "06:19",
-    "altitude_noon": null,
-    "altitude_midnight": null,
-    "asr_1x_shadow": "17:02",
-    "asr_2x_shadow": "18:01",
-    "asr_wusta_noon_sunset": "16:51",
-    "sun_shadow_noon": "1.210486",
-    "sun_shadow_wusta": "2.093497",
-    "elevation_noon": "39.560595",
-    "elevation_asrwusta": "25.532386",
-    "elevation_shadow_1x": "24.275573",
-    "elevation_shadow_2x": "17.217993",
-    "elevation_midnight": "-21.040931"
-  },
-  {
-    "location": "Indre Østfold - Askim - Mysen - Skjønhaug - Spydeberg - Tomter",
-    "date": "30-08-2025",
-    "district_code": "NO3118",
-    "kommune": "Indre Østfold",
-    "hijri_date": "7-3-1447",
-    "istiwa_noon": "13:15",
-    "duhr": "13:25",
-    "asr": "17:01",
-    "shadow_1x": "17:01",
-    "shadow_2x": "17:59",
-    "wusta_noon_sunset": "16:50",
-    "asr_endtime": "20:10",
-    "ghrub_sunset": "20:24",
-    "maghrib": "20:29",
-    "isha": "22:11",
-    "shafaqal_ahmar_end_redlight": null,
-    "shafaqal_abyadh_end_whitelight": "23:21",
-    "muntasafallayl_midnight": "01:15",
-    "fajr_sadiq": "03:35",
-    "fajr": "03:35",
-    "fajr_endtime": "06:05",
-    "shuruq_sunrise": "06:07",
-    "laylat_falakia_one3rd": "23:38",
-    "laylat_falakia_two3rd": "02:53",
-    "laylatal_shariea_one3rd": "22:47",
-    "laylatal_shariea_two3rd": "01:11",
-    "prayer_after_sunrise": "06:21",
-    "altitude_noon": null,
-    "altitude_midnight": null,
-    "asr_1x_shadow": "17:01",
-    "asr_2x_shadow": "17:59",
-    "asr_wusta_noon_sunset": "16:50",
-    "sun_shadow_noon": "1.226002",
-    "sun_shadow_wusta": "2.109863",
-    "elevation_noon": "39.202733",
-    "elevation_asrwusta": "25.359292",
-    "elevation_shadow_1x": "24.125068",
-    "elevation_shadow_2x": "17.138535",
-    "elevation_midnight": "-21.397587"
-  },
-  {
-    "location": "Indre Østfold - Askim - Mysen - Skjønhaug - Spydeberg - Tomter",
-    "date": "31-08-2025",
-    "district_code": "NO3118",
-    "kommune": "Indre Østfold",
-    "hijri_date": "8-3-1447",
-    "istiwa_noon": "13:15",
-    "duhr": "13:25",
-    "asr": "16:59",
-    "shadow_1x": "16:59",
-    "shadow_2x": "17:57",
-    "wusta_noon_sunset": "16:48",
-    "asr_endtime": "20:07",
-    "ghrub_sunset": "20:21",
-    "maghrib": "20:26",
-    "isha": "22:10",
-    "shafaqal_ahmar_end_redlight": null,
-    "shafaqal_abyadh_end_whitelight": "23:15",
-    "muntasafallayl_midnight": "01:15",
-    "fajr_sadiq": "03:39",
-    "fajr": "03:39",
-    "fajr_endtime": "06:07",
-    "shuruq_sunrise": "06:09",
-    "laylat_falakia_one3rd": "23:37",
-    "laylat_falakia_two3rd": "02:53",
-    "laylatal_shariea_one3rd": "22:47",
-    "laylatal_shariea_two3rd": "01:13",
-    "prayer_after_sunrise": "06:23",
-    "altitude_noon": null,
-    "altitude_midnight": null,
-    "asr_1x_shadow": "16:59",
-    "asr_2x_shadow": "17:57",
-    "asr_wusta_noon_sunset": "16:48",
-    "sun_shadow_noon": "1.241860",
-    "sun_shadow_wusta": "2.126627",
-    "elevation_noon": "38.842531",
-    "elevation_asrwusta": "25.184235",
-    "elevation_shadow_1x": "23.972580",
-    "elevation_shadow_2x": "17.059672",
-    "elevation_midnight": "-21.756633"
-  }
-]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5, minimum-scale=0.5, user-scalable=yes" />
+  <title>Prayer & Info Dashboard</title>
+  <style>
+    html, body {
+      margin: 0; padding: 0;
+      height: 100%; min-height: 100vh;
+      background: linear-gradient(135deg, #0a2233 0%, #1a2a38 100%);
+      color: #f3f7fa;
+      font-family: Arial, sans-serif; /* changed from Inter to Arial for offline */
+      overflow-x: hidden !important;
+    }
+    body {
+      min-height: 100vh;
+      overflow-y: auto;
+      font-size: clamp(16px, 2vw, 24px);
+    }
+    .page {
+      height: 100vh;
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: auto;
+      padding: 0 1rem;
+      box-sizing: border-box;
+      background: transparent;
+      color: #eaf6fb;
+      font-family: Arial, sans-serif;
+      display: none;
+      flex-direction: column;
+      position: relative;
+    }
+    .page.active {
+      display: flex;
+    }
+    #page1 main, #page1 .glass-panel, #page1 .prayer-table,
+    #page2 .glass-panel {
+      padding-left: 0;
+      padding-right: 0;
+      margin-left: 0;
+      margin-right: 0;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    #page1 main,
+    #page1 .glass-panel,
+    #page1 .prayer-table {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    #page1 header {
+      height: 7.5rem;
+      background: rgba(18,28,38,0.98);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.7);
+      user-select: none;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 0.5rem;
+      box-sizing: border-box;
+      z-index: 10;
+      position: relative;
+    }
+    #page1 header .time {
+      color: #ffffff;
+      font-variant-numeric: tabular-nums;
+      user-select: none;
+      font-weight: 700;
+      font-size: clamp(6rem, 9vw, 10rem);
+      white-space: nowrap;
+      cursor: default;
+      margin: 1.5rem 0 0 0;
+      text-align: center;
+      line-height: 1;
+      max-width: none;
+      background: transparent;
+      border-radius: 0;
+      padding: 0;
+      box-shadow: none;
+      position: static;
+      z-index: auto;
+      flex-grow: 0;
+    }
+    #page1 main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      background: transparent;
+      overflow: hidden;
+      box-sizing: border-box;
+      margin-top: 1rem;
+      height: calc(100vh - 9.5rem);
+    }
+    #page1 .glass-panel {
+      background: rgba(18, 28, 38, 0.93);
+      border-radius: 14px;
+      backdrop-filter: blur(4px);
+      border: 2px solid #7fff00;
+      box-shadow:
+        0 0 0 1px #7fff0099,
+        0 0 15px 2px #7fff0077,
+        0 0 30px 5px #7fff0044;
+      box-sizing: border-box;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      width: 98vw;
+      max-width: 98vw;
+      max-height: calc(100vh - 9.5rem);
+      padding: 12px 24px;
+      margin-top: 8px;
+      animation: glow-shift 4s ease-in-out infinite;
+    }
+    #page2 {
+      display: none;
+      position: relative;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+      background: transparent;
+      box-sizing: border-box;
+      padding: 2rem 1rem 1rem 1rem;
+      color: #7fff00;
+      font-family: Arial, sans-serif;
+    }
+    #page2.active {
+      display: flex;
+    }
+    #page2 .countdown-label {
+      font-size: clamp(4rem, 6vw, 7rem);
+      font-weight: 700;
+      margin-bottom: 0.5em;
+    }
+    #page2 .countdown-number {
+      font-family: Arial, Verdana, monospace;
+      font-weight: 900;
+      font-size: clamp(12rem, 18vw, 22rem);
+      line-height: 1;
+      margin-bottom: 0.3em;
+    }
+    #page2 .countdown-number.blinking {
+      animation: blink 1s step-start 0s infinite;
+    }
+    #page2 .current-prayer-info {
+      font-size: clamp(3rem, 4vw, 5rem);
+      font-weight: 700;
+      max-width: 80vw;
+      line-height: 1.1;
+      user-select: none;
+      margin-bottom: 1.5rem;
+    }
+    #page2 .askim-weather {
+      font-size: clamp(2rem, 3vw, 3rem);
+      font-weight: 700;
+      margin-top: 1rem;
+      text-align: center;
+      user-select: none;
+      line-height: 1.2;
+      color: #7fff00;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    @keyframes glow-shift {
+      0%, 100% {
+        border-color: #7fff00;
+        box-shadow:
+          0 0 0 1px #7fff0099,
+          0 0 15px 2px #7fff0077,
+          0 0 30px 5px #7fff0044;
+      }
+      50% {
+        border-color: #ffff33;
+        box-shadow:
+          0 0 0 1px #ffff3399,
+          0 0 15px 2px #ffff3377,
+          0 0 30px 5px #ffff3344;
+      }
+    }
+    #page1 .prayer-table {
+      width: 100%;
+      height: 100%;
+      max-width: none !important;
+      font-size: clamp(3.5rem, 4vw, 6.5rem) !important;
+      font-weight: 900;
+      user-select: text;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+    #page1 .prayer-table table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      width: 100% !important;
+      height: 100% !important;
+      font-weight: 900;
+      font-size: inherit !important;
+      color: #ffffff;
+      word-break: break-word;
+      white-space: nowrap;
+      margin: 0;
+      border-radius: 0 0 14px 14px;
+      border: none;
+      box-sizing: border-box;
+      padding-bottom: 0.5rem;
+      display: table;
+      table-layout: fixed;
+    }
+    #page1 .prayer-table tbody tr {
+      height: calc(100% / 7);
+    }
+    #page1 .prayer-table thead tr {
+      background-color: rgba(18, 28, 38, 0.9);
+      font-size: clamp(4rem, 5vw, 6.5rem) !important;
+      color: #7fff00 !important;
+      text-shadow: none;
+      height: auto;
+    }
+    #page1 .prayer-table thead th {
+      color: #7fff00 !important;
+      border-left: 2px solid rgba(127, 255, 0, 0.6);
+      border-bottom: 2px solid rgba(127, 255, 0, 0.6);
+      border-right: 2px solid rgba(127, 255, 0, 0.6);
+      padding: 0.6rem 1.5rem !important;
+      font-weight: 900;
+      user-select: none;
+      width: 50%;
+    }
+    #page1 .prayer-table th,
+    #page1 .prayer-table td {
+      width: 50%;
+      padding: 0.6rem 1.5rem !important;
+      border-bottom: 2px solid rgba(127, 255, 0, 0.6);
+      color: #ffffff;
+      text-align: center;
+      white-space: normal; /* allow wrapping by default */
+      user-select: none;
+      font-size: inherit;
+      font-weight: 900;
+      font-family: Arial, Verdana, monospace; /* fallback font */
+      line-height: 1.1;
+      transition: color 0.3s ease;
+      vertical-align: middle;
+      box-sizing: border-box;
+    }
+    #page1 .prayer-table th:first-child,
+    #page1 .prayer-table td:first-child {
+      border-left: none;
+      border-right: none;
+      text-align: left;
+      padding-left: 1.5rem !important;
+      width: auto;
+      white-space: nowrap;
+      overflow: visible;
+      word-break: normal;
+    }
+    #page1 .prayer-table th:last-child,
+    #page1 .prayer-table td:last-child {
+      border-left: 2px solid rgba(127, 255, 0, 0.6);
+      border-right: none;
+      text-align: center;
+      white-space: nowrap;
+    }
+    #page1 .prayer-table tbody tr:last-child td {
+      border-bottom: none !important;
+      border-bottom-left-radius: 14px;
+      border-bottom-right-radius: 14px;
+    }
+    #page1 .prayer-table tbody tr.current-prayer {
+      background-color: rgba(127, 255, 0, 0.25);
+      color: #7fff00;
+      font-weight: 900;
+      text-shadow: none;
+    }
+    #page1 .prayer-table tbody tr .jamat-time.blinking {
+      color: #7fff00 !important;
+      animation: blink 1s step-start 0s infinite;
+      font-weight: 900;
+    }
+    #page1 .prayer-table tbody tr .blinking {
+      animation: blink 1s step-start 0s infinite;
+    }
+    .solid-green {
+      color: #7fff00 !important;
+      font-weight: 900 !important;
+      animation: none !important;
+    }
+    @media screen and (max-width: 600px) {
+      #page1 .prayer-table {
+        font-size: clamp(2rem, 4vw, 5rem) !important;
+      }
+      #page1 .prayer-table thead th {
+        font-size: clamp(2.5rem, 5vw, 4rem) !important;
+      }
+      #page2 .countdown-number {
+        font-size: clamp(8rem, 14vw, 16rem);
+      }
+      #page2 .countdown-label {
+        font-size: clamp(2rem, 5vw, 3rem);
+      }
+      #page2 .current-prayer-info {
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        max-width: 90vw;
+      }
+      #page1 header {
+        height: 5rem;
+      }
+      #page1 header .time {
+        font-size: clamp(3rem, 7vw, 6rem);
+        margin: 0.75rem 0 0 0;
+      }
+      #page1 .prayer-table td:first-child,
+      #page1 .prayer-table th:first-child {
+        padding-left: 1rem !important;
+      }
+    }
+    @media screen and (max-height: 500px) and (orientation: landscape) {
+      .page {
+        height: 100%;
+        max-height: 100%;
+      }
+      #page1 main {
+        height: auto;
+        max-height: 60vh;
+        margin-top: 0.5rem;
+      }
+    }
+    body {
+      overflow-x: hidden;
+    }
+  </style>
+
+  <!-- Auto-refresh page every 5 minutes -->
+  <meta http-equiv="refresh" content="300">
+
+</head>
+<body>
+
+  <div id="page1" class="page active" role="main" aria-label="Prayer Times Dashboard">
+    <header>
+      <div class="time" id="time-line" title="Current time with seconds" aria-live="polite" aria-atomic="true"></div>
+    </header>
+    <main>
+      <section class="glass-panel" aria-label="Jamat Times Prayer Table">
+        <div class="prayer-table" aria-describedby="prayer-description">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Salat</th>
+                <th scope="col">Jamat</th>
+              </tr>
+            </thead>
+            <tbody id="prayer-row"></tbody>
+          </table>
+          <div id="prayer-description" hidden>
+            This table displays prayer names with their corresponding Jamat times. Azan times are hidden.
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="page2" class="page" aria-label="Glowing Countdown and Dates" role="region" tabindex="0" aria-live="polite" aria-atomic="true">
+    <div class="date-panel date-gregorian" id="date-gregorian-line-2" title="Current Gregorian date"></div>
+    <div class="glass-panel">
+      <div class="countdown-label" aria-live="assertive" aria-atomic="true"></div>
+      <div class="countdown-number" aria-live="assertive" aria-atomic="true"></div>
+      <div class="current-prayer-info" aria-live="polite" aria-atomic="true"></div>
+      <div class="askim-weather" aria-live="polite" aria-atomic="true">
+        <div id="askim-temperature">Temperature Askim right now is: Loading...</div>
+        <div id="askim-sunrise">Sunrise time in Askim today: Loading...</div>
+      </div>
+    </div>
+    <div class="date-panel date-hijri" id="date-hijri-line-2" title="Current Hijri date"></div>
+  </div>
+
+  <script>
+    let hijriDate = "";
+    let prayers = [];
+    let sunriseTime = null;
+
+    const BLINK_WINDOW_MS = 30000; // 30 seconds blinking window
+
+    function parseTimeToDate(timeStr) {
+      if (!timeStr || timeStr === "--:--") return null;
+      const [hh, mm] = timeStr.split(":").map(Number);
+      if (isNaN(hh) || isNaN(mm)) return null;
+      const now = new Date();
+      return new Date(now.getFullYear(), now.getMonth(), now.getDate(), hh, mm, 0, 0);
+    }
+
+    function updateDateTime() {
+      const now = new Date();
+      const gregorianDate = now.toLocaleDateString("en-GB", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      }).replace(/,/g, '');
+      const timeStr = now.toLocaleTimeString("en-GB", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false,
+      });
+      document.getElementById("time-line").textContent = timeStr;
+      document.getElementById("date-gregorian-line-2").textContent = gregorianDate;
+      document.getElementById("date-hijri-line-2").textContent = hijriDate;
+    }
+
+    async function fetchHijriDate() {
+      try {
+        const today = new Date();
+        const day = String(today.getDate()).padStart(2,'0');
+        const month = String(today.getMonth()+1).padStart(2,'0');
+        const year = today.getFullYear();
+        const res = await fetch(`https://api.aladhan.com/v1/gToH?date=${day}-${month}-${year}`);
+        const data = await res.json();
+        if(data && data.data && data.data.hijri) {
+          const h = data.data.hijri;
+          hijriDate = `${h.day} ${h.month.en} ${h.year}`;
+        } else {
+          hijriDate = '';
+        }
+      } catch {
+        hijriDate = '';
+      }
+      document.getElementById("date-hijri-line-2").textContent = hijriDate;
+    }
+
+    async function fetchPrayerTimes() {
+      try {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, "0");
+        const day = String(today.getDate()).padStart(2, "0");
+
+        const url = `https://api.bonnetid.no/prayertimes/122/${year}/${month}/${day}/?asr=2`;
+        const response = await fetch(url, {
+          method: "GET",
+          headers: {
+            "Api-Token": "92affaa6-0e9b-4402-8d8a-0fcd8d9e91ec"
+          },
+        });
+        if (!response.ok) throw new Error(`HTTP error! ${response.status}`);
+        const data = await response.json();
+
+        if(!data){
+          prayers = [];
+          sunriseTime = null;
+          return;
+        }
+
+        // Parse sunrise time
+        sunriseTime = parseTimeToDate(data.sunrise);
+
+        // Construct prayer times array from Bonnetid API data
+        prayers = [
+          { name: "Fajr", azanTime: parseTimeToDate(data.fajr), jamatTime: parseTimeToDate("04:40") },
+          { name: "Zuhr", azanTime: parseTimeToDate(data.zuhr), jamatTime: parseTimeToDate("15:00") },
+          { name: "Asr", azanTime: parseTimeToDate(data.asr), jamatTime: parseTimeToDate("20:00") },
+          { name: "Maghrib", azanTime: parseTimeToDate(data.maghrib), jamatTime: parseTimeToDate(data.maghrib) },
+          { name: "Isha", azanTime: null, jamatTime: null },
+          { name: "Jummah", azanTime: parseTimeToDate(data.jumuah || data.zuhr), jamatTime: parseTimeToDate("15:00") }
+        ];
+
+        // Adjust Jummah times based on maghrib if present
+        const maghribDate = parseTimeToDate(data.maghrib);
+        if (maghribDate) {
+          prayers[4].azanTime = new Date(maghribDate.getTime() + 20 * 60000);
+          prayers[4].jamatTime = prayers[4].azanTime;
+        } else {
+          prayers[4].azanTime = null;
+          prayers[4].jamatTime = null;
+        }
+
+      } catch (error) {
+        prayers = [];
+        sunriseTime = null;
+        console.error("Failed to fetch prayer times:", error);
+      }
+    }
+
+    function updatePrayerTable() {
+      const tbody = document.getElementById("prayer-row");
+      tbody.innerHTML = "";
+      if (!prayers.length) {
+        tbody.innerHTML = "<tr><td colspan='2'>Prayer times unavailable</td></tr>";
+        return;
+      }
+
+      const now = new Date().getTime();
+
+      let activePrayerIndex = -1;
+      for (let i = 0; i < prayers.length; i++) {
+        const p = prayers[i];
+        if (!p.azanTime) continue;
+        const azanMs = p.azanTime.getTime();
+        const nextPr = prayers[i + 1];
+        const nextAzanMs = nextPr && nextPr.azanTime ? nextPr.azanTime.getTime() : azanMs + 24 * 60 * 60 * 1000;
+
+        if (now >= azanMs && now < nextAzanMs) {
+          activePrayerIndex = i;
+          break;
+        }
+      }
+
+      prayers.forEach((p, idx) => {
+        const tr = document.createElement("tr");
+        if (idx === activePrayerIndex) tr.classList.add("current-prayer");
+
+        const tdName = document.createElement("td");
+        tdName.textContent = p.name;
+
+        const tdJamat = document.createElement("td");
+        tdJamat.textContent = p.jamatTime
+          ? p.jamatTime.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", hour12: false })
+          : "--:--";
+        tdJamat.classList.add("jamat-time");
+
+        tdName.classList.remove("blinking", "solid-green");
+        tdJamat.classList.remove("blinking", "solid-green");
+
+        if (idx === activePrayerIndex) {
+          const azanMs = p.azanTime.getTime();
+          const jamatMs = p.jamatTime ? p.jamatTime.getTime() : null;
+
+          if (now >= azanMs && now < azanMs + 60000) {
+            tdName.classList.add("blinking");
+            tdName.classList.remove("solid-green");
+          } else if (now >= azanMs + 60000) {
+            tdName.classList.add("solid-green");
+            tdName.classList.remove("blinking");
+          }
+
+          if (jamatMs !== null) {
+            if (now >= jamatMs - 15000 && now <= jamatMs + 15000) {
+              tdJamat.classList.add("blinking");
+              tdJamat.classList.remove("solid-green");
+            } else if (now > jamatMs + 15000) {
+              tdJamat.classList.add("solid-green");
+              tdJamat.classList.remove("blinking");
+            } else {
+              tdJamat.classList.remove("blinking", "solid-green");
+            }
+          }
+        }
+
+        tr.appendChild(tdName);
+        tr.appendChild(tdJamat);
+        tbody.appendChild(tr);
+      });
+    }
+
+    function startCountdown() {
+      const countdownLabel = document.querySelector("#page2 .countdown-label");
+      const countdownNumber = document.querySelector("#page2 .countdown-number");
+      const prayerInfo = document.querySelector("#page2 .current-prayer-info");
+
+      if (countdownInterval) clearInterval(countdownInterval);
+
+      countdownInterval = setInterval(() => {
+        const now = new Date();
+
+        let nextPrayer = null;
+        for (let p of prayers) {
+          if(p.jamatTime && p.jamatTime > now) {
+            nextPrayer = p;
+            break;
+          }
+        }
+
+        if(!nextPrayer) {
+          const firstPrayer = prayers[0];
+          if(firstPrayer && firstPrayer.jamatTime) {
+            const tomorrowJamat = new Date(firstPrayer.jamatTime.getTime() + 24 * 60 * 60 * 1000);
+            const diff = tomorrowJamat.getTime() - now.getTime();
+
+            countdownLabel.textContent = `${firstPrayer.name} Jamat in:`;
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            countdownNumber.textContent = `${String(hours).padStart(2,"0")}:${String(minutes).padStart(2,"0")}:${String(seconds).padStart(2,"0")}`;
+            countdownNumber.classList.remove("blinking");
+            prayerInfo.textContent = "";
+          } else {
+            countdownLabel.textContent = "";
+            countdownNumber.textContent = "--:--:--";
+            countdownNumber.classList.remove("blinking");
+            prayerInfo.textContent = "";
+          }
+          return;
+        }
+
+        const diff = nextPrayer.jamatTime.getTime() - now.getTime();
+
+        if(diff <= 0) {
+          countdownLabel.textContent = "Starting prayer...";
+          countdownNumber.textContent = "00:00:00";
+          countdownNumber.classList.remove("blinking");
+          prayerInfo.textContent = "";
+          return;
+        }
+
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        countdownLabel.textContent = `${nextPrayer.name} Jamat in:`;
+        countdownNumber.textContent = `${String(hours).padStart(2,"0")}:${String(minutes).padStart(2,"0")}:${String(seconds).padStart(2,"0")}`;
+        prayerInfo.textContent = "";
+
+        if(diff <= BLINK_WINDOW_MS) {
+          countdownNumber.classList.add("blinking");
+        } else {
+          countdownNumber.classList.remove("blinking");
+        }
+      }, 500);
+    }
+
+    // Fetch temperature from Open-Meteo API
+    async function fetchTemperature() {
+      try {
+        const lat = 59.5772;
+        const lon = 11.1477;
+        const weatherRes = await fetch(
+          `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`
+        );
+        if (!weatherRes.ok) throw new Error("Failed to fetch temperature data");
+        const weatherData = await weatherRes.json();
+        const temperature = weatherData.current_weather?.temperature;
+
+        document.getElementById("askim-temperature").textContent =
+          temperature !== undefined && temperature !== null
+            ? `Temperature Askim right now is: ${temperature.toFixed(1)} °C`
+            : "Temperature Askim right now is: N/A";
+      } catch (error) {
+        console.error("Failed to fetch temperature:", error);
+        document.getElementById("askim-temperature").textContent = "Temperature Askim right now is: N/A";
+      }
+    }
+
+    // Update sunrise display from the Bonnetid API data's sunriseTime (already parsed)
+    function updateSunriseDisplay() {
+      const sunriseEl = document.getElementById("askim-sunrise");
+      if (!sunriseTime) {
+        sunriseEl.textContent = "Sunrise time in Askim today: N/A";
+        return;
+      }
+      sunriseEl.textContent = `Sunrise time in Askim today: ${sunriseTime.toLocaleTimeString("en-GB", {hour:"2-digit", minute:"2-digit", second:"2-digit", hour12:false})}`;
+    }
+
+    const page1 = document.getElementById('page1');
+    const page2 = document.getElementById('page2');
+
+    const PAGE2_DURATION = 10 * 1000;
+    const PAGE1_DURATION = 10 * 60 * 1000;
+
+    let pageCycleTimer = null;
+    let currentCyclePhase = 0;
+
+    function showPage(index) {
+      page1.classList.remove('active');
+      page2.classList.remove('active');
+      if (index === 0) page2.classList.add('active');
+      else if (index === 1) page1.classList.add('active');
+    }
+
+    function pageCycle() {
+      if (currentCyclePhase === 0) {
+        showPage(0);
+        currentCyclePhase = 1;
+        clearTimeout(pageCycleTimer);
+        pageCycleTimer = setTimeout(pageCycle, PAGE2_DURATION);
+      } else {
+        showPage(1);
+        currentCyclePhase = 0;
+        clearTimeout(pageCycleTimer);
+        pageCycleTimer = setTimeout(pageCycle, PAGE1_DURATION);
+      }
+    }
+
+    let countdownInterval = null;
+
+    async function initialize() {
+      await fetchHijriDate();
+      await fetchPrayerTimes();
+      updateDateTime();
+      updatePrayerTable();
+      updateSunriseDisplay();
+      await fetchTemperature();
+
+      startCountdown();
+
+      setInterval(async () => {
+        await fetchHijriDate();
+        await fetchPrayerTimes();
+        updatePrayerTable();
+        updateSunriseDisplay();
+        startCountdown();
+      }, 24 * 60 * 60 * 1000); // update prayer times & sunrise once daily
+
+      // To keep temperature fresh, update every 10 minutes
+      setInterval(fetchTemperature, 10 * 60 * 1000);
+
+      setInterval(() => {
+        updateDateTime();
+        updatePrayerTable();
+        updateSunriseDisplay();
+      }, 1000);
+
+      currentCyclePhase = 0;
+      pageCycle();
+    }
+
+    window.onload = initialize;
+  </script>
+
+</body>
+</html>

@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5, minimum-scale=0.5, user-scalable=yes" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=5, minimum-scale=0.5, user-scalable=yes" />
   <title>Prayer & Info Dashboard</title>
   <style>
     html,
@@ -388,9 +389,6 @@
       overflow-x: hidden;
     }
   </style>
-
-  <meta http-equiv="refresh" content="300">
-
 </head>
 
 <body>
@@ -419,7 +417,8 @@
     </main>
   </div>
 
-  <div id="page2" class="page" aria-label="Glowing Countdown and Dates" role="region" tabindex="0" aria-live="polite" aria-atomic="true">
+  <div id="page2" class="page" aria-label="Glowing Countdown and Dates" role="region" tabindex="0" aria-live="polite"
+    aria-atomic="true">
     <div class="date-panel date-gregorian" id="date-gregorian-line-2" title="Current Gregorian date"></div>
     <div class="glass-panel">
       <div class="countdown-label" aria-live="assertive" aria-atomic="true"></div>
@@ -437,6 +436,9 @@
     let hijriDate = "";
     let prayers = [];
     let sunriseTime = null;
+    let countdownInterval = null;
+    let pageCycleTimer = null;
+    let currentCyclePhase = 0;
 
     const BLINK_WINDOW_MS = 30000;
 
@@ -510,7 +512,6 @@
           return;
         }
 
-        // FIXED: Use correct property "shuruq_sunrise"
         sunriseTime = parseTimeToDate(data.shuruq_sunrise);
 
         prayers = [
@@ -538,6 +539,39 @@
       }
     }
 
+    function getActivePrayerIndex(prayers, now, sunriseTime) {
+      const nowMs = now.getTime();
+      const sunriseMs = sunriseTime ? sunriseTime.getTime() : null;
+
+      // Sort prayers by azan time ascending
+      const sortedPrayers = prayers
+        .map((p, i) => ({ index: i, azanTime: p.azanTime }))
+        .filter(p => p.azanTime)
+        .sort((a, b) => a.azanTime - b.azanTime);
+
+      let activeIndex = -1;
+      for (let i = sortedPrayers.length - 1; i >= 0; i--) {
+        if (nowMs >= sortedPrayers[i].azanTime.getTime()) {
+          activeIndex = sortedPrayers[i].index;
+          break;
+        }
+      }
+      if (activeIndex === -1) activeIndex = sortedPrayers[sortedPrayers.length - 1]?.index ?? 0;
+
+      // Clear Fajr after sunrise: if active is Fajr and now >= sunrise, move to next prayer
+      if (
+        sunriseMs &&
+        nowMs >= sunriseMs &&
+        prayers[activeIndex].name.toLowerCase() === "fajr"
+      ) {
+        const currentPrayerPos = sortedPrayers.findIndex(p => p.index === activeIndex);
+        const nextPrayerPos = (currentPrayerPos + 1) % sortedPrayers.length;
+        activeIndex = sortedPrayers[nextPrayerPos].index;
+      }
+
+      return activeIndex;
+    }
+
     function updatePrayerTable() {
       const tbody = document.getElementById("prayer-row");
       tbody.innerHTML = "";
@@ -546,61 +580,139 @@
         return;
       }
 
-      const now = new Date().getTime();
+      const now = new Date();
+      const nowMs = now.getTime();
 
-      let activePrayerIndex = -1;
-      for (let i = 0; i < prayers.length; i++) {
-        const p = prayers[i];
-        if (!p.azanTime) continue;
-        const azanMs = p.azanTime.getTime();
-        const nextPr = prayers[i + 1];
-        const nextAzanMs = nextPr && nextPr.azanTime ? nextPr.azanTime.getTime() : azanMs + 24 * 60 * 60 * 1000;
+      const activePrayerIndex = getActivePrayerIndex(prayers, now, sunriseTime);
 
-        if (now >= azanMs && now < nextAzanMs) {
-          activePrayerIndex = i;
-          break;
+      const getNextPrayerAzan = (idx) => {
+        for (let offset = 1; offset <= prayers.length; offset++) {
+          const nextIdx = (idx + offset) % prayers.length;
+          const azan = prayers[nextIdx].azanTime;
+          if (azan) return azan;
         }
-      }
+        return null;
+      };
+
+      const sunriseMs = sunriseTime ? sunriseTime.getTime() : null;
 
       prayers.forEach((p, idx) => {
         const tr = document.createElement("tr");
-        if (idx === activePrayerIndex) tr.classList.add("current-prayer");
-
         const tdName = document.createElement("td");
         tdName.textContent = p.name;
-
         const tdJamat = document.createElement("td");
         tdJamat.textContent = p.jamatTime
-          ? p.jamatTime.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", hour12: false })
+          ? p.jamatTime.toLocaleTimeString("en-GB", { hour12: false, hour: "2-digit", minute: "2-digit" })
           : "--:--";
         tdJamat.classList.add("jamat-time");
 
+        tr.classList.remove("current-prayer");
         tdName.classList.remove("blinking", "solid-green");
         tdJamat.classList.remove("blinking", "solid-green");
 
-        if (idx === activePrayerIndex) {
-          const azanMs = p.azanTime.getTime();
-          const jamatMs = p.jamatTime ? p.jamatTime.getTime() : null;
+        let isIshaAfterJamat =
+          p.name.toLowerCase() === "isha" &&
+          p.jamatTime &&
+          nowMs > p.jamatTime.getTime() + 15000 &&
+          (!sunriseMs || nowMs < sunriseMs);
 
-          if (now >= azanMs && now < azanMs + 60000) {
+        let nextFajrAzan = null;
+        for (let pr of prayers) {
+          if (pr.name.toLowerCase() === "fajr" && pr.azanTime) {
+            nextFajrAzan = pr.azanTime;
+            if (pr.azanTime.getTime() < p.azanTime?.getTime()) {
+              nextFajrAzan = new Date(pr.azanTime.getTime() + 24 * 60 * 60 * 1000);
+            }
+            break;
+          }
+        }
+        let keepIshaBackground =
+          isIshaAfterJamat &&
+          (!nextFajrAzan || nowMs < nextFajrAzan.getTime());
+
+        if (idx === activePrayerIndex) {
+          if (!keepIshaBackground) {
+            tr.classList.add("current-prayer");
+          } else if (keepIshaBackground && p.name.toLowerCase() === "isha") {
+            tr.classList.add("current-prayer");
+          }
+        } else if (
+          prayers[activePrayerIndex].name.toLowerCase() === "isha" &&
+          prayers[activePrayerIndex].jamatTime &&
+          nowMs > prayers[activePrayerIndex].jamatTime.getTime() + 15000
+        ) {
+          if (p.name.toLowerCase() === "isha") {
+            tr.classList.add("current-prayer");
+          }
+        }
+
+        if (idx === activePrayerIndex) {
+          const azanMs = p.azanTime ? p.azanTime.getTime() : null;
+          const jamatMs = p.jamatTime ? p.jamatTime.getTime() : null;
+          const nextPrayerAzan = getNextPrayerAzan(idx);
+          const nextAzanMs = nextPrayerAzan ? nextPrayerAzan.getTime() : azanMs + 24 * 60 * 60 * 1000;
+
+          if (p.name.toLowerCase() === "fajr" && sunriseMs && nowMs >= sunriseMs) {
+            tdName.classList.remove("blinking", "solid-green");
+          } else if (p.name.toLowerCase() === "isha" && jamatMs && nowMs > jamatMs + 15000) {
+            tdName.classList.remove("blinking", "solid-green");
+          } else if (azanMs && nowMs >= azanMs && nowMs < azanMs + 60000) {
             tdName.classList.add("blinking");
             tdName.classList.remove("solid-green");
-          } else if (now >= azanMs + 60000) {
+          } else if (
+            azanMs &&
+            nowMs >= azanMs + 60000 &&
+            nowMs < nextAzanMs &&
+            !(p.name.toLowerCase() === "fajr" && sunriseMs && nowMs >= sunriseMs)
+          ) {
             tdName.classList.add("solid-green");
             tdName.classList.remove("blinking");
+          } else {
+            tdName.classList.remove("blinking", "solid-green");
           }
+        } else if (
+          p.name.toLowerCase() === "isha" &&
+          p.jamatTime &&
+          nowMs > p.jamatTime.getTime() + 15000
+        ) {
+          tdName.classList.remove("blinking", "solid-green");
+        } else {
+          tdName.classList.remove("blinking", "solid-green");
+        }
+
+        if (idx === activePrayerIndex) {
+          const jamatMs = p.jamatTime ? p.jamatTime.getTime() : null;
+          const nextPrayerAzan = getNextPrayerAzan(idx);
+          const nextAzanMs = nextPrayerAzan ? nextPrayerAzan.getTime() : Date.now() + 24 * 60 * 60 * 1000;
 
           if (jamatMs !== null) {
-            if (now >= jamatMs - 15000 && now <= jamatMs + 15000) {
+            if (nowMs >= jamatMs - 15000 && nowMs <= jamatMs + 15000) {
               tdJamat.classList.add("blinking");
               tdJamat.classList.remove("solid-green");
-            } else if (now > jamatMs + 15000) {
+            } else if (
+              nowMs > jamatMs + 15000 &&
+              nowMs < nextAzanMs &&
+              !(p.name.toLowerCase() === "isha" && nowMs > jamatMs + 15000)
+            ) {
               tdJamat.classList.add("solid-green");
               tdJamat.classList.remove("blinking");
+            } else if (
+              p.name.toLowerCase() === "isha" &&
+              nowMs > jamatMs + 15000
+            ) {
+              tdJamat.classList.remove("blinking", "solid-green");
             } else {
               tdJamat.classList.remove("blinking", "solid-green");
             }
           }
+        } else if (
+          p.name.toLowerCase() === "isha" &&
+          p.jamatTime &&
+          nowMs > p.jamatTime.getTime() + 15000
+        ) {
+          tdJamat.classList.remove("blinking", "solid-green");
+        } else {
+          tdJamat.classList.remove("blinking", "solid-green");
         }
 
         tr.appendChild(tdName);
@@ -716,25 +828,21 @@
     const PAGE2_DURATION = 10 * 1000;
     const PAGE1_DURATION = 10 * 60 * 1000;
 
-    let pageCycleTimer = null;
-    let currentCyclePhase = 0;
-    let countdownInterval = null;
-
     function showPage(index) {
       page1.classList.remove('active');
       page2.classList.remove('active');
-      if (index === 0) page2.classList.add('active');
-      else if (index === 1) page1.classList.add('active');
+      if (index === 0) page1.classList.add('active');
+      else if (index === 1) page2.classList.add('active');
     }
 
     function pageCycle() {
       if (currentCyclePhase === 0) {
-        showPage(0);
+        showPage(1);
         currentCyclePhase = 1;
         clearTimeout(pageCycleTimer);
         pageCycleTimer = setTimeout(pageCycle, PAGE2_DURATION);
       } else {
-        showPage(1);
+        showPage(0);
         currentCyclePhase = 0;
         clearTimeout(pageCycleTimer);
         pageCycleTimer = setTimeout(pageCycle, PAGE1_DURATION);

@@ -279,11 +279,12 @@
       border-bottom-left-radius: 14px;
       border-bottom-right-radius: 14px;
     }
-    /* Updated glass style highlight for current prayer */
+    /* Updated glass style highlight for current prayer with symmetrical glow and no left border */
     #page1 .prayer-table tbody tr.current-prayer {
       background-color: rgba(127, 255, 0, 0.15) !important;
-      border-left: 4px solid #7fff00;
-      box-shadow: 0 0 12px 3px rgba(127, 255, 0, 0.3);
+      border-left: none;
+      box-shadow:
+        0 0 12px 8px rgba(127, 255, 0, 0.4);
       color: #e0ffe0 !important;
       font-weight: 900;
       text-shadow: 0 0 8px rgba(127, 255, 0, 0.6);

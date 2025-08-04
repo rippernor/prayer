@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5, minimum-scale=0.5, user-scalable=yes" />
   <title>Prayer & Info Dashboard</title>
   <style>
-    html, body {
-      margin: 0; padding: 0;
-      height: 100%; min-height: 100vh;
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      min-height: 100vh;
       background: linear-gradient(135deg, #0a2233 0%, #1a2a38 100%);
       color: #f3f7fa;
       font-family: Arial, sans-serif;
       overflow-x: hidden !important;
     }
+
     body {
       min-height: 100vh;
       overflow-y: auto;
       font-size: clamp(16px, 2vw, 24px);
     }
+
     .page {
       height: 100vh;
       width: 100%;
@@ -33,10 +39,14 @@
       flex-direction: column;
       position: relative;
     }
+
     .page.active {
       display: flex;
     }
-    #page1 main, #page1 .glass-panel, #page1 .prayer-table,
+
+    #page1 main,
+    #page1 .glass-panel,
+    #page1 .prayer-table,
     #page2 .glass-panel {
       padding-left: 0;
       padding-right: 0;
@@ -45,6 +55,7 @@
       width: 100%;
       box-sizing: border-box;
     }
+
     #page1 main,
     #page1 .glass-panel,
     #page1 .prayer-table {
@@ -54,8 +65,8 @@
 
     #page1 header {
       height: 7.5rem;
-      background: rgba(18,28,38,0.98);
-      box-shadow: 0 2px 12px rgba(0,0,0,0.7);
+      background: rgba(18, 28, 38, 0.98);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
       user-select: none;
       font-weight: 700;
       color: #ffffff;
@@ -67,6 +78,7 @@
       z-index: 10;
       position: relative;
     }
+
     #page1 header .time {
       color: #ffffff;
       font-variant-numeric: tabular-nums;
@@ -87,6 +99,7 @@
       z-index: auto;
       flex-grow: 0;
     }
+
     #page1 main {
       flex: 1;
       display: flex;
@@ -98,15 +111,13 @@
       margin-top: 1rem;
       height: calc(100vh - 9.5rem);
     }
+
     #page1 .glass-panel {
       background: rgba(18, 28, 38, 0.93);
       border-radius: 14px;
       backdrop-filter: blur(4px);
       border: 2px solid #7fff00;
-      box-shadow:
-        0 0 0 1px #7fff0099,
-        0 0 15px 2px #7fff0077,
-        0 0 30px 5px #7fff0044;
+      box-shadow: 0 0 0 1px #7fff0099, 0 0 15px 2px #7fff0077, 0 0 30px 5px #7fff0044;
       box-sizing: border-box;
       color: #ffffff;
       display: flex;
@@ -121,6 +132,7 @@
       margin-top: 8px;
       animation: glow-shift 4s ease-in-out infinite;
     }
+
     #page2 {
       display: none;
       position: relative;
@@ -135,14 +147,17 @@
       color: #7fff00;
       font-family: Arial, sans-serif;
     }
+
     #page2.active {
       display: flex;
     }
+
     #page2 .countdown-label {
       font-size: clamp(4rem, 6vw, 7rem);
       font-weight: 700;
       margin-bottom: 0.5em;
     }
+
     #page2 .countdown-number {
       font-family: Arial, Verdana, monospace;
       font-weight: 900;
@@ -150,9 +165,11 @@
       line-height: 1;
       margin-bottom: 0.3em;
     }
+
     #page2 .countdown-number.blinking {
       animation: blink 1s step-start 0s infinite;
     }
+
     #page2 .current-prayer-info {
       font-size: clamp(3rem, 4vw, 5rem);
       font-weight: 700;
@@ -161,6 +178,7 @@
       user-select: none;
       margin-bottom: 1.5rem;
     }
+
     #page2 .askim-weather {
       font-size: clamp(2rem, 3vw, 3rem);
       font-weight: 700;
@@ -170,26 +188,30 @@
       line-height: 1.2;
       color: #7fff00;
     }
+
     @keyframes blink {
-      50% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-    @keyframes glow-shift {
-      0%, 100% {
-        border-color: #7fff00;
-        box-shadow:
-          0 0 0 1px #7fff0099,
-          0 0 15px 2px #7fff0077,
-          0 0 30px 5px #7fff0044;
+      50% {
+        opacity: 0;
       }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes glow-shift {
+      0%,
+      100% {
+        border-color: #7fff00;
+        box-shadow: 0 0 0 1px #7fff0099, 0 0 15px 2px #7fff0077, 0 0 30px 5px #7fff0044;
+      }
+
       50% {
         border-color: #ffff33;
-        box-shadow:
-          0 0 0 1px #ffff3399,
-          0 0 15px 2px #ffff3377,
-          0 0 30px 5px #ffff3344;
+        box-shadow: 0 0 0 1px #ffff3399, 0 0 15px 2px #ffff3377, 0 0 30px 5px #ffff3344;
       }
     }
+
     #page1 .prayer-table {
       width: 100%;
       height: 100%;
@@ -202,6 +224,7 @@
       justify-content: center;
       box-sizing: border-box;
     }
+
     #page1 .prayer-table table {
       border-collapse: collapse;
       border-spacing: 0;
@@ -220,9 +243,11 @@
       display: table;
       table-layout: fixed;
     }
+
     #page1 .prayer-table tbody tr {
       height: calc(100% / 7);
     }
+
     #page1 .prayer-table thead tr {
       background-color: rgba(18, 28, 38, 0.9);
       font-size: clamp(4rem, 5vw, 6.5rem) !important;
@@ -230,6 +255,7 @@
       text-shadow: none;
       height: auto;
     }
+
     #page1 .prayer-table thead th {
       color: #7fff00 !important;
       border-left: 2px solid rgba(127, 255, 0, 0.6);
@@ -240,6 +266,7 @@
       user-select: none;
       width: 50%;
     }
+
     #page1 .prayer-table th,
     #page1 .prayer-table td {
       width: 50%;
@@ -257,6 +284,7 @@
       vertical-align: middle;
       box-sizing: border-box;
     }
+
     #page1 .prayer-table th:first-child,
     #page1 .prayer-table td:first-child {
       border-left: none;
@@ -268,6 +296,7 @@
       overflow: visible;
       word-break: normal;
     }
+
     #page1 .prayer-table th:last-child,
     #page1 .prayer-table td:last-child {
       border-left: 2px solid rgba(127, 255, 0, 0.6);
@@ -275,70 +304,86 @@
       text-align: center;
       white-space: nowrap;
     }
+
     #page1 .prayer-table tbody tr:last-child td {
       border-bottom: none !important;
       border-bottom-left-radius: 14px;
       border-bottom-right-radius: 14px;
     }
+
     #page1 .prayer-table tbody tr.current-prayer {
       background-color: rgba(127, 255, 0, 0.25);
       color: #7fff00;
       font-weight: 900;
       text-shadow: none;
     }
+
     #page1 .prayer-table tbody tr .jamat-time.blinking {
       color: #7fff00 !important;
       animation: blink 1s step-start 0s infinite;
       font-weight: 900;
     }
+
     #page1 .prayer-table tbody tr .blinking {
       animation: blink 1s step-start 0s infinite;
     }
+
     .solid-green {
       color: #7fff00 !important;
       font-weight: 900 !important;
       animation: none !important;
     }
+
     @media screen and (max-width: 600px) {
       #page1 .prayer-table {
         font-size: clamp(2rem, 4vw, 5rem) !important;
       }
+
       #page1 .prayer-table thead th {
         font-size: clamp(2.5rem, 5vw, 4rem) !important;
       }
+
       #page2 .countdown-number {
         font-size: clamp(8rem, 14vw, 16rem);
       }
+
       #page2 .countdown-label {
         font-size: clamp(2rem, 5vw, 3rem);
       }
+
       #page2 .current-prayer-info {
         font-size: clamp(1.5rem, 4vw, 2.5rem);
         max-width: 90vw;
       }
+
       #page1 header {
         height: 5rem;
       }
+
       #page1 header .time {
         font-size: clamp(3rem, 7vw, 6rem);
         margin: 0.75rem 0 0 0;
       }
+
       #page1 .prayer-table td:first-child,
       #page1 .prayer-table th:first-child {
         padding-left: 1rem !important;
       }
     }
+
     @media screen and (max-height: 500px) and (orientation: landscape) {
       .page {
         height: 100%;
         max-height: 100%;
       }
+
       #page1 main {
         height: auto;
         max-height: 60vh;
         margin-top: 0.5rem;
       }
     }
+
     body {
       overflow-x: hidden;
     }
@@ -347,6 +392,7 @@
   <meta http-equiv="refresh" content="300">
 
 </head>
+
 <body>
 
   <div id="page1" class="page active" role="main" aria-label="Prayer Times Dashboard">
@@ -424,12 +470,12 @@
     async function fetchHijriDate() {
       try {
         const today = new Date();
-        const day = String(today.getDate()).padStart(2,'0');
-        const month = String(today.getMonth()+1).padStart(2,'0');
+        const day = String(today.getDate()).padStart(2, '0');
+        const month = String(today.getMonth() + 1).padStart(2, '0');
         const year = today.getFullYear();
         const res = await fetch(`https://api.aladhan.com/v1/gToH?date=${day}-${month}-${year}`);
         const data = await res.json();
-        if(data && data.data && data.data.hijri) {
+        if (data && data.data && data.data.hijri) {
           const h = data.data.hijri;
           hijriDate = `${h.day} ${h.month.en} ${h.year}`;
         } else {
@@ -458,13 +504,14 @@
         if (!response.ok) throw new Error(`HTTP error! ${response.status}`);
         const data = await response.json();
 
-        if(!data){
+        if (!data) {
           prayers = [];
           sunriseTime = null;
           return;
         }
 
-        sunriseTime = parseTimeToDate(data.sunrise);
+        // FIXED: Use correct property "shuruq_sunrise"
+        sunriseTime = parseTimeToDate(data.shuruq_sunrise);
 
         prayers = [
           { name: "Fajr", azanTime: parseTimeToDate(data.fajr), jamatTime: parseTimeToDate("04:40") },
@@ -574,15 +621,15 @@
 
         let nextPrayer = null;
         for (let p of prayers) {
-          if(p.jamatTime && p.jamatTime > now) {
+          if (p.jamatTime && p.jamatTime > now) {
             nextPrayer = p;
             break;
           }
         }
 
-        if(!nextPrayer) {
+        if (!nextPrayer) {
           const firstPrayer = prayers[0];
-          if(firstPrayer && firstPrayer.jamatTime) {
+          if (firstPrayer && firstPrayer.jamatTime) {
             const tomorrowJamat = new Date(firstPrayer.jamatTime.getTime() + 24 * 60 * 60 * 1000);
             const diff = tomorrowJamat.getTime() - now.getTime();
 
@@ -590,7 +637,7 @@
             const hours = Math.floor(diff / (1000 * 60 * 60));
             const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-            countdownNumber.textContent = `${String(hours).padStart(2,"0")}:${String(minutes).padStart(2,"0")}:${String(seconds).padStart(2,"0")}`;
+            countdownNumber.textContent = `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
             countdownNumber.classList.remove("blinking");
             prayerInfo.textContent = "";
           } else {
@@ -604,7 +651,7 @@
 
         const diff = nextPrayer.jamatTime.getTime() - now.getTime();
 
-        if(diff <= 0) {
+        if (diff <= 0) {
           countdownLabel.textContent = "Starting prayer...";
           countdownNumber.textContent = "00:00:00";
           countdownNumber.classList.remove("blinking");
@@ -617,10 +664,10 @@
         const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
         countdownLabel.textContent = `${nextPrayer.name} Jamat in:`;
-        countdownNumber.textContent = `${String(hours).padStart(2,"0")}:${String(minutes).padStart(2,"0")}:${String(seconds).padStart(2,"0")}`;
+        countdownNumber.textContent = `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
         prayerInfo.textContent = "";
 
-        if(diff <= BLINK_WINDOW_MS) {
+        if (diff <= BLINK_WINDOW_MS) {
           countdownNumber.classList.add("blinking");
         } else {
           countdownNumber.classList.remove("blinking");
@@ -655,7 +702,12 @@
         sunriseEl.textContent = "Sunrise time in Askim today: N/A";
         return;
       }
-      sunriseEl.textContent = `Sunrise time in Askim today: ${sunriseTime.toLocaleTimeString("en-GB", {hour:"2-digit", minute:"2-digit", second:"2-digit", hour12:false})}`;
+      sunriseEl.textContent = `Sunrise time in Askim today: ${sunriseTime.toLocaleTimeString("en-GB", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false
+      })}`;
     }
 
     const page1 = document.getElementById('page1');
@@ -723,4 +775,5 @@
   </script>
 
 </body>
+
 </html>

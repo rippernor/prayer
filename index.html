@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -19,13 +18,11 @@
       font-family: Arial, sans-serif;
       overflow-x: hidden !important;
     }
-
     body {
       min-height: 100vh;
       overflow-y: auto;
       font-size: clamp(16px, 2vw, 24px);
     }
-
     .page {
       height: 100vh;
       width: 100%;
@@ -40,11 +37,9 @@
       flex-direction: column;
       position: relative;
     }
-
     .page.active {
       display: flex;
     }
-
     #page1 main,
     #page1 .glass-panel,
     #page1 .prayer-table,
@@ -56,14 +51,12 @@
       width: 100%;
       box-sizing: border-box;
     }
-
     #page1 main,
     #page1 .glass-panel,
     #page1 .prayer-table {
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
     }
-
     #page1 header {
       height: 7.5rem;
       background: rgba(18, 28, 38, 0.98);
@@ -79,7 +72,6 @@
       z-index: 10;
       position: relative;
     }
-
     #page1 header .time {
       color: #ffffff;
       font-variant-numeric: tabular-nums;
@@ -100,7 +92,6 @@
       z-index: auto;
       flex-grow: 0;
     }
-
     #page1 main {
       flex: 1;
       display: flex;
@@ -112,7 +103,6 @@
       margin-top: 1rem;
       height: calc(100vh - 9.5rem);
     }
-
     #page1 .glass-panel {
       background: rgba(18, 28, 38, 0.93);
       border-radius: 14px;
@@ -133,7 +123,6 @@
       margin-top: 8px;
       animation: glow-shift 4s ease-in-out infinite;
     }
-
     #page2 {
       display: none;
       position: relative;
@@ -148,17 +137,14 @@
       color: #7fff00;
       font-family: Arial, sans-serif;
     }
-
     #page2.active {
       display: flex;
     }
-
     #page2 .countdown-label {
       font-size: clamp(4rem, 6vw, 7rem);
       font-weight: 700;
       margin-bottom: 0.5em;
     }
-
     #page2 .countdown-number {
       font-family: Arial, Verdana, monospace;
       font-weight: 900;
@@ -166,11 +152,9 @@
       line-height: 1;
       margin-bottom: 0.3em;
     }
-
     #page2 .countdown-number.blinking {
       animation: blink 1s step-start 0s infinite;
     }
-
     #page2 .current-prayer-info {
       font-size: clamp(3rem, 4vw, 5rem);
       font-weight: 700;
@@ -179,7 +163,6 @@
       user-select: none;
       margin-bottom: 1.5rem;
     }
-
     #page2 .askim-weather {
       font-size: clamp(2rem, 3vw, 3rem);
       font-weight: 700;
@@ -189,30 +172,24 @@
       line-height: 1.2;
       color: #7fff00;
     }
-
     @keyframes blink {
       50% {
         opacity: 0;
       }
-
       100% {
         opacity: 1;
       }
     }
-
     @keyframes glow-shift {
-      0%,
-      100% {
+      0%, 100% {
         border-color: #7fff00;
         box-shadow: 0 0 0 1px #7fff0099, 0 0 15px 2px #7fff0077, 0 0 30px 5px #7fff0044;
       }
-
       50% {
         border-color: #ffff33;
         box-shadow: 0 0 0 1px #ffff3399, 0 0 15px 2px #ffff3377, 0 0 30px 5px #ffff3344;
       }
     }
-
     #page1 .prayer-table {
       width: 100%;
       height: 100%;
@@ -225,7 +202,6 @@
       justify-content: center;
       box-sizing: border-box;
     }
-
     #page1 .prayer-table table {
       border-collapse: collapse;
       border-spacing: 0;
@@ -244,11 +220,10 @@
       display: table;
       table-layout: fixed;
     }
-
     #page1 .prayer-table tbody tr {
       height: calc(100% / 7);
+      transition: background-color 0.3s ease;
     }
-
     #page1 .prayer-table thead tr {
       background-color: rgba(18, 28, 38, 0.9);
       font-size: clamp(4rem, 5vw, 6.5rem) !important;
@@ -256,7 +231,6 @@
       text-shadow: none;
       height: auto;
     }
-
     #page1 .prayer-table thead th {
       color: #7fff00 !important;
       border-left: 2px solid rgba(127, 255, 0, 0.6);
@@ -267,7 +241,6 @@
       user-select: none;
       width: 50%;
     }
-
     #page1 .prayer-table th,
     #page1 .prayer-table td {
       width: 50%;
@@ -281,11 +254,8 @@
       font-weight: 900;
       font-family: Arial, Verdana, monospace;
       line-height: 1.1;
-      transition: color 0.3s ease;
-      vertical-align: middle;
       box-sizing: border-box;
     }
-
     #page1 .prayer-table th:first-child,
     #page1 .prayer-table td:first-child {
       border-left: none;
@@ -297,7 +267,6 @@
       overflow: visible;
       word-break: normal;
     }
-
     #page1 .prayer-table th:last-child,
     #page1 .prayer-table td:last-child {
       border-left: 2px solid rgba(127, 255, 0, 0.6);
@@ -305,92 +274,82 @@
       text-align: center;
       white-space: nowrap;
     }
-
     #page1 .prayer-table tbody tr:last-child td {
       border-bottom: none !important;
       border-bottom-left-radius: 14px;
       border-bottom-right-radius: 14px;
     }
-
+    /* Updated glass style highlight for current prayer */
     #page1 .prayer-table tbody tr.current-prayer {
-      background-color: rgba(127, 255, 0, 0.25);
-      color: #7fff00;
+      background-color: rgba(127, 255, 0, 0.15) !important;
+      border-left: 4px solid #7fff00;
+      box-shadow: 0 0 12px 3px rgba(127, 255, 0, 0.3);
+      color: #e0ffe0 !important;
       font-weight: 900;
-      text-shadow: none;
+      text-shadow: 0 0 8px rgba(127, 255, 0, 0.6);
+      transition: background-color 0.3s ease;
     }
-
+    #page1 .prayer-table tbody tr.current-prayer td {
+      color: #e0ffe0 !important;
+    }
     #page1 .prayer-table tbody tr .jamat-time.blinking {
       color: #7fff00 !important;
       animation: blink 1s step-start 0s infinite;
       font-weight: 900;
     }
-
     #page1 .prayer-table tbody tr .blinking {
       animation: blink 1s step-start 0s infinite;
     }
-
     .solid-green {
       color: #7fff00 !important;
       font-weight: 900 !important;
       animation: none !important;
     }
-
     @media screen and (max-width: 600px) {
       #page1 .prayer-table {
         font-size: clamp(2rem, 4vw, 5rem) !important;
       }
-
       #page1 .prayer-table thead th {
         font-size: clamp(2.5rem, 5vw, 4rem) !important;
       }
-
       #page2 .countdown-number {
         font-size: clamp(8rem, 14vw, 16rem);
       }
-
       #page2 .countdown-label {
         font-size: clamp(2rem, 5vw, 3rem);
       }
-
       #page2 .current-prayer-info {
         font-size: clamp(1.5rem, 4vw, 2.5rem);
         max-width: 90vw;
       }
-
       #page1 header {
         height: 5rem;
       }
-
       #page1 header .time {
         font-size: clamp(3rem, 7vw, 6rem);
         margin: 0.75rem 0 0 0;
       }
-
       #page1 .prayer-table td:first-child,
       #page1 .prayer-table th:first-child {
         padding-left: 1rem !important;
       }
     }
-
     @media screen and (max-height: 500px) and (orientation: landscape) {
       .page {
         height: 100%;
         max-height: 100%;
       }
-
       #page1 main {
         height: auto;
         max-height: 60vh;
         margin-top: 0.5rem;
       }
     }
-
     body {
       overflow-x: hidden;
     }
   </style>
 </head>
-
 <body>
 
   <div id="page1" class="page active" role="main" aria-label="Prayer Times Dashboard">
@@ -417,8 +376,8 @@
     </main>
   </div>
 
-  <div id="page2" class="page" aria-label="Glowing Countdown and Dates" role="region" tabindex="0" aria-live="polite"
-    aria-atomic="true">
+  <div id="page2" class="page" aria-label="Glowing Countdown and Dates" role="region" tabindex="0"
+    aria-live="polite" aria-atomic="true">
     <div class="date-panel date-gregorian" id="date-gregorian-line-2" title="Current Gregorian date"></div>
     <div class="glass-panel">
       <div class="countdown-label" aria-live="assertive" aria-atomic="true"></div>
@@ -515,12 +474,36 @@
         sunriseTime = parseTimeToDate(data.shuruq_sunrise);
 
         prayers = [
-          { name: "Fajr", azanTime: parseTimeToDate(data.fajr), jamatTime: parseTimeToDate("04:40") },
-          { name: "Zuhr", azanTime: parseTimeToDate(data.zuhr), jamatTime: parseTimeToDate("15:00") },
-          { name: "Asr", azanTime: parseTimeToDate(data.asr), jamatTime: parseTimeToDate("20:00") },
-          { name: "Maghrib", azanTime: parseTimeToDate(data.maghrib), jamatTime: parseTimeToDate(data.maghrib) },
-          { name: "Isha", azanTime: null, jamatTime: null },
-          { name: "Jummah", azanTime: parseTimeToDate(data.jumuah || data.zuhr), jamatTime: parseTimeToDate("15:00") }
+          {
+            name: "Fajr",
+            azanTime: parseTimeToDate(data.fajr),
+            jamatTime: parseTimeToDate("04:40")
+          },
+          {
+            name: "Zuhr",
+            azanTime: parseTimeToDate(data.zuhr),
+            jamatTime: parseTimeToDate("15:00")
+          },
+          {
+            name: "Asr",
+            azanTime: parseTimeToDate(data.asr),
+            jamatTime: parseTimeToDate("20:00")
+          },
+          {
+            name: "Maghrib",
+            azanTime: parseTimeToDate(data.maghrib),
+            jamatTime: parseTimeToDate(data.maghrib)
+          },
+          {
+            name: "Isha",
+            azanTime: null,
+            jamatTime: null
+          },
+          {
+            name: "Jummah",
+            azanTime: parseTimeToDate(data.jumuah || data.zuhr),
+            jamatTime: parseTimeToDate("15:00")
+          }
         ];
 
         const maghribDate = parseTimeToDate(data.maghrib);
@@ -541,35 +524,71 @@
 
     function getActivePrayerIndex(prayers, now, sunriseTime) {
       const nowMs = now.getTime();
-      const sunriseMs = sunriseTime ? sunriseTime.getTime() : null;
 
-      // Sort prayers by azan time ascending
-      const sortedPrayers = prayers
-        .map((p, i) => ({ index: i, azanTime: p.azanTime }))
-        .filter(p => p.azanTime)
-        .sort((a, b) => a.azanTime - b.azanTime);
+      // Check if today is Friday (day 5)
+      const isFriday = now.getDay() === 5;
 
-      let activeIndex = -1;
-      for (let i = sortedPrayers.length - 1; i >= 0; i--) {
-        if (nowMs >= sortedPrayers[i].azanTime.getTime()) {
-          activeIndex = sortedPrayers[i].index;
-          break;
+      // Get jummah and zuhr prayers if available
+      const jummahIndex = prayers.findIndex(p => p.name.toLowerCase() === "jummah");
+      const zuhrIndex = prayers.findIndex(p => p.name.toLowerCase() === "zuhr");
+      const asrIndex = prayers.findIndex(p => p.name.toLowerCase() === "asr");
+
+      // Helper to get jamat ms safely
+      function jamatMs(idx) {
+        return prayers[idx] && prayers[idx].jamatTime ? prayers[idx].jamatTime.getTime() : null;
+      }
+
+      // Jummah highlights only on Fridays during its jamat-to-Asr interval
+      if (
+        isFriday &&
+        jummahIndex !== -1 &&
+        zuhrIndex !== -1 &&
+        asrIndex !== -1
+      ) {
+        const jummahJamat = jamatMs(jummahIndex);
+        const zuhrJamat = jamatMs(zuhrIndex);
+        const asrJamat = jamatMs(asrIndex);
+
+        if (
+          jummahJamat !== null &&
+          zuhrJamat !== null &&
+          asrJamat !== null &&
+          nowMs >= jummahJamat &&
+          nowMs < asrJamat
+        ) {
+          return jummahIndex;
         }
       }
-      if (activeIndex === -1) activeIndex = sortedPrayers[sortedPrayers.length - 1]?.index ?? 0;
 
-      // Clear Fajr after sunrise: if active is Fajr and now >= sunrise, move to next prayer
-      if (
-        sunriseMs &&
-        nowMs >= sunriseMs &&
-        prayers[activeIndex].name.toLowerCase() === "fajr"
-      ) {
-        const currentPrayerPos = sortedPrayers.findIndex(p => p.index === activeIndex);
-        const nextPrayerPos = (currentPrayerPos + 1) % sortedPrayers.length;
-        activeIndex = sortedPrayers[nextPrayerPos].index;
+      // Otherwise find current prayer by jamat intervals, excluding Jummah
+      for (let i = 0; i < prayers.length; i++) {
+        const currentPrayer = prayers[i];
+        const nextPrayer = prayers[(i + 1) % prayers.length];
+
+        const currentJamat = currentPrayer.jamatTime ? currentPrayer.jamatTime.getTime() : null;
+        const nextJamat = nextPrayer.jamatTime ? nextPrayer.jamatTime.getTime() : null;
+
+        if (currentJamat !== null && nextJamat !== null) {
+          if (currentJamat <= nowMs && nowMs < nextJamat) {
+            if (currentPrayer.name.toLowerCase() === "jummah") {
+              // Don't highlight Jummah outside Friday jummah interval
+              continue;
+            }
+            return i;
+          }
+        }
       }
 
-      return activeIndex;
+      // If now is after last prayer jamat, highlight last prayer (unless it's Jummah on non-Friday)
+      for (let i = prayers.length - 1; i >= 0; i--) {
+        if (prayers[i].jamatTime && nowMs >= prayers[i].jamatTime.getTime()) {
+          if (prayers[i].name.toLowerCase() === "jummah" && !isFriday) continue;
+          return i;
+        }
+      }
+
+      // Default fallback
+      return 0;
     }
 
     function updatePrayerTable() {
@@ -582,19 +601,17 @@
 
       const now = new Date();
       const nowMs = now.getTime();
-
       const activePrayerIndex = getActivePrayerIndex(prayers, now, sunriseTime);
 
+      // Helper to get next prayer's azan time in ms
       const getNextPrayerAzan = (idx) => {
         for (let offset = 1; offset <= prayers.length; offset++) {
           const nextIdx = (idx + offset) % prayers.length;
           const azan = prayers[nextIdx].azanTime;
-          if (azan) return azan;
+          if (azan) return azan.getTime();
         }
         return null;
       };
-
-      const sunriseMs = sunriseTime ? sunriseTime.getTime() : null;
 
       prayers.forEach((p, idx) => {
         const tr = document.createElement("tr");
@@ -610,109 +627,44 @@
         tdName.classList.remove("blinking", "solid-green");
         tdJamat.classList.remove("blinking", "solid-green");
 
-        let isIshaAfterJamat =
-          p.name.toLowerCase() === "isha" &&
-          p.jamatTime &&
-          nowMs > p.jamatTime.getTime() + 15000 &&
-          (!sunriseMs || nowMs < sunriseMs);
-
-        let nextFajrAzan = null;
-        for (let pr of prayers) {
-          if (pr.name.toLowerCase() === "fajr" && pr.azanTime) {
-            nextFajrAzan = pr.azanTime;
-            if (pr.azanTime.getTime() < p.azanTime?.getTime()) {
-              nextFajrAzan = new Date(pr.azanTime.getTime() + 24 * 60 * 60 * 1000);
-            }
-            break;
-          }
-        }
-        let keepIshaBackground =
-          isIshaAfterJamat &&
-          (!nextFajrAzan || nowMs < nextFajrAzan.getTime());
-
         if (idx === activePrayerIndex) {
-          if (!keepIshaBackground) {
-            tr.classList.add("current-prayer");
-          } else if (keepIshaBackground && p.name.toLowerCase() === "isha") {
-            tr.classList.add("current-prayer");
-          }
-        } else if (
-          prayers[activePrayerIndex].name.toLowerCase() === "isha" &&
-          prayers[activePrayerIndex].jamatTime &&
-          nowMs > prayers[activePrayerIndex].jamatTime.getTime() + 15000
-        ) {
-          if (p.name.toLowerCase() === "isha") {
-            tr.classList.add("current-prayer");
-          }
-        }
-
-        if (idx === activePrayerIndex) {
-          const azanMs = p.azanTime ? p.azanTime.getTime() : null;
           const jamatMs = p.jamatTime ? p.jamatTime.getTime() : null;
-          const nextPrayerAzan = getNextPrayerAzan(idx);
-          const nextAzanMs = nextPrayerAzan ? nextPrayerAzan.getTime() : azanMs + 24 * 60 * 60 * 1000;
+          const azanMs = p.azanTime ? p.azanTime.getTime() : null;
+          const nextAzanMs = getNextPrayerAzan(idx) || (azanMs + 24 * 60 * 60 * 1000);
 
-          if (p.name.toLowerCase() === "fajr" && sunriseMs && nowMs >= sunriseMs) {
-            tdName.classList.remove("blinking", "solid-green");
-          } else if (p.name.toLowerCase() === "isha" && jamatMs && nowMs > jamatMs + 15000) {
-            tdName.classList.remove("blinking", "solid-green");
-          } else if (azanMs && nowMs >= azanMs && nowMs < azanMs + 60000) {
+          tr.classList.add("current-prayer");
+
+          // Name blinking logic
+          if (
+            azanMs &&
+            nowMs >= azanMs &&
+            nowMs < azanMs + 60000
+          ) {
             tdName.classList.add("blinking");
             tdName.classList.remove("solid-green");
           } else if (
             azanMs &&
             nowMs >= azanMs + 60000 &&
-            nowMs < nextAzanMs &&
-            !(p.name.toLowerCase() === "fajr" && sunriseMs && nowMs >= sunriseMs)
+            nowMs < nextAzanMs
           ) {
             tdName.classList.add("solid-green");
             tdName.classList.remove("blinking");
           } else {
             tdName.classList.remove("blinking", "solid-green");
           }
-        } else if (
-          p.name.toLowerCase() === "isha" &&
-          p.jamatTime &&
-          nowMs > p.jamatTime.getTime() + 15000
-        ) {
-          tdName.classList.remove("blinking", "solid-green");
-        } else {
-          tdName.classList.remove("blinking", "solid-green");
-        }
 
-        if (idx === activePrayerIndex) {
-          const jamatMs = p.jamatTime ? p.jamatTime.getTime() : null;
-          const nextPrayerAzan = getNextPrayerAzan(idx);
-          const nextAzanMs = nextPrayerAzan ? nextPrayerAzan.getTime() : Date.now() + 24 * 60 * 60 * 1000;
-
+          // Jamat blinking logic
           if (jamatMs !== null) {
             if (nowMs >= jamatMs - 15000 && nowMs <= jamatMs + 15000) {
               tdJamat.classList.add("blinking");
               tdJamat.classList.remove("solid-green");
-            } else if (
-              nowMs > jamatMs + 15000 &&
-              nowMs < nextAzanMs &&
-              !(p.name.toLowerCase() === "isha" && nowMs > jamatMs + 15000)
-            ) {
+            } else if (nowMs > jamatMs + 15000 && nowMs < nextAzanMs) {
               tdJamat.classList.add("solid-green");
               tdJamat.classList.remove("blinking");
-            } else if (
-              p.name.toLowerCase() === "isha" &&
-              nowMs > jamatMs + 15000
-            ) {
-              tdJamat.classList.remove("blinking", "solid-green");
             } else {
               tdJamat.classList.remove("blinking", "solid-green");
             }
           }
-        } else if (
-          p.name.toLowerCase() === "isha" &&
-          p.jamatTime &&
-          nowMs > p.jamatTime.getTime() + 15000
-        ) {
-          tdJamat.classList.remove("blinking", "solid-green");
-        } else {
-          tdJamat.classList.remove("blinking", "solid-green");
         }
 
         tr.appendChild(tdName);
@@ -883,5 +835,4 @@
   </script>
 
 </body>
-
 </html>

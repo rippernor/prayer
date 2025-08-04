@@ -463,6 +463,10 @@
       overflow-x: hidden;
     }
   </style>
+
+  <!-- Auto-refresh page every 5 minutes -->
+  <meta http-equiv="refresh" content="300">
+
 </head>
 <body>
 
@@ -500,7 +504,6 @@
     <div class="date-panel date-hijri" id="date-hijri-line-2" title="Current Hijri date"></div>
   </div>
 
-  <!-- New Page 3 for Sunrise Time -->
   <div id="page3" class="page" aria-label="Sunrise Time Display" role="region" tabindex="0" aria-live="polite" aria-atomic="true">
     <div class="glass-panel">
       <div class="countdown-label" id="sunrise-label" aria-live="assertive" aria-atomic="true">Sunrise Time:</div>
@@ -514,8 +517,7 @@
     let prayers = [];
     let sunriseTime = null;
 
-    const BLINK_WINDOW_MS = 30000; // Blink time window ±15 sec + 15 sec before and after = 30 sec total window
-    const GREEN_HOLD_MS = 120000;  // After blink hold green text 2 minutes is unused now but retained, blinking logic replaced
+    const BLINK_WINDOW_MS = 30000; // 30 seconds blink window
 
     function parseTimeToDate(timeStr) {
       if (!timeStr || timeStr === "--:--") return null;
@@ -585,38 +587,35 @@
         if (!response.ok) throw new Error(`HTTP error! ${response.status}`);
         const data = await response.json();
 
+        if (!data.sunrise || data.sunrise === "--:--") {
+          sunriseTime = null;
+        } else {
+          sunriseTime = parseTimeToDate(data.sunrise);
+        }
+
         const fajrAzan = data.fajr || "04:40";
         const zuhrAzan = data.zuhr || "15:00";
         const asrAzan = data.asr || "20:00";
         const maghribAzan = data.maghrib || "--:--";
-        const ishaAzan = data.isha || "--:--";
         const jumuahAzan = data.jumuah || zuhrAzan;
-        const sunriseRaw = data.sunrise || null;
 
         prayers = [
           { name: "Fajr", azanTime: parseTimeToDate(fajrAzan), jamatTime: parseTimeToDate("04:40") },
           { name: "Zuhr", azanTime: parseTimeToDate(zuhrAzan), jamatTime: parseTimeToDate("15:00") },
           { name: "Asr", azanTime: parseTimeToDate(asrAzan), jamatTime: parseTimeToDate("20:00") },
-          // Maghrib jamat time = maghrib azan time, +5 min removed per your final note
           { name: "Maghrib", azanTime: parseTimeToDate(maghribAzan), jamatTime: parseTimeToDate(maghribAzan) },
-          { name: "Isha", azanTime: null, jamatTime: null }, // set below
+          { name: "Isha", azanTime: null, jamatTime: null },
           { name: "Jummah", azanTime: parseTimeToDate(jumuahAzan), jamatTime: parseTimeToDate("15:00") }
         ];
 
         const maghribDate = parseTimeToDate(maghribAzan);
         if (maghribDate) {
-          // Isha azan = maghrib + 20 mins
           prayers[4].azanTime = new Date(maghribDate.getTime() + 20 * 60000);
-          // Isha jamat = same as Isha azan time (maghrib + 20 mins) per your final rule
           prayers[4].jamatTime = prayers[4].azanTime;
         } else {
           prayers[4].azanTime = null;
           prayers[4].jamatTime = null;
         }
-
-        // Store and parse sunrise time separately for page3
-        sunriseTime = parseTimeToDate(sunriseRaw);
-
       } catch (error) {
         prayers = [];
         sunriseTime = null;
@@ -624,20 +623,6 @@
       }
     }
 
-    // Remove direct style.color manipulation; use class toggles instead
-
-    // Helper: Remove all blinking and solid-green classes to reset colors
-    function resetAllHighlight() {
-      const rows = document.querySelectorAll("#prayer-row tr");
-      rows.forEach(row => {
-        const nameTd = row.children[0];
-        const jamatTd = row.children[1];
-        nameTd.classList.remove("blinking", "solid-green");
-        jamatTd.classList.remove("blinking", "solid-green");
-      });
-    }
-
-    // Updated updatePrayerTable with full blinking / solid logic per prayer
     function updatePrayerTable() {
       const tbody = document.getElementById("prayer-row");
       tbody.innerHTML = "";
@@ -648,7 +633,6 @@
 
       const now = new Date().getTime();
 
-      // Determine the current prayer index by comparing current time and azan times
       let activePrayerIndex = -1;
       for (let i = 0; i < prayers.length; i++) {
         const p = prayers[i];
@@ -657,7 +641,6 @@
         const nextPr = prayers[i + 1];
         const nextAzanMs = nextPr && nextPr.azanTime ? nextPr.azanTime.getTime() : azanMs + 24 * 60 * 60 * 1000;
 
-        // Current prayer period - from azan until next prayer azan
         if (now >= azanMs && now < nextAzanMs) {
           activePrayerIndex = i;
           break;
@@ -677,7 +660,6 @@
           : "--:--";
         tdJamat.classList.add("jamat-time");
 
-        // Clear all classes first
         tdName.classList.remove("blinking", "solid-green");
         tdJamat.classList.remove("blinking", "solid-green");
 
@@ -685,7 +667,6 @@
           const azanMs = p.azanTime.getTime();
           const jamatMs = p.jamatTime ? p.jamatTime.getTime() : null;
 
-          // Prayer name blinking for 1 minute at azan time
           if (now >= azanMs && now < azanMs + 60000) {
             tdName.classList.add("blinking");
             tdName.classList.remove("solid-green");
@@ -694,114 +675,15 @@
             tdName.classList.remove("blinking");
           }
 
-          // Jamat blinking logic ±15 seconds window
           if (jamatMs !== null) {
             if (now >= jamatMs - 15000 && now <= jamatMs + 15000) {
               tdJamat.classList.add("blinking");
               tdJamat.classList.remove("solid-green");
             } else if (now > jamatMs + 15000) {
-              // After blinking window, jamat stays solid green
               tdJamat.classList.add("solid-green");
               tdJamat.classList.remove("blinking");
             } else {
-              // Before jamat blinking window, normal white color
               tdJamat.classList.remove("blinking", "solid-green");
-            }
-          }
-        } else {
-          // Not current prayer: keep normal white colors, no blinking, no solid-green
-          tdName.classList.remove("blinking", "solid-green");
-          tdJamat.classList.remove("blinking", "solid-green");
-        }
-
-        // Special clearing rules per prayer:
-
-        // Clear Fajr highlight at sunrise
-        if (p.name === "Fajr") {
-          const sunrise = prayers.find(pr => pr.name === "Sunrise");
-          if (sunrise && sunrise.azanTime) {
-            if (now >= sunrise.azanTime.getTime()) {
-              tdName.classList.remove("blinking", "solid-green");
-              tdJamat.classList.remove("blinking", "solid-green");
-            }
-          }
-        }
-
-        // Clear Zuhr highlight at Asr start
-        if (p.name === "Zuhr") {
-          const asr = prayers.find(pr => pr.name === "Asr");
-          if (asr && asr.azanTime) {
-            if (now >= asr.azanTime.getTime()) {
-              tdName.classList.remove("blinking", "solid-green");
-              tdJamat.classList.remove("blinking", "solid-green");
-            }
-          }
-        }
-
-        // Clear Asr highlight at Maghrib start
-        if (p.name === "Asr") {
-          const maghrib = prayers.find(pr => pr.name === "Maghrib");
-          if (maghrib && maghrib.azanTime) {
-            if (now >= maghrib.azanTime.getTime()) {
-              tdName.classList.remove("blinking", "solid-green");
-              tdJamat.classList.remove("blinking", "solid-green");
-            }
-          }
-        }
-
-        // Clear Maghrib highlight at Isha start
-        if (p.name === "Maghrib") {
-          const isha = prayers.find(pr => pr.name === "Isha");
-          if (isha && isha.azanTime) {
-            if (now >= isha.azanTime.getTime()) {
-              tdName.classList.remove("blinking", "solid-green");
-              tdJamat.classList.remove("blinking", "solid-green");
-            }
-          }
-        }
-
-        // Isha blinking logic starts at maghrib + 20 minutes for azan
-        if (p.name === "Isha") {
-          const maghrib = prayers.find(pr => pr.name === "Maghrib");
-          if (maghrib && maghrib.azanTime && p.azanTime) {
-            const maghribPlus20 = maghrib.azanTime.getTime() + 20 * 60000;
-            const jamatMs = p.jamatTime ? p.jamatTime.getTime() : null;
-
-            if (now >= maghribPlus20) {
-              // When Isha section active
-              if (now < maghribPlus20 + 60000) {
-                tdName.classList.add("blinking");
-                tdName.classList.remove("solid-green");
-              } else if (now >= maghribPlus20 + 60000) {
-                tdName.classList.add("solid-green");
-                tdName.classList.remove("blinking");
-              }
-
-              if (jamatMs !== null) {
-                if (now >= jamatMs - 15000 && now <= jamatMs + 15000) {
-                  tdJamat.classList.add("blinking");
-                  tdJamat.classList.remove("solid-green");
-                } else if (now > jamatMs + 15000) {
-                  tdJamat.classList.add("solid-green");
-                  tdJamat.classList.remove("blinking");
-                } else {
-                  tdJamat.classList.remove("blinking", "solid-green");
-                }
-              }
-            } else {
-              // Before Isha maghrib+20 time, keep white normal
-              tdName.classList.remove("blinking", "solid-green");
-              tdJamat.classList.remove("blinking", "solid-green");
-            }
-          }
-        }
-
-        // Reset all to white after Isha end (1 hour after Isha azan)
-        if (p.name === "Isha") {
-          if (p.azanTime) {
-            const ishaEnd = p.azanTime.getTime() + 60 * 60000;
-            if (now >= ishaEnd) {
-              resetAllHighlight();
             }
           }
         }
@@ -811,9 +693,6 @@
         tbody.appendChild(tr);
       });
     }
-
-    // No longer needed as jamat blinking handled inside updatePrayerTable
-    function handleJamatBlinking() {}
 
     function startCountdown() {
       const countdownLabel = document.querySelector("#page2 .countdown-label");
@@ -881,50 +760,38 @@
       }, 500);
     }
 
-    // ==== NEW: Sunrise page logic for blinking and display ====
-
-    let sunriseInterval = null;
-
     function updateSunriseDisplay() {
       const sunriseLabel = document.getElementById("sunrise-label");
       const sunriseNumber = document.getElementById("sunrise-time");
       const sunriseInfo = document.getElementById("sunrise-info");
 
       if (!sunriseTime) {
-        sunriseNumber.textContent = "--:--";
-        sunriseLabel.textContent = "Sunrise Time:";
-        sunriseNumber.classList.remove("blinking");
+        sunriseLabel.style.display = "none";
+        sunriseNumber.style.display = "none";
         sunriseInfo.textContent = "Sunrise time unavailable.";
         return;
       }
 
+      sunriseLabel.style.display = "";
+      sunriseNumber.style.display = "";
+
       const now = new Date().getTime();
       const sunriseMs = sunriseTime.getTime();
 
-      // Format time as HH:mm
       sunriseNumber.textContent = sunriseTime.toLocaleTimeString("en-GB", {hour:"2-digit", minute:"2-digit", hour12:false});
 
-      // Blinking logic ±15s around sunrise time
       if (now >= sunriseMs - 15000 && now <= sunriseMs + 15000) {
         sunriseNumber.classList.add("blinking");
       } else {
         sunriseNumber.classList.remove("blinking");
       }
 
-      // Show text just before or after sunrise
       if (now > sunriseMs + 15000 && now < sunriseMs + 60000) {
         sunriseInfo.textContent = "Sunrise time reached.";
       } else {
         sunriseInfo.textContent = "";
       }
     }
-
-    function startSunriseInterval() {
-      if (sunriseInterval) clearInterval(sunriseInterval);
-      sunriseInterval = setInterval(updateSunriseDisplay, 500);
-    }
-
-    // ==== Page switching logic: Show Page 3 temporarily like Page 2 ====
 
     const page1 = document.getElementById('page1');
     const page2 = document.getElementById('page2');
@@ -942,12 +809,10 @@
         const nowTime = now.getTime();
 
         if (nowTime >= windowStart && nowTime <= windowEnd) {
-          // During Jummah jamat window, keep page1 visible (do not show page 2 or 3)
           return;
         }
       }
 
-      // Show Page 2 for 15 seconds, then Page 3 for 15 seconds, then back to Page 1
       page1.classList.remove('active');
       page2.classList.add('active');
 
@@ -957,29 +822,33 @@
         setTimeout(() => {
           page3.classList.remove('active');
           page1.classList.add('active');
-        }, 15000); // 15 sec on page 3
-      }, 15000); // 15 sec on page 2
+        }, 15000);
+      }, 15000);
     }
 
     setInterval(showPage2Temporarily, 5 * 60 * 1000);
 
     let countdownInterval = null;
+    let sunriseInterval = null;
+
     async function initialize() {
       await fetchHijriDate();
       await fetchPrayerTimes();
       updateDateTime();
       updatePrayerTable();
+      updateSunriseDisplay();
 
       startCountdown();
-      startSunriseInterval();
+
+      if (sunriseInterval) clearInterval(sunriseInterval);
+      sunriseInterval = setInterval(updateSunriseDisplay, 500);
 
       setInterval(async () => {
         await fetchHijriDate();
         await fetchPrayerTimes();
         updatePrayerTable();
-        startCountdown();
-        // Update sunrise display immediately on data update too
         updateSunriseDisplay();
+        startCountdown();
       }, 300000);
 
       setInterval(() => {

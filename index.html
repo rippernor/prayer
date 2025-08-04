@@ -253,6 +253,12 @@
     #page1 .prayer-table tbody tr .blinking {
       animation: blink 1s step-start 0s infinite;
     }
+    /* New solid green class for solid green color without blinking */
+    .solid-green {
+      color: #7fff00 !important;
+      font-weight: 900 !important;
+      animation: none !important;
+    }
     @keyframes blink {
       50% { opacity: 0; }
       100% { opacity: 1; }
@@ -426,8 +432,8 @@
     let hijriDate = "";
     let prayers = [];
 
-    const BLINK_WINDOW_MS = 30000; // Blink time window ±30 sec
-    const GREEN_HOLD_MS = 120000;  // After blink hold green text 2 minutes
+    const BLINK_WINDOW_MS = 30000; // Blink time window ±15 sec + 15 sec before and after = 30 sec total window
+    const GREEN_HOLD_MS = 120000;  // After blink hold green text 2 minutes is unused now but retained, blinking logic replaced
 
     function parseTimeToDate(timeStr) {
       if (!timeStr || timeStr === "--:--") return null;
@@ -482,7 +488,6 @@
         const year = today.getFullYear();
         const month = String(today.getMonth() + 1).padStart(2, "0");
         const day = String(today.getDate()).padStart(2, "0");
-        const dayOfWeek = today.getDay(); // 5 = Friday
 
         const url = `https://api.bonnetid.no/prayertimes/122/${year}/${month}/${day}/?asr=2`;
         const response = await fetch(url, {
@@ -505,26 +510,23 @@
         const ishaAzan = data.isha || "--:--";
         const jumuahAzan = data.jumuah || zuhrAzan;
 
-        // Keep both Zuhr and Jummah every day with correct spelling and time logic
         prayers = [
           { name: "Fajr", azanTime: parseTimeToDate(fajrAzan), jamatTime: parseTimeToDate("04:40") },
           { name: "Zuhr", azanTime: parseTimeToDate(zuhrAzan), jamatTime: parseTimeToDate("15:00") },
           { name: "Asr", azanTime: parseTimeToDate(asrAzan), jamatTime: parseTimeToDate("20:00") },
-          // Maghrib jamat = maghrib azan time (no +5 min)
+          // Maghrib jamat time = maghrib azan time, +5 min removed per your final note
           { name: "Maghrib", azanTime: parseTimeToDate(maghribAzan), jamatTime: parseTimeToDate(maghribAzan) },
-          { name: "Isha", azanTime: parseTimeToDate(ishaAzan), jamatTime: null }, // will set below
+          { name: "Isha", azanTime: null, jamatTime: null }, // set below
           { name: "Jummah", azanTime: parseTimeToDate(jumuahAzan), jamatTime: parseTimeToDate("15:00") }
         ];
 
         const maghribDate = parseTimeToDate(maghribAzan);
-
-        if(maghribDate) {
-          prayers[3].jamatTime = maghribDate;
-          // Isha jamat is 25 mins after original maghrib azan but modified as +20 minutes per your request
+        if (maghribDate) {
+          // Isha azan = maghrib + 20 mins
           prayers[4].azanTime = new Date(maghribDate.getTime() + 20 * 60000);
-          prayers[4].jamatTime = new Date(maghribDate.getTime() + 45 * 60000); // maghrib + 20 + 25 = maghrib + 45 min
+          // Isha jamat = same as Isha azan time (maghrib + 20 mins) per your final rule
+          prayers[4].jamatTime = prayers[4].azanTime;
         } else {
-          prayers[3].jamatTime = null;
           prayers[4].azanTime = null;
           prayers[4].jamatTime = null;
         }
@@ -534,6 +536,20 @@
       }
     }
 
+    // Remove direct style.color manipulation; use class toggles instead
+
+    // Helper: Remove all blinking and solid-green classes to reset colors
+    function resetAllHighlight() {
+      const rows = document.querySelectorAll("#prayer-row tr");
+      rows.forEach(row => {
+        const nameTd = row.children[0];
+        const jamatTd = row.children[1];
+        nameTd.classList.remove("blinking", "solid-green");
+        jamatTd.classList.remove("blinking", "solid-green");
+      });
+    }
+
+    // Updated updatePrayerTable with full blinking / solid logic per prayer
     function updatePrayerTable() {
       const tbody = document.getElementById("prayer-row");
       tbody.innerHTML = "";
@@ -541,34 +557,28 @@
         tbody.innerHTML = "<tr><td colspan='2'>Prayer times unavailable</td></tr>";
         return;
       }
-      const now = new Date();
-      const dayOfWeek = now.getDay();
 
-      let currentIndex = -1;
+      const now = new Date().getTime();
 
+      // Determine the current prayer index by comparing current time and azan times
+      let activePrayerIndex = -1;
       for (let i = 0; i < prayers.length; i++) {
         const p = prayers[i];
         if (!p.azanTime) continue;
-        const azanTime = p.azanTime.getTime();
-        const jamatTime = p.jamatTime ? p.jamatTime.getTime() : Infinity;
+        const azanMs = p.azanTime.getTime();
+        const nextPr = prayers[i + 1];
+        const nextAzanMs = nextPr && nextPr.azanTime ? nextPr.azanTime.getTime() : azanMs + 24 * 60 * 60 * 1000;
 
-        if (p.name === "Isha") {
-          const fiveMinBeforeIsha = azanTime - 5 * 60000;
-          if (now >= fiveMinBeforeIsha && now < jamatTime) {
-            currentIndex = i;
-            break;
-          }
-        } else {
-          if (now >= azanTime && now < jamatTime) {
-            currentIndex = i;
-            break;
-          }
+        // Current prayer period - from azan until next prayer azan
+        if (now >= azanMs && now < nextAzanMs) {
+          activePrayerIndex = i;
+          break;
         }
       }
 
       prayers.forEach((p, idx) => {
         const tr = document.createElement("tr");
-        if (idx === currentIndex) tr.classList.add("current-prayer");
+        if (idx === activePrayerIndex) tr.classList.add("current-prayer");
 
         const tdName = document.createElement("td");
         tdName.textContent = p.name;
@@ -577,84 +587,145 @@
         tdJamat.textContent = p.jamatTime
           ? p.jamatTime.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", hour12: false })
           : "--:--";
-        tdJamat.style.textAlign = "center";
-        tdJamat.style.fontFamily = "Arial, Verdana, monospace";
         tdJamat.classList.add("jamat-time");
 
-        const nowTime = now.getTime();
+        // Clear all classes first
+        tdName.classList.remove("blinking", "solid-green");
+        tdJamat.classList.remove("blinking", "solid-green");
 
-        if (idx === currentIndex) {
-          tdName.style.color = "#7fff00";
-          tdName.style.fontWeight = "900";
+        if (idx === activePrayerIndex) {
+          const azanMs = p.azanTime.getTime();
+          const jamatMs = p.jamatTime ? p.jamatTime.getTime() : null;
 
-          const isFriday = dayOfWeek === 5;
+          // Prayer name blinking for 1 minute at azan time
+          if (now >= azanMs && now < azanMs + 60000) {
+            tdName.classList.add("blinking");
+            tdName.classList.remove("solid-green");
+          } else if (now >= azanMs + 60000) {
+            tdName.classList.add("solid-green");
+            tdName.classList.remove("blinking");
+          }
 
-          // Jummah stays green from previous day Maghrib (Fridays start at sunset of previous day)
-          if (p.name === "Jummah" && isFriday) {
-            const prevDay = new Date(now);
-            prevDay.setDate(now.getDate() - 1);
-            const maghribPrevDay = parseTimeToDate(prayers.find(pr => pr.name === "Maghrib").azanTime.toTimeString().slice(0,5), prevDay);
-            if(now >= maghribPrevDay) {
-              tdName.classList.add("blinking");
-              tdName.style.color = "#7fff00";
-              tdJamat.style.color = "#7fff00";
+          // Jamat blinking logic ±15 seconds window
+          if (jamatMs !== null) {
+            if (now >= jamatMs - 15000 && now <= jamatMs + 15000) {
               tdJamat.classList.add("blinking");
-            }
-          } else if (p.name === "Zuhr" && !isFriday) {
-            tdName.classList.remove("blinking");
-            tdJamat.style.color = "#7fff00";
-            tdJamat.classList.remove("blinking");
-          } else if (p.name === "Isha") {
-            const ishaAzan = p.azanTime.getTime();
-            if (nowTime >= ishaAzan && nowTime < (p.jamatTime ? p.jamatTime.getTime() : Infinity)) {
-              tdName.classList.add("blinking");
+              tdJamat.classList.remove("solid-green");
+            } else if (now > jamatMs + 15000) {
+              // After blinking window, jamat stays solid green
+              tdJamat.classList.add("solid-green");
+              tdJamat.classList.remove("blinking");
             } else {
-              tdName.classList.remove("blinking");
-            }
-
-            if (p.jamatTime) {
-              const diffJamat = p.jamatTime.getTime() - nowTime;
-              if (diffJamat <= BLINK_WINDOW_MS && diffJamat >= -BLINK_WINDOW_MS) {
-                tdJamat.style.color = "#7fff00";
-                tdJamat.classList.add("blinking");
-              } else if (diffJamat < -BLINK_WINDOW_MS && diffJamat >= -BLINK_WINDOW_MS - GREEN_HOLD_MS) {
-                tdJamat.style.color = "#7fff00";
-                tdJamat.classList.remove("blinking");
-              } else {
-                tdJamat.style.color = "#ffffff";
-                tdJamat.classList.remove("blinking");
-              }
-            }
-          } else {
-            tdName.classList.remove("blinking");
-            if (p.jamatTime) {
-              const diffJamat = p.jamatTime.getTime() - nowTime;
-              if (diffJamat <= BLINK_WINDOW_MS && diffJamat >= -BLINK_WINDOW_MS) {
-                tdJamat.style.color = "#7fff00";
-                tdJamat.classList.add("blinking");
-              } else if (diffJamat < -BLINK_WINDOW_MS && diffJamat >= -BLINK_WINDOW_MS - GREEN_HOLD_MS) {
-                tdJamat.style.color = "#7fff00";
-                tdJamat.classList.remove("blinking");
-              } else {
-                tdJamat.style.color = "#ffffff";
-                tdJamat.classList.remove("blinking");
-              }
+              // Before jamat blinking window, normal white color
+              tdJamat.classList.remove("blinking", "solid-green");
             }
           }
         } else {
-          tdName.classList.remove("blinking");
-          tdName.style.color = "#ffffff";
-          tdName.style.fontWeight = "900";
-          tdJamat.classList.remove("blinking");
-          tdJamat.style.color = "#ffffff";
+          // Not current prayer: keep normal white colors, no blinking, no solid-green
+          tdName.classList.remove("blinking", "solid-green");
+          tdJamat.classList.remove("blinking", "solid-green");
+        }
+
+        // Special clearing rules per prayer:
+
+        // Clear Fajr highlight at sunrise
+        if (p.name === "Fajr") {
+          const sunrise = prayers.find(pr => pr.name === "Sunrise");
+          if (sunrise && sunrise.azanTime) {
+            if (now >= sunrise.azanTime.getTime()) {
+              tdName.classList.remove("blinking", "solid-green");
+              tdJamat.classList.remove("blinking", "solid-green");
+            }
+          }
+        }
+
+        // Clear Zuhr highlight at Asr start
+        if (p.name === "Zuhr") {
+          const asr = prayers.find(pr => pr.name === "Asr");
+          if (asr && asr.azanTime) {
+            if (now >= asr.azanTime.getTime()) {
+              tdName.classList.remove("blinking", "solid-green");
+              tdJamat.classList.remove("blinking", "solid-green");
+            }
+          }
+        }
+
+        // Clear Asr highlight at Maghrib start
+        if (p.name === "Asr") {
+          const maghrib = prayers.find(pr => pr.name === "Maghrib");
+          if (maghrib && maghrib.azanTime) {
+            if (now >= maghrib.azanTime.getTime()) {
+              tdName.classList.remove("blinking", "solid-green");
+              tdJamat.classList.remove("blinking", "solid-green");
+            }
+          }
+        }
+
+        // Clear Maghrib highlight at Isha start
+        if (p.name === "Maghrib") {
+          const isha = prayers.find(pr => pr.name === "Isha");
+          if (isha && isha.azanTime) {
+            if (now >= isha.azanTime.getTime()) {
+              tdName.classList.remove("blinking", "solid-green");
+              tdJamat.classList.remove("blinking", "solid-green");
+            }
+          }
+        }
+
+        // Isha blinking logic starts at maghrib + 20 minutes for azan
+        if (p.name === "Isha") {
+          const maghrib = prayers.find(pr => pr.name === "Maghrib");
+          if (maghrib && maghrib.azanTime && p.azanTime) {
+            const maghribPlus20 = maghrib.azanTime.getTime() + 20 * 60000;
+            const jamatMs = p.jamatTime ? p.jamatTime.getTime() : null;
+
+            if (now >= maghribPlus20) {
+              // When Isha section active
+              if (now < maghribPlus20 + 60000) {
+                tdName.classList.add("blinking");
+                tdName.classList.remove("solid-green");
+              } else if (now >= maghribPlus20 + 60000) {
+                tdName.classList.add("solid-green");
+                tdName.classList.remove("blinking");
+              }
+
+              if (jamatMs !== null) {
+                if (now >= jamatMs - 15000 && now <= jamatMs + 15000) {
+                  tdJamat.classList.add("blinking");
+                  tdJamat.classList.remove("solid-green");
+                } else if (now > jamatMs + 15000) {
+                  tdJamat.classList.add("solid-green");
+                  tdJamat.classList.remove("blinking");
+                } else {
+                  tdJamat.classList.remove("blinking", "solid-green");
+                }
+              }
+            } else {
+              // Before Isha maghrib+20 time, keep white normal
+              tdName.classList.remove("blinking", "solid-green");
+              tdJamat.classList.remove("blinking", "solid-green");
+            }
+          }
+        }
+
+        // Reset all to white after Isha end (1 hour after Isha azan)
+        if (p.name === "Isha") {
+          if (p.azanTime) {
+            const ishaEnd = p.azanTime.getTime() + 60 * 60000;
+            if (now >= ishaEnd) {
+              resetAllHighlight();
+            }
+          }
         }
 
         tr.appendChild(tdName);
         tr.appendChild(tdJamat);
-
         tbody.appendChild(tr);
       });
     }
+
+    // No longer needed as jamat blinking handled inside updatePrayerTable
+    function handleJamatBlinking() {}
 
     function startCountdown() {
       const countdownLabel = document.querySelector("#page2 .countdown-label");
@@ -751,35 +822,13 @@
 
     setInterval(showPage2Temporarily, 5 * 60 * 1000);
 
-    function handleJamatBlinking() {
-      const now = new Date();
-      const rows = document.querySelectorAll("#prayer-row tr");
-
-      prayers.forEach((p,i) => {
-        if(!p.jamatTime) return;
-        const diff = p.jamatTime.getTime() - now.getTime();
-        const tdJamat = rows[i] ? rows[i].querySelector('.jamat-time') : null;
-        if(!tdJamat) return;
-
-        if(diff <= BLINK_WINDOW_MS && diff >= -BLINK_WINDOW_MS) {
-          tdJamat.classList.add("blinking");
-          tdJamat.style.color = "#7fff00";
-        } else if(diff < -BLINK_WINDOW_MS && diff >= -BLINK_WINDOW_MS - GREEN_HOLD_MS) {
-          tdJamat.classList.remove("blinking");
-          tdJamat.style.color = "#7fff00";
-        } else {
-          tdJamat.classList.remove("blinking");
-          tdJamat.style.color = "#ffffff";
-        }
-      });
-    }
-
     let countdownInterval = null;
     async function initialize() {
       await fetchHijriDate();
       await fetchPrayerTimes();
       updateDateTime();
       updatePrayerTable();
+
       startCountdown();
 
       setInterval(async () => {
@@ -791,7 +840,7 @@
 
       setInterval(() => {
         updateDateTime();
-        handleJamatBlinking();
+        updatePrayerTable();
       }, 1000);
     }
 

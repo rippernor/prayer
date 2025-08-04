@@ -11,7 +11,7 @@
       height: 100%; min-height: 100vh;
       background: linear-gradient(135deg, #0a2233 0%, #1a2a38 100%);
       color: #f3f7fa;
-      font-family: Arial, sans-serif; /* changed from Inter to Arial for offline */
+      font-family: Arial, sans-serif;
       overflow-x: hidden !important;
     }
     body {
@@ -28,6 +28,7 @@
       box-sizing: border-box;
       background: transparent;
       color: #eaf6fb;
+      font-family: Arial, sans-serif;
       display: none;
       flex-direction: column;
       position: relative;
@@ -36,7 +37,7 @@
       display: flex;
     }
     #page1 main, #page1 .glass-panel, #page1 .prayer-table,
-    #page2 .glass-panel, #page3 .glass-panel {
+    #page2 .glass-panel {
       padding-left: 0;
       padding-right: 0;
       margin-left: 0;
@@ -44,7 +45,6 @@
       width: 100%;
       box-sizing: border-box;
     }
-    /* Added horizontal scrolling on page1 containers */
     #page1 main,
     #page1 .glass-panel,
     #page1 .prayer-table {
@@ -121,60 +121,74 @@
       margin-top: 8px;
       animation: glow-shift 4s ease-in-out infinite;
     }
-    #page2 .glass-panel {
-      background: rgba(18, 28, 38, 0.93);
-      border-radius: 14px;
-      backdrop-filter: blur(4px);
-      border: 2px solid #7fff00;
-      box-shadow:
-        0 0 0 1px #7fff0099,
-        0 0 15px 2px #7fff0077,
-        0 0 30px 5px #7fff0044;
-      width: 98vw;
-      max-width: 98vw;
-      max-height: 90vh;
-      padding: 3rem 24px;
-      box-sizing: border-box;
+    #page2 {
+      display: none;
       position: relative;
-      display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
-      text-align: center;
-      font-weight: 900;
-      font-size: clamp(8rem, 12vw, 14rem);
-      user-select: none;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+      background: transparent;
+      box-sizing: border-box;
+      padding: 2rem 1rem 1rem 1rem;
       color: #7fff00;
-      margin: 0;
-      animation: glow-shift 4s ease-in-out infinite;
+      font-family: Arial, sans-serif;
     }
-    /* Page3 glass panel same style as page2 */
-    #page3 .glass-panel {
-      background: rgba(18, 28, 38, 0.93);
-      border-radius: 14px;
-      backdrop-filter: blur(4px);
-      border: 2px solid #7fff00;
-      box-shadow:
-        0 0 0 1px #7fff0099,
-        0 0 15px 2px #7fff0077,
-        0 0 30px 5px #7fff0044;
-      width: 98vw;
-      max-width: 98vw;
-      max-height: 90vh;
-      padding: 3rem 24px;
-      box-sizing: border-box;
-      position: relative;
+    #page2.active {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+    }
+    #page2 .countdown-label {
+      font-size: clamp(4rem, 6vw, 7rem);
+      font-weight: 700;
+      margin-bottom: 0.5em;
+    }
+    #page2 .countdown-number {
+      font-family: Arial, Verdana, monospace;
       font-weight: 900;
-      font-size: clamp(8rem, 12vw, 14rem);
+      font-size: clamp(12rem, 18vw, 22rem);
+      line-height: 1;
+      margin-bottom: 0.3em;
+    }
+    #page2 .countdown-number.blinking {
+      animation: blink 1s step-start 0s infinite;
+    }
+    #page2 .current-prayer-info {
+      font-size: clamp(3rem, 4vw, 5rem);
+      font-weight: 700;
+      max-width: 80vw;
+      line-height: 1.1;
       user-select: none;
+      margin-bottom: 1.5rem;
+    }
+    #page2 .askim-weather {
+      font-size: clamp(2rem, 3vw, 3rem);
+      font-weight: 700;
+      margin-top: 1rem;
+      text-align: center;
+      user-select: none;
+      line-height: 1.2;
       color: #7fff00;
-      margin: 0;
-      animation: glow-shift 4s ease-in-out infinite;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    @keyframes glow-shift {
+      0%, 100% {
+        border-color: #7fff00;
+        box-shadow:
+          0 0 0 1px #7fff0099,
+          0 0 15px 2px #7fff0077,
+          0 0 30px 5px #7fff0044;
+      }
+      50% {
+        border-color: #ffff33;
+        box-shadow:
+          0 0 0 1px #ffff3399,
+          0 0 15px 2px #ffff3377,
+          0 0 30px 5px #ffff3344;
+      }
     }
     #page1 .prayer-table {
       width: 100%;
@@ -233,17 +247,16 @@
       border-bottom: 2px solid rgba(127, 255, 0, 0.6);
       color: #ffffff;
       text-align: center;
-      white-space: normal; /* allow wrapping by default */
+      white-space: normal;
       user-select: none;
       font-size: inherit;
       font-weight: 900;
-      font-family: Arial, Verdana, monospace; /* fallback font */
+      font-family: Arial, Verdana, monospace;
       line-height: 1.1;
       transition: color 0.3s ease;
       vertical-align: middle;
       box-sizing: border-box;
     }
-    /* Fix first column to prevent breaking words (Salat, Jummah etc) */
     #page1 .prayer-table th:first-child,
     #page1 .prayer-table td:first-child {
       border-left: none;
@@ -255,7 +268,6 @@
       overflow: visible;
       word-break: normal;
     }
-    /* Keep last column jamat time nowrap */
     #page1 .prayer-table th:last-child,
     #page1 .prayer-table td:last-child {
       border-left: 2px solid rgba(127, 255, 0, 0.6);
@@ -282,131 +294,10 @@
     #page1 .prayer-table tbody tr .blinking {
       animation: blink 1s step-start 0s infinite;
     }
-    /* New solid green class for solid green color without blinking */
     .solid-green {
       color: #7fff00 !important;
       font-weight: 900 !important;
       animation: none !important;
-    }
-    @keyframes blink {
-      50% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-    @keyframes glow-shift {
-      0%, 100% {
-        border-color: #7fff00;
-        box-shadow:
-          0 0 0 1px #7fff0099,
-          0 0 15px 2px #7fff0077,
-          0 0 30px 5px #7fff0044;
-      }
-      50% {
-        border-color: #ffff33;
-        box-shadow:
-          0 0 0 1px #ffff3399,
-          0 0 15px 2px #ffff3377,
-          0 0 30px 5px #ffff3344;
-      }
-    }
-    #page2 {
-      display: none;
-      position: relative;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 100vw;
-      height: 100vh;
-      background: transparent;
-      box-sizing: border-box;
-      padding: 2rem 1rem 1rem 1rem;
-      color: #7fff00;
-    }
-    #page2.active {
-      display: flex;
-    }
-    #page2 .countdown-label {
-      font-size: clamp(4rem, 6vw, 7rem);
-      font-weight: 700;
-      margin-bottom: 0.5em;
-    }
-    #page2 .countdown-number {
-      font-family: Arial, Verdana, monospace;
-      font-weight: 900;
-      font-size: clamp(12rem, 18vw, 22rem);
-      line-height: 1;
-      margin-bottom: 0.3em;
-    }
-    #page2 .countdown-number.blinking {
-      animation: blink 1s step-start 0s infinite;
-    }
-    #page2 .current-prayer-info {
-      font-size: clamp(3rem, 4vw, 5rem);
-      font-weight: 700;
-      max-width: 80vw;
-      line-height: 1.1;
-      user-select: none;
-    }
-    /* Page 3 styles (similar to Page 2) */
-    #page3 {
-      display: none;
-      position: relative;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 100vw;
-      height: 100vh;
-      background: transparent;
-      box-sizing: border-box;
-      padding: 2rem 1rem 1rem 1rem;
-      color: #7fff00;
-    }
-    #page3.active {
-      display: flex;
-    }
-    #page3 .countdown-label {
-      font-size: clamp(4rem, 6vw, 7rem);
-      font-weight: 700;
-      margin-bottom: 0.5em;
-    }
-    #page3 .countdown-number {
-      font-family: Arial, Verdana, monospace;
-      font-weight: 900;
-      font-size: clamp(12rem, 18vw, 22rem);
-      line-height: 1;
-      margin-bottom: 0.3em;
-    }
-    #page3 .countdown-number.blinking {
-      animation: blink 1s step-start 0s infinite;
-    }
-    #page3 .current-prayer-info {
-      font-size: clamp(3rem, 4vw, 5rem);
-      font-weight: 700;
-      max-width: 80vw;
-      line-height: 1.1;
-      user-select: none;
-    }
-    .date-panel {
-      position: absolute;
-      top: 1rem;
-      z-index: 15;
-      color: #7fff00;
-      font-weight: 600;
-      user-select: none;
-      white-space: nowrap;
-      padding: 0 0.5rem;
-      box-sizing: border-box;
-      font-size: clamp(3rem, 5vw, 6rem);
-      max-width: 45vw;
-      text-shadow: none;
-      line-height: 1.1;
-    }
-    #page2 .date-gregorian {
-      left: 1rem;
-      text-align: left;
-    }
-    #page2 .date-hijri {
-      right: 1rem;
-      text-align: right;
     }
     @media screen and (max-width: 600px) {
       #page1 .prayer-table {
@@ -415,23 +306,13 @@
       #page1 .prayer-table thead th {
         font-size: clamp(2.5rem, 5vw, 4rem) !important;
       }
-      #page2 .glass-panel,
-      #page3 .glass-panel {
-        font-size: clamp(4rem, 10vw, 8rem);
-        padding: 2rem 1rem;
-        width: 100vw;
-        max-width: 100vw;
-      }
-      #page2 .countdown-number,
-      #page3 .countdown-number {
+      #page2 .countdown-number {
         font-size: clamp(8rem, 14vw, 16rem);
       }
-      #page2 .countdown-label,
-      #page3 .countdown-label {
+      #page2 .countdown-label {
         font-size: clamp(2rem, 5vw, 3rem);
       }
-      #page2 .current-prayer-info,
-      #page3 .current-prayer-info {
+      #page2 .current-prayer-info {
         font-size: clamp(1.5rem, 4vw, 2.5rem);
         max-width: 90vw;
       }
@@ -442,7 +323,6 @@
         font-size: clamp(3rem, 7vw, 6rem);
         margin: 0.75rem 0 0 0;
       }
-      /* Slightly reduce padding on small screens */
       #page1 .prayer-table td:first-child,
       #page1 .prayer-table th:first-child {
         padding-left: 1rem !important;
@@ -464,7 +344,6 @@
     }
   </style>
 
-  <!-- Auto-refresh page every 5 minutes -->
   <meta http-equiv="refresh" content="300">
 
 </head>
@@ -500,16 +379,12 @@
       <div class="countdown-label" aria-live="assertive" aria-atomic="true"></div>
       <div class="countdown-number" aria-live="assertive" aria-atomic="true"></div>
       <div class="current-prayer-info" aria-live="polite" aria-atomic="true"></div>
+      <div class="askim-weather" aria-live="polite" aria-atomic="true">
+        <div id="askim-temperature">Temperature Askim right now is: Loading...</div>
+        <div id="askim-sunrise">Sunrise time in Askim today: Loading...</div>
+      </div>
     </div>
     <div class="date-panel date-hijri" id="date-hijri-line-2" title="Current Hijri date"></div>
-  </div>
-
-  <div id="page3" class="page" aria-label="Sunrise Time Display" role="region" tabindex="0" aria-live="polite" aria-atomic="true">
-    <div class="glass-panel">
-      <div class="countdown-label" id="sunrise-label" aria-live="assertive" aria-atomic="true">Sunrise Time:</div>
-      <div class="countdown-number" id="sunrise-time" aria-live="assertive" aria-atomic="true">--:--</div>
-      <div class="current-prayer-info" id="sunrise-info" aria-live="polite" aria-atomic="true"></div>
-    </div>
   </div>
 
   <script>
@@ -517,7 +392,7 @@
     let prayers = [];
     let sunriseTime = null;
 
-    const BLINK_WINDOW_MS = 30000; // 30 seconds blink window
+    const BLINK_WINDOW_MS = 30000;
 
     function parseTimeToDate(timeStr) {
       if (!timeStr || timeStr === "--:--") return null;
@@ -577,38 +452,30 @@
         const response = await fetch(url, {
           method: "GET",
           headers: {
-            "User-Agent": "Mozilla/5.0",
-            Accept: "application/json, text/plain, */*",
-            Origin: "https://bonnetid.no",
-            Referer: "https://bonnetid.no/",
-            "Api-Token": "92affaa6-0e9b-4402-8d8a-0fcd8d9e91ec",
+            "Api-Token": "92affaa6-0e9b-4402-8d8a-0fcd8d9e91ec"
           },
         });
         if (!response.ok) throw new Error(`HTTP error! ${response.status}`);
         const data = await response.json();
 
-        if (!data.sunrise || data.sunrise === "--:--") {
+        if(!data){
+          prayers = [];
           sunriseTime = null;
-        } else {
-          sunriseTime = parseTimeToDate(data.sunrise);
+          return;
         }
 
-        const fajrAzan = data.fajr || "04:40";
-        const zuhrAzan = data.zuhr || "15:00";
-        const asrAzan = data.asr || "20:00";
-        const maghribAzan = data.maghrib || "--:--";
-        const jumuahAzan = data.jumuah || zuhrAzan;
+        sunriseTime = parseTimeToDate(data.sunrise);
 
         prayers = [
-          { name: "Fajr", azanTime: parseTimeToDate(fajrAzan), jamatTime: parseTimeToDate("04:40") },
-          { name: "Zuhr", azanTime: parseTimeToDate(zuhrAzan), jamatTime: parseTimeToDate("15:00") },
-          { name: "Asr", azanTime: parseTimeToDate(asrAzan), jamatTime: parseTimeToDate("20:00") },
-          { name: "Maghrib", azanTime: parseTimeToDate(maghribAzan), jamatTime: parseTimeToDate(maghribAzan) },
+          { name: "Fajr", azanTime: parseTimeToDate(data.fajr), jamatTime: parseTimeToDate("04:40") },
+          { name: "Zuhr", azanTime: parseTimeToDate(data.zuhr), jamatTime: parseTimeToDate("15:00") },
+          { name: "Asr", azanTime: parseTimeToDate(data.asr), jamatTime: parseTimeToDate("20:00") },
+          { name: "Maghrib", azanTime: parseTimeToDate(data.maghrib), jamatTime: parseTimeToDate(data.maghrib) },
           { name: "Isha", azanTime: null, jamatTime: null },
-          { name: "Jummah", azanTime: parseTimeToDate(jumuahAzan), jamatTime: parseTimeToDate("15:00") }
+          { name: "Jummah", azanTime: parseTimeToDate(data.jumuah || data.zuhr), jamatTime: parseTimeToDate("15:00") }
         ];
 
-        const maghribDate = parseTimeToDate(maghribAzan);
+        const maghribDate = parseTimeToDate(data.maghrib);
         if (maghribDate) {
           prayers[4].azanTime = new Date(maghribDate.getTime() + 20 * 60000);
           prayers[4].jamatTime = prayers[4].azanTime;
@@ -616,6 +483,7 @@
           prayers[4].azanTime = null;
           prayers[4].jamatTime = null;
         }
+
       } catch (error) {
         prayers = [];
         sunriseTime = null;
@@ -760,76 +628,66 @@
       }, 500);
     }
 
-    function updateSunriseDisplay() {
-      const sunriseLabel = document.getElementById("sunrise-label");
-      const sunriseNumber = document.getElementById("sunrise-time");
-      const sunriseInfo = document.getElementById("sunrise-info");
+    async function fetchTemperature() {
+      try {
+        const lat = 59.5772;
+        const lon = 11.1477;
+        const weatherRes = await fetch(
+          `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`
+        );
+        if (!weatherRes.ok) throw new Error("Failed to fetch temperature data");
+        const weatherData = await weatherRes.json();
+        const temperature = weatherData.current_weather?.temperature;
 
+        document.getElementById("askim-temperature").textContent =
+          temperature !== undefined && temperature !== null
+            ? `Temperature Askim right now is: ${temperature.toFixed(1)} °C`
+            : "Temperature Askim right now is: N/A";
+      } catch (error) {
+        console.error("Failed to fetch temperature:", error);
+        document.getElementById("askim-temperature").textContent = "Temperature Askim right now is: N/A";
+      }
+    }
+
+    function updateSunriseDisplay() {
+      const sunriseEl = document.getElementById("askim-sunrise");
       if (!sunriseTime) {
-        sunriseLabel.style.display = "none";
-        sunriseNumber.style.display = "none";
-        sunriseInfo.textContent = "Sunrise time unavailable.";
+        sunriseEl.textContent = "Sunrise time in Askim today: N/A";
         return;
       }
-
-      sunriseLabel.style.display = "";
-      sunriseNumber.style.display = "";
-
-      const now = new Date().getTime();
-      const sunriseMs = sunriseTime.getTime();
-
-      sunriseNumber.textContent = sunriseTime.toLocaleTimeString("en-GB", {hour:"2-digit", minute:"2-digit", hour12:false});
-
-      if (now >= sunriseMs - 15000 && now <= sunriseMs + 15000) {
-        sunriseNumber.classList.add("blinking");
-      } else {
-        sunriseNumber.classList.remove("blinking");
-      }
-
-      if (now > sunriseMs + 15000 && now < sunriseMs + 60000) {
-        sunriseInfo.textContent = "Sunrise time reached.";
-      } else {
-        sunriseInfo.textContent = "";
-      }
+      sunriseEl.textContent = `Sunrise time in Askim today: ${sunriseTime.toLocaleTimeString("en-GB", {hour:"2-digit", minute:"2-digit", second:"2-digit", hour12:false})}`;
     }
 
     const page1 = document.getElementById('page1');
     const page2 = document.getElementById('page2');
-    const page3 = document.getElementById('page3');
 
-    function showPage2Temporarily() {
-      const now = new Date();
-      const day = now.getDay();
+    const PAGE2_DURATION = 10 * 1000;
+    const PAGE1_DURATION = 10 * 60 * 1000;
 
-      const jummahPrayer = prayers.find(p => p.name === "Jummah");
-      if (day === 5 && jummahPrayer && jummahPrayer.jamatTime) {
-        const jamatTime = jummahPrayer.jamatTime.getTime();
-        const windowStart = jamatTime - 15 * 60 * 1000;
-        const windowEnd = jamatTime + 30 * 60 * 1000;
-        const nowTime = now.getTime();
+    let pageCycleTimer = null;
+    let currentCyclePhase = 0;
+    let countdownInterval = null;
 
-        if (nowTime >= windowStart && nowTime <= windowEnd) {
-          return;
-        }
-      }
-
+    function showPage(index) {
       page1.classList.remove('active');
-      page2.classList.add('active');
-
-      setTimeout(() => {
-        page2.classList.remove('active');
-        page3.classList.add('active');
-        setTimeout(() => {
-          page3.classList.remove('active');
-          page1.classList.add('active');
-        }, 15000);
-      }, 15000);
+      page2.classList.remove('active');
+      if (index === 0) page2.classList.add('active');
+      else if (index === 1) page1.classList.add('active');
     }
 
-    setInterval(showPage2Temporarily, 5 * 60 * 1000);
-
-    let countdownInterval = null;
-    let sunriseInterval = null;
+    function pageCycle() {
+      if (currentCyclePhase === 0) {
+        showPage(0);
+        currentCyclePhase = 1;
+        clearTimeout(pageCycleTimer);
+        pageCycleTimer = setTimeout(pageCycle, PAGE2_DURATION);
+      } else {
+        showPage(1);
+        currentCyclePhase = 0;
+        clearTimeout(pageCycleTimer);
+        pageCycleTimer = setTimeout(pageCycle, PAGE1_DURATION);
+      }
+    }
 
     async function initialize() {
       await fetchHijriDate();
@@ -837,11 +695,9 @@
       updateDateTime();
       updatePrayerTable();
       updateSunriseDisplay();
+      await fetchTemperature();
 
       startCountdown();
-
-      if (sunriseInterval) clearInterval(sunriseInterval);
-      sunriseInterval = setInterval(updateSunriseDisplay, 500);
 
       setInterval(async () => {
         await fetchHijriDate();
@@ -849,13 +705,18 @@
         updatePrayerTable();
         updateSunriseDisplay();
         startCountdown();
-      }, 300000);
+      }, 24 * 60 * 60 * 1000);
+
+      setInterval(fetchTemperature, 10 * 60 * 1000);
 
       setInterval(() => {
         updateDateTime();
         updatePrayerTable();
         updateSunriseDisplay();
       }, 1000);
+
+      currentCyclePhase = 0;
+      pageCycle();
     }
 
     window.onload = initialize;
